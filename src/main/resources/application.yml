@@ -1,0 +1,36 @@
+spring:
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+  mvc:
+    view:
+      prefix: /WEB-INF/view/
+      suffix: .jsp
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test;MODE=MySQL
+    username: root
+    password: 1234
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:static/data/data.sql
+      encoding: utf-8
+  jpa:
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      format_sql: true
+      ddl-auto: create
+    defer-datasource-initialization: true
+
+server:
+  servlet:
+    encoding:
+      force-response: true
+
+

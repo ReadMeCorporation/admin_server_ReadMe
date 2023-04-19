@@ -3,6 +3,7 @@ package shop.readmecorp.adminserverreadme.modules.file.entity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.Comment;
 import shop.readmecorp.adminserverreadme.common.jpa.BaseTime;
 import shop.readmecorp.adminserverreadme.modules.file.dto.FileDTO;
@@ -13,8 +14,9 @@ import javax.persistence.*;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor
-@Table(name = "FILES")
+@Table(name = "FILE_TB")
 public class File extends BaseTime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

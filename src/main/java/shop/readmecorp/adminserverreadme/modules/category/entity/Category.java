@@ -3,6 +3,7 @@ package shop.readmecorp.adminserverreadme.modules.category.entity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.Comment;
 import shop.readmecorp.adminserverreadme.common.jpa.BaseTime;
 import shop.readmecorp.adminserverreadme.modules.category.dto.CategoryDTO;
@@ -15,6 +16,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor
 @Table(name = "CATEGORY_TB")
 public class Category extends BaseTime {

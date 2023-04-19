@@ -3,6 +3,7 @@ package shop.readmecorp.adminserverreadme.modules.membership.entity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.Comment;
 import shop.readmecorp.adminserverreadme.common.jpa.BaseTime;
 import shop.readmecorp.adminserverreadme.modules.membership.dto.MembershipDTO;
@@ -13,6 +14,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor
 @Table(name = "MEMBERSHIP_TB")
 public class Membership extends BaseTime {

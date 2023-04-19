@@ -3,6 +3,7 @@ package shop.readmecorp.adminserverreadme.modules.admin.entity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.Comment;
 import shop.readmecorp.adminserverreadme.common.jpa.BaseTime;
 import shop.readmecorp.adminserverreadme.common.jpa.RoleType;
@@ -14,6 +15,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor
 @Table(name = "ADMIN_TB")
 public class Admin extends BaseTime {
