@@ -24,10 +24,25 @@ insert into CATEGORY_TB(big_category, small_category, status) values ('에세이
 
 insert into BOOK_TB(publisher_id, title, author, price, introduction, content, category_id, author_info, file_info_id, status) values (1, '책제목1', '저자1', 1000,'책소개1', '책내용1', 1, '저자정보1', 1, 'ACTIVE');
 insert into BOOK_TB(publisher_id, title, author, price, introduction, content, category_id, author_info, file_info_id, status) values (2, '책제목2', '저자2', 1000,'책소개2', '책내용2', 2, '저자정보2', 1, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, content, category_id, author_info, file_info_id, status) values (3, '책제목3', '저자3', 1000,'책소개3', '책내용3', 3, '저자정보3', 2, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, content, category_id, author_info, file_info_id, status) values (3, '책제목3', '저자3', 1000,'책소개3', '책내용3', 3, '저자정보3', 1, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, content, category_id, author_info, file_info_id, status) values (3, '책제목3', '저자3', 1000,'책소개3', '책내용3', 3, '저자정보3', 1, 'WAIT');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, content, category_id, author_info, file_info_id, status) values (3, '책제목3', '저자3', 1000,'책소개3', '책내용3', 3, '저자정보3', 1, 'DELETE');
 
 insert into CART_TB(user_id, book_id, status) values (1, 1, 'ACTIVE');
 insert into CART_TB(user_id, book_id, status) values (1, 2, 'ACTIVE');
 insert into CART_TB(user_id, book_id, status) values (1, 3, 'ACTIVE');
 insert into CART_TB(user_id, book_id, status) values (2, 2, 'ACTIVE');
 insert into CART_TB(user_id, book_id, status) values (3, 3, 'ACTIVE');
+
+insert into BOOKMARK_TB(user_id, book_id, page_num, status) values (1, 2, 15, 'ACTIVE');
+insert into BOOKMARK_TB(user_id, book_id, page_num, status) values (1, 3, 29, 'ACTIVE');
+insert into BOOKMARK_TB(user_id, book_id, page_num, status) values (1, 4, 54, 'ACTIVE');
+insert into BOOKMARK_TB(user_id, book_id, page_num, status) values (2, 2, 35, 'ACTIVE');
+insert into BOOKMARK_TB(user_id, book_id, page_num, status) values (2, 2, 75, 'ACTIVE');
+insert into BOOKMARK_TB(user_id, book_id, page_num, status) values (3, 2, 25, 'ACTIVE');
+
+insert into HEART_TB(user_id, book_id, status) values (1, 1, 'ACTIVE');
+insert into HEART_TB(user_id, book_id, status) values (1, 2, 'ACTIVE');
+insert into HEART_TB(user_id, book_id, status) values (2, 1, 'ACTIVE');
+insert into HEART_TB(user_id, book_id, status) values (3, 2, 'ACTIVE');
+insert into HEART_TB(user_id, book_id, status) values (3, 4, 'ACTIVE');
