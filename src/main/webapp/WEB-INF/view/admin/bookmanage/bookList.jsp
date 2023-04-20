@@ -92,41 +92,7 @@
 </div>
 
 <script>
-    // $(document).ready(function() {
-    //     $.ajax({
-    //         url: 'http://localhost:8080/api/books',
-    //         type: 'GET',
-    //         dataType: 'json',
-    //
-    //     })
-    //         .done((res) => {
-    //             populateTable(res.content); // 'content' 속성을 사용하도록 수정
-    //         })
-    //         .fail((err) => {
-    //             alert(err.responseJSON.msg);
-    //         })
-    // });
 
-    // function populateTable(books) {
-    //     var tbody = $('table tbody');
-    //     tbody.empty();
-    //     for (var i = 0; i < books.length; i++) {
-    //         var book = books[i];
-    //         var tr = $('<tr>');
-    //         tr.append('<th scope="row">' + (i + 1) + '</th>');
-    //         tr.append('<td><img src="/images/gray.png" style="width: 75px;height: 100px"></td>');
-    //         tr.append('<td><a href="/books/detail/' + book.id + '">' + book.title + '</a></td>');
-    //         tr.append('<td>' + book.author + '</td>');
-    //         tr.append('<td>' + book.status + '</td>');
-    //         tr.append(`
-    //         <td>
-    //             <button>수정</button>
-    //             <button>삭제</button>
-    //         </td>
-    //     `);
-    //         tbody.append(tr);
-    //     }
-    // }
 
 </script>
 
