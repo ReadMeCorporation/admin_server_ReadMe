@@ -27,7 +27,7 @@
             <h3> 어드민 로그인 페이지 </h3>
 
             <div class="" >
-                <form action="/admin/login" method="post">
+                <form action="/admins/login" method="post">
                     <div class="form-group pb-1 mb-3" >
                         <input type="text" class="form-control form-control" placeholder="이메일을 입력해주세요" name="username" id="username" value="admin@readme.com">
                     </div>

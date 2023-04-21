@@ -46,9 +46,9 @@
 
                 <!-- "회원가입 신청이 완료되었습니다" 메시지 출력 -->
                 <% if(request.getAttribute("message") != null) { %>
-                <div class="alert alert-success" role="alert">
-                    <%= request.getAttribute("message") %>
-                </div>
+                    <div class="alert alert-success" role="alert">
+                        <%= request.getAttribute("message") %>
+                    </div>
                 <% } %>
 
             </div>

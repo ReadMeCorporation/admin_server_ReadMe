@@ -52,6 +52,7 @@ public class PublisherController {
 
         // 세션에 저장
         session.setAttribute("principal",principal);
+        session.setAttribute("userRole", "publisher");
 
         // 유효성 검사
         if(session.getAttribute("principal") == null){
