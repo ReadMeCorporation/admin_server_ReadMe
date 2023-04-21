@@ -1,11 +1,12 @@
 INSERT INTO ADMIN_TB (username, password, role, status) VALUES
                                                             ('admin1', 'password1', 'ADMIN', 'ACTIVE'),
-                                                            ('admin2', 'password2', 'OPERATOR', 'INACTIVE'),
-                                                            ('admin3', 'password3', 'ANALYST', 'INACTIVE');
+                                                            ('admin@readme.com', '1234', 'ADMIN', 'ACTIVE'),
+                                                            ('admin2@readme.com', '1234', 'ADMIN', 'DELETE');
 
 insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('출판사이름1', '1234', 'PUBLISHER', '123','사업자이름1', '2021-01-01 00:01', 'ACTIVE');
 insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('출판사이름2', '1234', 'PUBLISHER', '456','사업자이름2', '2021-01-01 00:02', 'ACTIVE');
-insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('출판사이름3', '1234', 'PUBLISHER', '789','사업자이름3', '2021-01-01 00:03', 'ACTIVE');
+insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('test@nate.com', '1234', 'PUBLISHER', '789','사업자이름3', '2021-01-01 00:03', 'ACTIVE');
+insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('delete@nate.com', '1234', 'PUBLISHER', '789','사업자이름3', '2021-01-01 00:03', 'DELETE');
 
 insert into FILE_INFO_TB(type) values ('BOOK');
 insert into FILE_INFO_TB(type) values ('USER');
