@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/admins")
 public class AdminController {
 
     private final AdminService adminService;
@@ -38,12 +38,23 @@ public class AdminController {
 
         // 세션에 저장
         session.setAttribute("principal",principal);
+        session.setAttribute("userRole", "admin");
 
         // 유효성 검사
         if(session.getAttribute("principal") == null){
             throw new CustomException("존재하지 않는 아이디거나 비밀번호를 다시 확인해주시기 바랍니다.");
         }
 
-        return "redirect:/admins/books";
+        return "redirect:/admins/userManage";
+    }
+
+    @GetMapping("/userManage")
+    public String userManage(){
+        return "/admin/usermanage/userManage";
+    }
+
+    @GetMapping("/publisherManage")
+    public String publisherManage(){
+        return "/admin/publishermanage/publisherManage";
     }
 }

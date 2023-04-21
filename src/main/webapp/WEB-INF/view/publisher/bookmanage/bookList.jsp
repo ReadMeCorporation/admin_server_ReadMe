@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="../../layout/header.jsp" %>
-
+<%@ include file="../../layout/headerBook.jsp" %>
 
     <div class="" style="border: 1px solid orange" >
 
@@ -18,60 +18,7 @@
             </tr>
             </thead>
             <tbody>
-<%-- --%>
-<%--<tr>--%>
-<%--    <th scope="row">1</th>--%>
-<%--    <td><img src="/images/gray.png" style="width: 75px;height: 100px"></td>--%>
-<%--    <td><a href="/books/detail/1">1984</a></td>--%>
-<%--    <td>조지오웰</td>--%>
-<%--    <td>4.5</td>--%>
-<%--    <td>100</td>--%>
-<%--    <td> - </td>--%>
-<%--    <td>--%>
-<%--        <a href="/books/updateForm/1"><button type="button" class="btn btn-outline-dark">수정</button></a>--%>
-<%--        <a href="/books/deleteForm/1"><button type="button" class="btn btn-outline-dark">삭제</button></a>--%>
-<%--    </td>--%>
-<%--</tr>--%>
-<%--<tr>--%>
-<%--    <th scope="row">2</th>--%>
-<%--    <td><img src="/images/gray.png" style="width: 75px;height: 100px"></td>--%>
-<%--    <td>1984</td>--%>
-<%--    <td>조지오웰</td>--%>
-<%--    <td>4.5</td>--%>
-<%--    <td>100</td>--%>
-<%--    <td> - </td>--%>
-<%--    <td>--%>
-<%--        <button>수정</button>--%>
-<%--        <button>삭제</button>--%>
-<%--    </td>--%>
-<%--</tr>--%>
-<%--<tr>--%>
-<%--    <th scope="row">3</th>--%>
-<%--    <td><img src="/images/gray.png" style="width: 75px;height: 100px"></td>--%>
-<%--    <td>1984</td>--%>
-<%--    <td>조지오웰</td>--%>
-<%--    <td>4.5</td>--%>
-<%--    <td>100</td>--%>
-<%--    <td> - </td>--%>
-<%--    <td>--%>
-<%--        <button>수정</button>--%>
-<%--        <button>삭제</button>--%>
-<%--    </td>--%>
-<%--</tr>--%>
-<%--<tr>--%>
-<%--    <th scope="row">4</th>--%>
-<%--    <td><img src="/images/gray.png" style="width: 75px;height: 100px"></td>--%>
-<%--    <td>1984</td>--%>
-<%--    <td>조지오웰</td>--%>
-<%--    <td>4.5</td>--%>
-<%--    <td>100</td>--%>
-<%--    <td> - </td>--%>
-<%--    <td>--%>
-<%--        <button>수정</button>--%>
-<%--        <button>삭제</button>--%>
-<%--    </td>--%>
-<%--</tr>--%>
-<%-- --%>
+
             </tbody>
         </table>
 
