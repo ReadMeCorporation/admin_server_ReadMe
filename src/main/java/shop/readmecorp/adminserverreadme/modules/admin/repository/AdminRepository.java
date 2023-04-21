@@ -4,7 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import shop.readmecorp.adminserverreadme.modules.admin.entity.Admin;
-import shop.readmecorp.adminserverreadme.modules.publisher.entity.Publisher;
 
 import java.util.Optional;
 

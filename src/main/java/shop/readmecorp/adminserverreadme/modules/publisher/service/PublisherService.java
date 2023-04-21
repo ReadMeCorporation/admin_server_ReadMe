@@ -1,15 +1,16 @@
 package shop.readmecorp.adminserverreadme.modules.publisher.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import shop.readmecorp.adminserverreadme.common.exception.CustomException;
-import shop.readmecorp.adminserverreadme.common.exception.Exception400;
-import shop.readmecorp.adminserverreadme.common.jpa.RoleType;
 import shop.readmecorp.adminserverreadme.modules.publisher.entity.Publisher;
 import shop.readmecorp.adminserverreadme.modules.publisher.enums.PublisherStatus;
 import shop.readmecorp.adminserverreadme.modules.publisher.repository.PublisherRepository;
 import shop.readmecorp.adminserverreadme.modules.publisher.request.PublisherLoginRequest;
 import shop.readmecorp.adminserverreadme.modules.publisher.request.PublisherSaveRequest;
+import shop.readmecorp.adminserverreadme.modules.publisher.request.PublisherUpdateRequest;
 
 import java.util.Optional;
 
@@ -20,6 +21,30 @@ public class PublisherService {
 
     public PublisherService(PublisherRepository publisherRepository) {
         this.publisherRepository = publisherRepository;
+    }
+
+    public Page<Publisher> getPublisherList(Pageable pageable) {
+        return publisherRepository.findByStatusActiveOrDelete(PublisherStatus.ACTIVE,PublisherStatus.DELETE,pageable);
+    }
+
+    public Page<Publisher> getPublisherRequest(Pageable pageable) {
+        return publisherRepository.findByStatusWait(PublisherStatus.WAIT,pageable);
+    }
+
+    public Optional<Publisher> getPublisher(Integer id) {
+        return publisherRepository.findById(id);
+    }
+
+    @Transactional
+    public Publisher updateState(PublisherUpdateRequest request, Publisher publisher) {
+        publisher.setStatus(PublisherStatus.valueOf(request.getStatus()));
+        return publisherRepository.save(publisher);
+    }
+
+    @Transactional
+    public void delete(Publisher publisher) {
+
+        publisherRepository.delete(publisher);
     }
 
     @Transactional

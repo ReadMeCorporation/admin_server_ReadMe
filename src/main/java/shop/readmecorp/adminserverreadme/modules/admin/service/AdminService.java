@@ -6,9 +6,6 @@ import shop.readmecorp.adminserverreadme.modules.admin.entity.Admin;
 import shop.readmecorp.adminserverreadme.modules.admin.enums.AdminStatus;
 import shop.readmecorp.adminserverreadme.modules.admin.repository.AdminRepository;
 import shop.readmecorp.adminserverreadme.modules.admin.request.AdminLoginRequest;
-import shop.readmecorp.adminserverreadme.modules.publisher.entity.Publisher;
-import shop.readmecorp.adminserverreadme.modules.publisher.enums.PublisherStatus;
-import shop.readmecorp.adminserverreadme.modules.publisher.request.PublisherLoginRequest;
 
 import java.util.Optional;
 

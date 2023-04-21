@@ -3,10 +3,12 @@ INSERT INTO ADMIN_TB (username, password, role, status) VALUES
                                                             ('admin@readme.com', '1234', 'ADMIN', 'ACTIVE'),
                                                             ('admin2@readme.com', '1234', 'ADMIN', 'DELETE');
 
-insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('출판사이름1', '1234', 'PUBLISHER', '123','사업자이름1', '2021-01-01 00:01', 'ACTIVE');
-insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('출판사이름2', '1234', 'PUBLISHER', '456','사업자이름2', '2021-01-01 00:02', 'ACTIVE');
-insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('test@nate.com', '1234', 'PUBLISHER', '789','사업자이름3', '2021-01-01 00:03', 'ACTIVE');
-insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('delete@nate.com', '1234', 'PUBLISHER', '789','사업자이름3', '2021-01-01 00:03', 'DELETE');
+insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('test1@nate.com', '1234', 'PUBLISHER', '123','사업자이름1', '2021-01-01 00:01', 'ACTIVE');
+insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('test2@nate.com', '1234', 'PUBLISHER', '456','사업자이름2', '2021-01-01 00:02', 'ACTIVE');
+insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('test3@nate.com', '1234', 'PUBLISHER', '789','사업자이름3', '2021-01-01 00:03', 'WAIT');
+insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('test4@nate.com', '1234', 'PUBLISHER', '11-22-33','사업자이름4', '2021-01-01 00:03', 'WAIT');
+insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('test5@nate.com', '1234', 'PUBLISHER', '11-22-33','사업자이름5', '2021-01-01 00:03', 'WAIT');
+insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('test6@nate.com', '1234', 'PUBLISHER', '11-22-33','사업자이름6', '2021-01-01 00:03', 'DELETE');
 
 insert into FILE_INFO_TB(type) values ('BOOK');
 insert into FILE_INFO_TB(type) values ('USER');

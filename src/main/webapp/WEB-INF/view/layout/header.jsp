@@ -50,7 +50,7 @@
     <c:when test="${userRole eq 'admin'}">
         <div class="btn-group" role="group" aria-label="Basic outlined example">
             <a href="/admins/userManage" class="btn btn-outline-primary">유저관리</a>
-            <a href="/admins/publisherManage" class="btn btn-outline-primary">출판사관리</a>
+            <a href="/admins/publisherList" class="btn btn-outline-primary">출판사관리</a>
             <a href="/admins/books" class="btn btn-outline-primary">도서관리</a>
             <a href="/admins/reviews" class="btn btn-outline-primary">리뷰관리</a>
             <a href="/admins/claims" class="btn btn-outline-primary">문의내역</a>
