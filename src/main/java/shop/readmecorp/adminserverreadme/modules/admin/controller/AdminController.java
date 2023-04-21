@@ -1,13 +1,15 @@
 package shop.readmecorp.adminserverreadme.modules.admin.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import shop.readmecorp.adminserverreadme.common.exception.CustomException;
 import shop.readmecorp.adminserverreadme.modules.admin.entity.Admin;
 import shop.readmecorp.adminserverreadme.modules.admin.request.AdminLoginRequest;
 import shop.readmecorp.adminserverreadme.modules.admin.service.AdminService;
-import shop.readmecorp.adminserverreadme.modules.publisher.entity.Publisher;
-import shop.readmecorp.adminserverreadme.modules.publisher.request.PublisherLoginRequest;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -31,7 +33,11 @@ public class AdminController {
     }
 
     @PostMapping("/login")
-    public String login(@Valid AdminLoginRequest request){
+    public String login(@Valid AdminLoginRequest request, Errors error){
+
+        if (error.hasErrors()) {
+            throw new CustomException(error.getAllErrors().get(0).getDefaultMessage(), HttpStatus.BAD_REQUEST);
+        }
 
         // 로그인 하기
         Admin principal = adminService.login(request);
@@ -51,6 +57,11 @@ public class AdminController {
     @GetMapping("/userManage")
     public String userManage(){
         return "/admin/usermanage/userManage";
+    }
+
+    @GetMapping("/publisherList")
+    public String publisherList(){
+        return "/admin/publishermanage/publisherList";
     }
 
     @GetMapping("/publisherManage")

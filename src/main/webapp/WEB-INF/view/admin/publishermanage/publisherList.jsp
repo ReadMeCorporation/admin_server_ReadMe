@@ -32,7 +32,7 @@
 <script>
     $(document).ready(function() {
         $.ajax({
-            url: 'http://localhost:8080/publishers/request/',
+            url: 'http://localhost:8080/publishers',
             type: 'GET',
             dataType: 'json',
         })
@@ -58,18 +58,16 @@
 
             var selectStatus = `
                 <select class="form-select" name="status" id="status-` + publisher.id + `">
-                    <option selected>상태를 선택해주세요</option>
-                    <option value="ACTIVE">승인</option>
-                    <option value="DELETE">반려</option>
+                    <option value="ACTIVE"` + (publisher.status === 'ACTIVE' ? ' selected' : '') + `>활성화</option>
+                    <option value="DELETE"` + (publisher.status === 'DELETE' ? ' selected' : '') + `>비활성화</option>
                 </select>
             `;
             tr.append('<td>' + selectStatus + '</td>');
             tr.append(`
                 <td>
-                    <button onclick="changeStatus(` + publisher.id + `)">등록</button>
+                    <button onclick="changeStatus(` + publisher.id + `)">변경</button>
                 </td>
             `);
-
 
             tbody.append(tr);
         }
@@ -78,41 +76,25 @@
     // 변경된 상태를 서버에 전송하는 코드
     function changeStatus(id) {
         var status = $('#status-' + id).val();
-        if (status == 'ACTIVE'){
-            $.ajax({
-                url: 'http://localhost:8080/publishers/' + id,
-                type: 'PUT',
-                dataType: 'json',
-                contentType: 'application/json',
-                data: JSON.stringify({
-                    status: status
-                })
-            })
-                .done((res) => {
-                    // 성공 시 처리할 내용 (예: 알림 표시, 테이블 업데이트 등)
-                    alert("상태가 변경되었습니다.");
-                    location.reload();
-                })
-                .fail((err) => {
-                    // 실패 시 처리할 내용 (예: 오류 메시지 표시 등)
-                    alert("상태 변경에 실패했습니다. 오류: " + err.responseJSON.msg);
-                });
 
-        } else if(status == 'DELETE'){
-            $.ajax({
-                url: 'http://localhost:8080/publishers/' + id,
-                type: 'DELETE',
+        $.ajax({
+            url: 'http://localhost:8080/publishers/' + id,
+            type: 'PUT',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                status: status
             })
-                .done((res) => {
-                    // 성공 시 처리할 내용 (예: 알림 표시, 테이블 업데이트 등)
-                    alert("상태가 변경되었습니다.");
-                    location.reload();
-                })
-                .fail((err) => {
-                    // 실패 시 처리할 내용 (예: 오류 메시지 표시 등)
-                    alert("상태 변경에 실패했습니다. 오류: " + err.responseJSON.msg);
-                });
-        }
+        })
+            .done((res) => {
+                // 성공 시 처리할 내용 (예: 알림 표시, 테이블 업데이트 등)
+                alert("상태가 변경되었습니다.");
+                location.reload();
+            })
+            .fail((err) => {
+                // 실패 시 처리할 내용 (예: 오류 메시지 표시 등)
+                alert("상태 변경에 실패했습니다. 오류: " + err.responseJSON.msg);
+            });
     }
 
 

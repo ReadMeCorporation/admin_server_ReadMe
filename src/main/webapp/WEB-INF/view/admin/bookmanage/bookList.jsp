@@ -22,7 +22,7 @@
 <tr>
     <th scope="row">1</th>
     <td><img src="/images/gray.png" style="width: 75px;height: 100px"></td>
-    <td><a href="/books/detail/1">1984</a></td>
+    <td>1984</td>
     <td>조지오웰</td>
     <td>그린아카데미</td>
     <td>2023.03.01</td>
@@ -38,7 +38,7 @@
 <tr>
     <th scope="row">2</th>
     <td><img src="/images/gray.png" style="width: 75px;height: 100px"></td>
-    <td><a href="/books/detail/1">1984</a></td>
+    <td>1984</td>
     <td>조지오웰</td>
     <td>그린아카데미</td>
     <td>2023.03.01</td>
@@ -54,7 +54,7 @@
 <tr>
     <th scope="row">3</th>
     <td><img src="/images/gray.png" style="width: 75px;height: 100px"></td>
-    <td><a href="/books/detail/1">1984</a></td>
+    <td>1984</td>
     <td>조지오웰</td>
     <td>그린아카데미</td>
     <td>2023.03.01</td>
@@ -70,7 +70,7 @@
 <tr>
     <th scope="row">4</th>
     <td><img src="/images/gray.png" style="width: 75px;height: 100px"></td>
-    <td><a href="/books/detail/1">1984</a></td>
+    <td>1984</td>
     <td>조지오웰</td>
     <td>그린아카데미</td>
     <td>2023.03.01</td>

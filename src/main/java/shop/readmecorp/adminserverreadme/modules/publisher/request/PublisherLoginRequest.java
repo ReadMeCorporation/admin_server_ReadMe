@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
@@ -13,10 +13,10 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class PublisherLoginRequest {
 
-    @NotNull(message = "아이디를 작성해주세요")
+    @NotBlank(message = "아이디를 작성해주세요")
     private String username;
 
-    @NotNull(message = "비밀번호를 작성해주세요")
+    @NotBlank(message = "비밀번호를 작성해주세요")
     private String password;
 
 }
