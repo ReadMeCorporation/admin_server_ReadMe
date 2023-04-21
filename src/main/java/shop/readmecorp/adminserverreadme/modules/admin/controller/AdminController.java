@@ -1,10 +1,7 @@
 package shop.readmecorp.adminserverreadme.modules.admin.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import shop.readmecorp.adminserverreadme.common.exception.CustomException;
 import shop.readmecorp.adminserverreadme.modules.admin.entity.Admin;
 import shop.readmecorp.adminserverreadme.modules.admin.request.AdminLoginRequest;
@@ -13,6 +10,7 @@ import shop.readmecorp.adminserverreadme.modules.publisher.entity.Publisher;
 import shop.readmecorp.adminserverreadme.modules.publisher.request.PublisherLoginRequest;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/admin")
@@ -33,13 +31,7 @@ public class AdminController {
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute AdminLoginRequest request){
-        if (request.getUsername().isEmpty() || request.getUsername() == null){
-            throw new CustomException("아이디를 작성해주세요.");
-        }
-        if (request.getPassword().isEmpty() || request.getPassword() == null){
-            throw new CustomException("비밀번호를 작성해주세요.");
-        }
+    public String login(@Valid AdminLoginRequest request){
 
         // 로그인 하기
         Admin principal = adminService.login(request);

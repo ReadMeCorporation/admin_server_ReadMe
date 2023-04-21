@@ -23,13 +23,13 @@ public class PublisherService {
     }
 
     @Transactional
-    public Publisher join(PublisherSaveRequest request) {
+    public void join(PublisherSaveRequest request) {
         // 1. 동일 이메일 존재 검사
         Optional<Publisher> publisherOP = publisherRepository.findByUsername(request.getUsername());
         if (publisherOP.isPresent()) {
             throw new CustomException("동일한 이메일이 존재합니다");
         }
-        // 1. 동일 사업자이름 존재 검사
+        // 2. 동일 사업자이름 존재 검사
         Optional<Publisher> publisherOP2 = publisherRepository.findByBusinessName(request.getBusinessName());
         if (publisherOP2.isPresent()) {
             throw new CustomException("동일한 사업자이름이 존재합니다");
@@ -43,7 +43,7 @@ public class PublisherService {
                 .businessName(request.getBusinessName())
                 .build();
 
-        return publisherRepository.save(publisher);
+        publisherRepository.save(publisher);
     }
 
     @Transactional

@@ -10,6 +10,7 @@ import shop.readmecorp.adminserverreadme.modules.publisher.request.PublisherSave
 import shop.readmecorp.adminserverreadme.modules.publisher.service.PublisherService;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/publishers")
@@ -23,7 +24,6 @@ public class PublisherController {
         this.session = session;
     }
 
-
     @GetMapping("/joinForm")
     public String joinForm(){
         return "/publisher/account/joinForm";
@@ -35,21 +35,9 @@ public class PublisherController {
     }
 
     @PostMapping("/join")
-    public String join(@ModelAttribute PublisherSaveRequest request, RedirectAttributes redirectAttributes){
-        if (request.getUsername().isEmpty() || request.getUsername() == null){
-            throw new CustomException("아이디를 작성해주세요.");
-        }
-        if (request.getPassword().isEmpty() || request.getPassword() == null){
-            throw new CustomException("비밀번호를 작성해주세요.");
-        }
-        if (request.getBusinessName().isEmpty() || request.getBusinessName() == null){
-            throw new CustomException("사업자명을 작성해주세요.");
-        }
-        if (request.getBusinessNumber().isEmpty() || request.getBusinessNumber() == null){
-            throw new CustomException("사업자번호를 작성해주세요.");
-        }
-
-        Publisher publisher = publisherService.join(request);
+    public String join(@Valid PublisherSaveRequest request, RedirectAttributes redirectAttributes){
+        // 회원가입 하기
+        publisherService.join(request);
 
         // 리다이렉트 시 메시지 추가
         redirectAttributes.addFlashAttribute("message", "회원가입 신청이 완료되었습니다.");
@@ -58,15 +46,7 @@ public class PublisherController {
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute PublisherLoginRequest request){
-        if (request.getUsername().isEmpty() || request.getUsername() == null){
-            throw new CustomException("아이디를 작성해주세요.");
-        }
-        if (request.getPassword().isEmpty() || request.getPassword() == null){
-            throw new CustomException("비밀번호를 작성해주세요.");
-        }
-
-
+    public String login(@Valid PublisherLoginRequest request){
         // 로그인 하기
         Publisher principal = publisherService.login(request);
 
@@ -77,8 +57,6 @@ public class PublisherController {
         if(session.getAttribute("principal") == null){
             throw new CustomException("존재하지 않는 아이디거나 비밀번호를 다시 확인해주시기 바랍니다.");
         }
-
-
 
         return "redirect:/publishers/books";
     }
