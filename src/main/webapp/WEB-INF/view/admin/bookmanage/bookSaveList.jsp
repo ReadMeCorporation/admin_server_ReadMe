@@ -32,7 +32,7 @@
 
     $(document).ready(function() {
         $.ajax({
-            url: 'http://localhost:8080/books',
+            url: 'http://localhost:8080/books/saveList',
             type: 'GET',
             dataType: 'json',
         })
@@ -59,14 +59,15 @@
 
             var selectStatus = `
                 <select class="form-select" name="status" id="status-` + book.id + `">
-                    <option value="ACTIVE"` + (book.status === 'ACTIVE' ? ' selected' : '') + `>활성</option>
-                    <option value="DELETE"` + (book.status === 'DELETE' ? ' selected' : '') + `>비활성</option>
+                    <option selected>상태를 선택해주세요</option>
+                    <option value="ACTIVE">승인</option>
+                    <option value="DELETE">반려</option>
                 </select>
             `;
             tr.append('<td>' + selectStatus + '</td>');
             tr.append(`
                 <td>
-                    <button onclick="changeStatus(` + book.id + `)">변경</button>
+                    <button onclick="changeStatus(` + book.id + `)">등록</button>
                 </td>
             `);
 

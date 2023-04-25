@@ -31,8 +31,19 @@ public class BookController {
     }
 
     @GetMapping("/books")
-    public ResponseEntity<Page<BookDTO>> getPage(Pageable pageable) {
-        Page<Book> page = bookService.getPage(pageable);
+    public ResponseEntity<Page<BookDTO>> getBookList(Pageable pageable) {
+        Page<Book> page = bookService.getBookList(pageable);
+        List<BookDTO> content = page.getContent()
+                .stream()
+                .map(Book::toDTO)
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(new PageImpl<>(content, pageable, page.getTotalElements()));
+    }
+
+    @GetMapping("/books/saveList")
+    public ResponseEntity<Page<BookDTO>> getBookSaveList(Pageable pageable) {
+        Page<Book> page = bookService.getBookSaveList(pageable);
         List<BookDTO> content = page.getContent()
                 .stream()
                 .map(Book::toDTO)
@@ -83,6 +94,25 @@ public class BookController {
         return ResponseEntity.ok(update.toResponse());
     }
 
+    @PutMapping("/books/{id}/state")
+    public ResponseEntity<BookResponse> updateBookState(
+            @PathVariable Integer id,
+            @Valid @RequestBody BookUpdateRequest request,
+            Errors error
+    ) {
+        if (error.hasErrors()) {
+            throw new Exception400(error.getAllErrors().get(0).getDefaultMessage());
+        }
+
+        Optional<Book> optionalBook = bookService.getBook(id);
+        if (optionalBook.isEmpty()) {
+            throw new Exception400(BookConst.notFound);
+        }
+
+        Book update = bookService.updateState(request, optionalBook.get());
+        return ResponseEntity.ok(update.toResponse());
+    }
+
     @DeleteMapping("/books/{id}")
     public ResponseEntity<String> delete(@PathVariable Integer id) {
         Optional<Book> optionalBook = bookService.getBook(id);
@@ -98,6 +128,11 @@ public class BookController {
     @GetMapping("/admins/books")
     public String adminsBookList(){
         return "/admin/bookmanage/bookList";
+    }
+
+    @GetMapping("/admins/books/saveList")
+    public String adminsBookSaveList(){
+        return "/admin/bookmanage/bookSaveList";
     }
 
     @GetMapping("/admins/books/detail/{id}")
@@ -118,7 +153,7 @@ public class BookController {
         return "/publisher/bookmanage/bookSaveForm";
     }
 
-    @GetMapping("/publishers/books/Stay")
+    @GetMapping("/publishers/books/stay")
     public String publishersBookStay(){
         return "/publisher/bookmanage/bookStay";
     }
