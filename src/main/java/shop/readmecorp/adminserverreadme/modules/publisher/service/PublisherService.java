@@ -37,6 +37,7 @@ public class PublisherService {
 
     @Transactional
     public Publisher updateState(PublisherUpdateRequest request, Publisher publisher) {
+        // 출판사 상태 변경
         publisher.setStatus(PublisherStatus.valueOf(request.getStatus()));
         return publisherRepository.save(publisher);
     }
@@ -49,12 +50,12 @@ public class PublisherService {
 
     @Transactional
     public void join(PublisherSaveRequest request) {
-        // 1. 동일 이메일 존재 검사
+        // 동일 이메일 존재 검사
         Optional<Publisher> publisherOP = publisherRepository.findByUsername(request.getUsername());
         if (publisherOP.isPresent()) {
             throw new CustomException("동일한 이메일이 존재합니다");
         }
-        // 2. 동일 사업자이름 존재 검사
+        // 동일 사업자이름 존재 검사
         Optional<Publisher> publisherOP2 = publisherRepository.findByBusinessName(request.getBusinessName());
         if (publisherOP2.isPresent()) {
             throw new CustomException("동일한 사업자이름이 존재합니다");

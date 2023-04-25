@@ -9,17 +9,16 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import shop.readmecorp.adminserverreadme.common.exception.Exception400;
 import shop.readmecorp.adminserverreadme.modules.user.UserConst;
-import shop.readmecorp.adminserverreadme.modules.user.request.UserUpdateRequest;
-import shop.readmecorp.adminserverreadme.modules.user.response.UserResponse;
 import shop.readmecorp.adminserverreadme.modules.user.dto.UserDTO;
 import shop.readmecorp.adminserverreadme.modules.user.entity.User;
+import shop.readmecorp.adminserverreadme.modules.user.request.UserUpdateRequest;
+import shop.readmecorp.adminserverreadme.modules.user.response.UserResponse;
 import shop.readmecorp.adminserverreadme.modules.user.service.UserService;
 
 import javax.validation.Valid;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/users")
 public class UserController {
 
     private final UserService userService;
@@ -28,7 +27,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping
+    @GetMapping("/api/users")
     public ResponseEntity<Page<UserDTO>> getPage(Pageable pageable) {
         var page = userService.getPage(pageable);
         var content = page.getContent()
@@ -41,7 +40,7 @@ public class UserController {
         );
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/users/{id}")
     public ResponseEntity<UserResponse> updateState (
             @Valid @RequestBody UserUpdateRequest request,
             Errors error,

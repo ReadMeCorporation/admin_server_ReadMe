@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import shop.readmecorp.adminserverreadme.modules.book.entity.Book;
 import shop.readmecorp.adminserverreadme.modules.book.enums.BookStatus;
-import shop.readmecorp.adminserverreadme.modules.publisher.entity.Publisher;
-import shop.readmecorp.adminserverreadme.modules.publisher.enums.PublisherStatus;
+
+import java.util.List;
 
 public interface BookRepository extends JpaRepository<Book, Integer> {
 
@@ -17,4 +17,7 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 
     @Query("select b from Book b where b.status = :status ")
     Page<Book> findByStatusWait(@Param("status") BookStatus status, Pageable pageable);
+
+    @Query("select b from Book b where b.publisher.id = :userId")
+    List<Book> findByUserId(Integer userId);
 }

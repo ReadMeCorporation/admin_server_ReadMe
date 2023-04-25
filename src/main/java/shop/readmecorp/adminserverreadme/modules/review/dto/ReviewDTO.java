@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import shop.readmecorp.adminserverreadme.modules.book.dto.BookDTO;
+import shop.readmecorp.adminserverreadme.modules.review.entity.Review;
 import shop.readmecorp.adminserverreadme.modules.user.dto.UserDTO;
 
 @Getter
@@ -26,4 +27,13 @@ public class ReviewDTO {
 
     private String status;
 
+    public ReviewDTO(Review review) {
+        this.id = review.getId();
+        this.user = review.getUser().toDTO();
+        this.book = review.getBook().toDTO();
+        this.stars = review.getStars();
+        this.content = review.getContent();
+        this.writeTime = review.getWriteTime().toString();
+        this.status = review.getStatus().name();
+    }
 }

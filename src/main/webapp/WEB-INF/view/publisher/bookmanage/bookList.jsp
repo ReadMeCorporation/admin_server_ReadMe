@@ -1,3 +1,4 @@
+<%@ page import="shop.readmecorp.adminserverreadme.modules.publisher.entity.Publisher" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="../../layout/header.jsp" %>
 <%@ include file="../../layout/headerBook.jsp" %>
@@ -28,19 +29,30 @@
 
 <script>
     $(document).ready(function() {
-        $.ajax({
-            url: 'http://localhost:8080/books',
-            type: 'GET',
-            dataType: 'json',
+        // 세션에서 userId 가져오기
+        const userId = '<%= request.getSession().getAttribute("principal") != null ? ((Publisher) request.getSession().getAttribute("principal")).getId() : 0 %>';
 
-        })
-            .done((res) => {
-                populateTable(res.content); // 'content' 속성을 사용하도록 수정
+        // userId가 존재하는 경우에만 API 요청을 보냅니다.
+        if (userId !== 0) {
+            console.log("User ID:", userId);
+            console.log(`Request URL: http://localhost:8080/api/publishers/books?userId=${userId}`);
+
+            $.ajax({
+                url: `http://localhost:8080/api/publishers/books`,
+                type: 'GET',
+                dataType: 'json',
+                data: { userId: userId }
             })
-            .fail((err) => {
-                alert(err.responseJSON.msg);
-            })
+                .done((res) => {
+                    populateTable(res);
+                })
+                .fail((err) => {
+                    alert(err.responseJSON.msg);
+                })
+        }
     });
+
+
 
     function populateTable(books) {
         var tbody = $('table tbody');
@@ -52,6 +64,8 @@
             tr.append('<td><img src="/images/gray.png" style="width: 75px;height: 100px"></td>');
             tr.append('<td><a href="/publishers/books/detail/' + book.id + '">' + book.title + '</a></td>');
             tr.append('<td>' + book.author + '</td>');
+            tr.append('<td>' + book.stars + '</td>');
+            tr.append('<td>' + book.hearts + '</td>');
             tr.append('<td>' + book.status + '</td>');
             tr.append(`
             <td>

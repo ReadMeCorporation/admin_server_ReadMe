@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping("/publishers")
+@RequestMapping
 public class PublisherController {
 
     private final PublisherService publisherService;
@@ -37,7 +37,7 @@ public class PublisherController {
         this.session = session;
     }
 
-    @GetMapping()
+    @GetMapping("/api/publishers")
     public ResponseEntity<Page<PublisherDTO>> getPublisherList(Pageable pageable) {
         Page<Publisher> page = publisherService.getPublisherList(pageable);
         List<PublisherDTO> content = page.getContent()
@@ -48,7 +48,7 @@ public class PublisherController {
         return ResponseEntity.ok(new PageImpl<>(content, pageable, page.getTotalElements()));
     }
 
-    @GetMapping("/request")
+    @GetMapping("/api/publishers/request")
     public ResponseEntity<Page<PublisherDTO>> getPublisherRequest(Pageable pageable) {
         Page<Publisher> page = publisherService.getPublisherRequest(pageable);
         List<PublisherDTO> content = page.getContent()
@@ -59,7 +59,7 @@ public class PublisherController {
         return ResponseEntity.ok(new PageImpl<>(content, pageable, page.getTotalElements()));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/api/publishers/{id}")
     public ResponseEntity<PublisherResponse> getPublisher (@PathVariable Integer id) {
         var optionalPublisher = publisherService.getPublisher(id);
         if (optionalPublisher.isEmpty()) {
@@ -71,7 +71,7 @@ public class PublisherController {
         );
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/publishers/{id}")
     public ResponseEntity<PublisherResponse> updateState (
             @Valid @RequestBody PublisherUpdateRequest request,
             Errors error,
@@ -91,17 +91,17 @@ public class PublisherController {
     }
 
 
-    @GetMapping("/joinForm")
+    @GetMapping("/publishers/joinForm")
     public String joinForm(){
         return "/publisher/account/joinForm";
     }
 
-    @GetMapping("/loginForm")
+    @GetMapping("/publishers/loginForm")
     public String loginForm(){
         return "/publisher/account/loginForm";
     }
 
-    @PostMapping("/join")
+    @PostMapping("/publishers/join")
     public String join(@Valid PublisherSaveRequest request, Errors error, RedirectAttributes redirectAttributes){
 
         if (error.hasErrors()) {
@@ -117,7 +117,7 @@ public class PublisherController {
         return "redirect:/publishers/loginForm";
     }
 
-    @PostMapping("/login")
+    @PostMapping("/publishers/login")
     public String login(@Valid PublisherLoginRequest request, Errors error){
 
         if (error.hasErrors()) {
@@ -139,7 +139,7 @@ public class PublisherController {
         return "redirect:/publishers/books";
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/publishers/{id}")
     public ResponseEntity<String> deletePublisher (
             @PathVariable Integer id
     ) {
