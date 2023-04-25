@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import shop.readmecorp.adminserverreadme.common.exception.Exception400;
 import shop.readmecorp.adminserverreadme.modules.book.BookConst;
 import shop.readmecorp.adminserverreadme.modules.book.dto.BookDTO;
+import shop.readmecorp.adminserverreadme.modules.book.dto.PublishersBookListDTO;
 import shop.readmecorp.adminserverreadme.modules.book.entity.Book;
 import shop.readmecorp.adminserverreadme.modules.book.request.BookSaveRequest;
 import shop.readmecorp.adminserverreadme.modules.book.request.BookUpdateRequest;
@@ -30,7 +31,7 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @GetMapping("/books")
+    @GetMapping("/api/books")
     public ResponseEntity<Page<BookDTO>> getBookList(Pageable pageable) {
         Page<Book> page = bookService.getBookList(pageable);
         List<BookDTO> content = page.getContent()
@@ -41,7 +42,18 @@ public class BookController {
         return ResponseEntity.ok(new PageImpl<>(content, pageable, page.getTotalElements()));
     }
 
-    @GetMapping("/books/saveList")
+    //TODO 수정필요
+    @GetMapping("/api/publishers/books")
+    public ResponseEntity<?> getPublishersBookList(Integer userId) {
+
+
+        List<PublishersBookListDTO> publishersBookListDTO = bookService.getPublishersBookList(userId);
+
+        return ResponseEntity.ok(publishersBookListDTO);
+    }
+
+    //어드민에서 사용
+    @GetMapping("/api/books/saveList")
     public ResponseEntity<Page<BookDTO>> getBookSaveList(Pageable pageable) {
         Page<Book> page = bookService.getBookSaveList(pageable);
         List<BookDTO> content = page.getContent()
@@ -52,7 +64,7 @@ public class BookController {
         return ResponseEntity.ok(new PageImpl<>(content, pageable, page.getTotalElements()));
     }
 
-    @GetMapping("/books/{id}")
+    @GetMapping("/api/books/{id}")
     public ResponseEntity<BookResponse> getBook(@PathVariable Integer id) {
         var optionalBook = bookService.getBook(id);
         if (optionalBook.isEmpty()) {

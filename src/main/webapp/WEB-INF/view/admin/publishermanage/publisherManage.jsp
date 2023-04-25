@@ -32,7 +32,7 @@
 <script>
     $(document).ready(function() {
         $.ajax({
-            url: 'http://localhost:8080/publishers/request/',
+            url: 'http://localhost:8080/api/publishers/request/',
             type: 'GET',
             dataType: 'json',
         })

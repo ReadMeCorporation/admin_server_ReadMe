@@ -6,9 +6,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import shop.readmecorp.adminserverreadme.modules.user.entity.User;
 import shop.readmecorp.adminserverreadme.modules.user.enums.UserStatus;
-import shop.readmecorp.adminserverreadme.modules.user.request.UserUpdateRequest;
-import shop.readmecorp.adminserverreadme.modules.user.entity.User;
 import shop.readmecorp.adminserverreadme.modules.user.repository.UserRepository;
+import shop.readmecorp.adminserverreadme.modules.user.request.UserUpdateRequest;
 
 import java.util.Optional;
 
