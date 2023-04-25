@@ -21,9 +21,15 @@
                     <div class="form-group pb-1">
                         <input type="text" class="form-control form-control" placeholder="도서명을 입력해주세요" name="title" id="title" >
                     </div>
+
                     저자
                     <div class="form-group pb-1">
                         <input type="text" class="form-control form-control" placeholder="도서명을 입력해주세요" name="author" id="author" >
+                    </div>
+
+                    출판사
+                    <div class="form-group pb-1">
+                        <input type="text" class="form-control form-control" placeholder="도서명을 입력해주세요" name="author" id="publisher" readonly value="" >
                     </div>
 
                     가격

@@ -58,8 +58,8 @@
 
             var selectStatus = `
                 <select class="form-select" name="status" id="status-` + publisher.id + `">
-                    <option value="ACTIVE"` + (publisher.status === 'ACTIVE' ? ' selected' : '') + `>활성화</option>
-                    <option value="DELETE"` + (publisher.status === 'DELETE' ? ' selected' : '') + `>비활성화</option>
+                    <option value="ACTIVE"` + (publisher.status === 'ACTIVE' ? ' selected' : '') + `>활성</option>
+                    <option value="DELETE"` + (publisher.status === 'DELETE' ? ' selected' : '') + `>비활성</option>
                 </select>
             `;
             tr.append('<td>' + selectStatus + '</td>');
