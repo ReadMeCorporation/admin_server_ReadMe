@@ -6,11 +6,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Comment;
 import shop.readmecorp.adminserverreadme.common.jpa.BaseTime;
-import shop.readmecorp.adminserverreadme.modules.category.dto.CategoryDTO;
+import shop.readmecorp.adminserverreadme.modules.category.dto.BigCategoryDTO;
 import shop.readmecorp.adminserverreadme.modules.category.enums.BigCategoryType;
 import shop.readmecorp.adminserverreadme.modules.category.enums.CategoryStatus;
-import shop.readmecorp.adminserverreadme.modules.category.enums.SmallCategoryType;
-import shop.readmecorp.adminserverreadme.modules.category.response.CategoryResponse;
+import shop.readmecorp.adminserverreadme.modules.category.response.BigCategoryResponse;
 
 import javax.persistence.*;
 
@@ -18,39 +17,33 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "CATEGORY_TB")
-public class Category extends BaseTime {
+@Table(name = "BIG_CATEGORY_TB")
+public class BigCategory extends BaseTime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Comment("고유번호")
     private Integer id;
 
-    @Comment("큰 카테고리")
+    @Comment("대분류 카테고리")
     @Enumerated(EnumType.STRING)
     private BigCategoryType bigCategory;
-
-    @Comment("작은 카테고리")
-    @Enumerated(EnumType.STRING)
-    private SmallCategoryType smallCategory;
 
     @Comment("카테고리 활성화 상태")
     @Enumerated(EnumType.STRING)
     private CategoryStatus status;
 
-
     @Builder
-    public Category(Integer id, BigCategoryType bigCategory, SmallCategoryType smallCategory, CategoryStatus status) {
+    public BigCategory(Integer id, BigCategoryType bigCategory, CategoryStatus status) {
         this.id = id;
         this.bigCategory = bigCategory;
-        this.smallCategory = smallCategory;
         this.status = status;
     }
 
-    public CategoryDTO toDTO() {
-        return new CategoryDTO(id, bigCategory.name(), smallCategory.name(), status.name() );
+    public BigCategoryDTO toDTO() {
+        return new BigCategoryDTO(id, bigCategory.name(), status.name());
     }
 
-    public CategoryResponse toResponse() {
-        return new CategoryResponse(id, bigCategory.name(), smallCategory.name(), status.name());
+    public BigCategoryResponse toResponse() {
+        return new BigCategoryResponse(id, bigCategory.name(), status.name());
     }
 }

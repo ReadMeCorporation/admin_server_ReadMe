@@ -3,10 +3,10 @@
 <%@ include file="../../layout/header.jsp" %>
 <%@ include file="../../layout/headerBook.jsp" %>
 
-    <div class="" style="border: 1px solid orange" >
+    <div class="" style="border: 1px solid gray" >
 
         <table class="table">
-            <thead>
+            <thead class="table-secondary">
             <tr>
                 <th scope="col">NO</th>
                 <th scope="col">표지</th>
@@ -18,7 +18,7 @@
                 <th scope="col">요청</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="bookListTbody">
 
             </tbody>
         </table>
@@ -55,7 +55,7 @@
 
 
     function populateTable(books) {
-        var tbody = $('table tbody');
+        var tbody = $('#bookListTbody');
         tbody.empty();
         for (var i = 0; i < books.length; i++) {
             var book = books[i];

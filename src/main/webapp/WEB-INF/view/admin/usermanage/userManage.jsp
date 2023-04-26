@@ -6,7 +6,7 @@
     유저관리
 </h1>
 
-    <div class="" style="border: 1px solid orange" >
+    <div class="" style="border: 1px solid gray" >
 
         <table class="table">
             <thead>
@@ -19,7 +19,7 @@
                 <th scope="col">상태</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="userManageTbody">
 
             </tbody>
         </table>
@@ -45,7 +45,7 @@
     });
 
     function populateTable(users) {
-        var tbody = $('table tbody');
+        var tbody = $('#userManageTbody');
         tbody.empty();
         for (var i = 0; i < users.length; i++) {
             var user = users[i];

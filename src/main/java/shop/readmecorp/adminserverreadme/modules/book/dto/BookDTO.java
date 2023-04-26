@@ -5,9 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import shop.readmecorp.adminserverreadme.modules.book.entity.Book;
-import shop.readmecorp.adminserverreadme.modules.category.dto.CategoryDTO;
+import shop.readmecorp.adminserverreadme.modules.book.enums.BookStatus;
+import shop.readmecorp.adminserverreadme.modules.category.dto.BigCategoryDTO;
+import shop.readmecorp.adminserverreadme.modules.category.dto.SmallCategoryDTO;
 import shop.readmecorp.adminserverreadme.modules.file.dto.FileInfoDTO;
 import shop.readmecorp.adminserverreadme.modules.publisher.dto.PublisherDTO;
+
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -15,6 +19,7 @@ import shop.readmecorp.adminserverreadme.modules.publisher.dto.PublisherDTO;
 @NoArgsConstructor
 public class BookDTO {
 
+    @NotNull(message = "책 ID가 없습니다.")
     private Integer id;
 
     private PublisherDTO publisher;
@@ -27,9 +32,11 @@ public class BookDTO {
 
     private String introduction;
 
-    private String content;
+    private String filePath;
 
-    private CategoryDTO category;
+    private BigCategoryDTO bigCategory;
+
+    private SmallCategoryDTO smallCategory;
 
     private String authorInfo;
 
@@ -37,17 +44,20 @@ public class BookDTO {
 
     private String status;
 
-    public BookDTO(Book book) {
-        this.id = book.getId();
-        this.publisher = book.getPublisher().toDTO();
-        this.title = book.getTitle();
-        this.author = book.getAuthor();
-        this.price = book.getPrice();
-        this.introduction = book.getIntroduction();
-        this.content = book.getContent();
-        this.category = book.getCategory().toDTO();
-        this.authorInfo = book.getAuthorInfo();
-        this.fileInfo = book.getFileInfo().toDTO();
-        this.status = book.getStatus().name();
+    public Book toEntity() {
+        return Book.builder()
+                .id(id)
+                .publisher(publisher.toEntity())
+                .title(title)
+                .author(author)
+                .price(price)
+                .introduction(introduction)
+                .filePath(filePath)
+                .bigCategory(bigCategory.toEntity())
+                .smallCategory(smallCategory.toEntity())
+                .authorInfo(authorInfo)
+                .fileInfo(fileInfo.toEntity())
+                .status(BookStatus.valueOf(status))
+                .build();
     }
 }

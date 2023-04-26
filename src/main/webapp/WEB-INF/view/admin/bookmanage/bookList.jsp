@@ -4,7 +4,7 @@
 <h1>
     도서관리
 </h1>
-    <div class="" style="border: 1px solid orange" >
+    <div class="" style="border: 1px solid gray" >
 
         <table class="table">
             <thead>
@@ -19,7 +19,7 @@
                 <th scope="col"> </th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="bookListTbody">
 
             </tbody>
         </table>
@@ -29,7 +29,6 @@
 </div>
 
 <script>
-
     $(document).ready(function() {
         $.ajax({
             url: 'http://localhost:8080/api/books',
@@ -43,9 +42,8 @@
                 alert(err.responseJSON.msg);
             })
     });
-
     function populateTable(books) {
-        var tbody = $('table tbody');
+        var tbody = $('#bookListTbody');
         tbody.empty();
         for (var i = 0; i < books.length; i++) {
             var book = books[i];
@@ -56,7 +54,6 @@
             tr.append('<td>' + book.author + '</td>');
             tr.append('<td>' + book.publisher.businessName + '</td>');
             tr.append('<td>' + book.createDate + '</td>');
-
             var selectStatus = `
                 <select class="form-select" name="status" id="status-` + book.id + `">
                     <option value="ACTIVE"` + (book.status === 'ACTIVE' ? ' selected' : '') + `>활성</option>
@@ -69,15 +66,12 @@
                     <button onclick="changeStatus(` + book.id + `)">변경</button>
                 </td>
             `);
-
             tbody.append(tr);
         }
     }
-
     // 변경된 상태를 서버에 전송하는 코드
     function changeStatus(id) {
         var status = $('#status-' + id).val();
-
         $.ajax({
             url: 'http://localhost:8080/books/' + id+'/state',
             type: 'PUT',
@@ -97,7 +91,6 @@
                 alert("상태 변경에 실패했습니다. 오류: " + err.responseJSON.msg);
             });
     }
-
 </script>
 
 

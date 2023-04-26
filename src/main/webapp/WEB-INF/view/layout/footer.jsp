@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-<div style="border: 1px solid red;text-align: center">
+<div style="text-align: center">
     <footer>
         ReadMe(주) 사업자 정보<br>
         <br>

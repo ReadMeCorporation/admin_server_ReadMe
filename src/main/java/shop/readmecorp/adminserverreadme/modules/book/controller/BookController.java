@@ -1,5 +1,7 @@
 package shop.readmecorp.adminserverreadme.modules.book.controller;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -12,13 +14,16 @@ import shop.readmecorp.adminserverreadme.modules.book.BookConst;
 import shop.readmecorp.adminserverreadme.modules.book.dto.BookDTO;
 import shop.readmecorp.adminserverreadme.modules.book.dto.PublishersBookListDTO;
 import shop.readmecorp.adminserverreadme.modules.book.entity.Book;
+import shop.readmecorp.adminserverreadme.modules.book.enums.BookStatus;
 import shop.readmecorp.adminserverreadme.modules.book.request.BookSaveRequest;
 import shop.readmecorp.adminserverreadme.modules.book.request.BookUpdateRequest;
 import shop.readmecorp.adminserverreadme.modules.book.response.BookResponse;
 import shop.readmecorp.adminserverreadme.modules.book.service.BookService;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -27,7 +32,7 @@ public class BookController {
 
     private final BookService bookService;
 
-    public BookController(BookService bookService) {
+    public BookController(BookService bookService, ObjectMapper objectMapper) {
         this.bookService = bookService;
     }
 
@@ -109,19 +114,16 @@ public class BookController {
     @PutMapping("/books/{id}/state")
     public ResponseEntity<BookResponse> updateBookState(
             @PathVariable Integer id,
-            @Valid @RequestBody BookUpdateRequest request,
+            @RequestBody String status,
             Errors error
-    ) {
-        if (error.hasErrors()) {
-            throw new Exception400(error.getAllErrors().get(0).getDefaultMessage());
-        }
+    ) throws Exception {
 
         Optional<Book> optionalBook = bookService.getBook(id);
         if (optionalBook.isEmpty()) {
             throw new Exception400(BookConst.notFound);
         }
 
-        Book update = bookService.updateState(request, optionalBook.get());
+        Book update = bookService.updateState(status, optionalBook.get());
         return ResponseEntity.ok(update.toResponse());
     }
 

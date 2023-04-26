@@ -4,7 +4,7 @@
 <h1>
     도서관리
 </h1>
-    <div class="" style="border: 1px solid orange" >
+    <div class="" style="border: 1px solid gray" >
 
         <table class="table">
             <thead>
@@ -19,7 +19,7 @@
                 <th scope="col"> </th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="bookSaveListTbody">
 
             </tbody>
         </table>
@@ -45,7 +45,7 @@
     });
 
     function populateTable(books) {
-        var tbody = $('table tbody');
+        var tbody = $('#bookSaveListTbody');
         tbody.empty();
         for (var i = 0; i < books.length; i++) {
             var book = books[i];

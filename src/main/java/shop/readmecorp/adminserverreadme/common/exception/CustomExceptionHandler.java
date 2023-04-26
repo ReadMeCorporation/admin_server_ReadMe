@@ -3,7 +3,7 @@ package shop.readmecorp.adminserverreadme.common.exception;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import shop.readmecorp.adminserverreadme.common.util.Script;
+import shop.readmecorp.adminserverreadme.util.Script;
 
 @RestControllerAdvice
 public class CustomExceptionHandler {

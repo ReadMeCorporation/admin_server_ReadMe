@@ -50,15 +50,15 @@ public class Publisher extends BaseTime {
     private PublisherStatus status;
 
     @Builder
-    public Publisher(Integer id, String username, String password, String businessNumber, String businessName) {
+    public Publisher(Integer id, String username, String password,RoleType role, String businessNumber, String businessName,LocalDateTime joinTime ,PublisherStatus status) {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.role = RoleType.PUBLISHER;
+        this.role = role;
         this.businessNumber = businessNumber;
         this.businessName = businessName;
-        this.joinTime = LocalDateTime.now();
-        this.status = PublisherStatus.WAIT;
+        this.joinTime = joinTime;
+        this.status = status;
     }
 
     public PublisherDTO toDTO() {

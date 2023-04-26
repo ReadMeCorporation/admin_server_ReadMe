@@ -2,13 +2,13 @@
 <%@ include file="../../layout/header.jsp" %>
 <%@ include file="../../layout/headerBook.jsp" %>
 
-<div class="p-3" style="border: 1px solid orange" >
+<div class="p-3" style="border: 1px solid #00539C" >
 
     <h2>도서 등록 요청</h2>
     <hr>
 
 
-    <form>
+    <form action="/books" method="post" >
 
         <div class="px-3" style="border: 1px solid olive">
             <div class="d-flex justify-content" style="border: 1px solid palegreen">
@@ -41,7 +41,7 @@
 
             <div class="input-group mb-3">
                 <span class="input-group-text">큰 카테고리</span>
-                <select class="form-select" name="BigCategory" id="BigCategory" onchange="changeSmallCategory()">
+                <select class="form-select" name="bigCategory" id="bigCategory" onchange="changeSmallCategory()">
                     <option selected>큰 카테고리를 선택해주세요</option>
                     <option value="자기계발">자기계발</option>
                     <option value="에세이">에세이</option>
@@ -53,22 +53,26 @@
                 </select>
 
                 <span class="input-group-text">작은 카테고리</span>
-                <select class="form-select" name="SmallCategory" id="SmallCategory">
+                <select class="form-select" name="smallCategory" id="smallCategory">
                     <option selected>작은 카테고리를 선택해주세요</option>
                 </select>
             </div>
 
-            <div class="mb-3 mt-3" style="border: 1px solid darkcyan">
+            <div class="mb-3 mt-3" >
                 <label for="introduction" class="form-label">책소개</label>
                 <textarea class="form-control" id="introduction" rows="5"></textarea>
             </div>
-            <div class="mb-3 mt-3" style="border: 1px solid darkcyan">
+            <div class="mb-3 mt-3" >
                 <label for="authorInfo" class="form-label">저자소개</label>
                 <textarea class="form-control" id="authorInfo" rows="5"></textarea>
             </div>
-            <div class="mb-3 mt-3" style="border: 1px solid darkcyan">
-                <label for="content" class="form-label">책내용</label>
-                <textarea class="form-control" id="content" rows="5"></textarea>
+            <div class="mb-3 mt-3">
+                <label for="content" class="form-label">도서 파일</label>
+                <input type="file" class="form-control" id="content" name="content">
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="content" class="form-label">표지</label>
+                <input type="file" class="form-control" id="bookCover" name="bookCover">
             </div>
 
             <div class="d-flex justify-content-center">
@@ -80,8 +84,8 @@
 
 <script>
     function changeSmallCategory() {
-        var bigCategory = document.getElementById("BigCategory").value;
-        var smallCategory = document.getElementById("SmallCategory");
+        var bigCategory = document.getElementById("bigCategory").value;
+        var smallCategory = document.getElementById("smallCategory");
 
         var 자기계발 = ["성공_처세", "인간_관계", "화술_협상", "시간_관리", "리더십"];
         var 에세이 = ["여행_에세이", "예술_에세이", "독서_에세이", "심리_에세이", "사랑_연애_에세이"];

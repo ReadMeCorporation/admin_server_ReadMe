@@ -6,7 +6,7 @@
     출판사관리
 </h1>
 
-<div class="" style="border: 1px solid orange" >
+<div class="" style="border: 1px solid gray" >
 
     <table class="table">
         <thead>
@@ -20,7 +20,7 @@
             <th scope="col"></th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="publisherListTbody">
 
         </tbody>
     </table>
@@ -45,7 +45,7 @@
     });
 
     function populateTable(publishers) {
-        var tbody = $('table tbody');
+        var tbody = $('#publisherListTbody');
         tbody.empty();
         for (var i = 0; i < publishers.length; i++) {
             var publisher = publishers[i];
