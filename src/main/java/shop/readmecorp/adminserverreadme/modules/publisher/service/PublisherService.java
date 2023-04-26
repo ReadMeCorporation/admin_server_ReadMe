@@ -5,13 +5,17 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import shop.readmecorp.adminserverreadme.common.exception.CustomException;
+import shop.readmecorp.adminserverreadme.common.jpa.RoleType;
 import shop.readmecorp.adminserverreadme.modules.publisher.entity.Publisher;
 import shop.readmecorp.adminserverreadme.modules.publisher.enums.PublisherStatus;
 import shop.readmecorp.adminserverreadme.modules.publisher.repository.PublisherRepository;
 import shop.readmecorp.adminserverreadme.modules.publisher.request.PublisherLoginRequest;
 import shop.readmecorp.adminserverreadme.modules.publisher.request.PublisherSaveRequest;
 import shop.readmecorp.adminserverreadme.modules.publisher.request.PublisherUpdateRequest;
+import shop.readmecorp.adminserverreadme.util.DateTimeConverter;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 @Service
@@ -61,12 +65,17 @@ public class PublisherService {
             throw new CustomException("동일한 사업자이름이 존재합니다");
         }
 
+        // 초 미만값 제외
+        LocalDateTime date = LocalDateTime.now().withNano(0);
 
         Publisher publisher = Publisher.builder()
                 .username(request.getUsername())
                 .password(request.getPassword())
+                .role(RoleType.PUBLISHER)
                 .businessNumber(request.getBusinessNumber())
                 .businessName(request.getBusinessName())
+                .joinTime(date)
+                .status(PublisherStatus.WAIT)
                 .build();
 
         publisherRepository.save(publisher);

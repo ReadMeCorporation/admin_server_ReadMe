@@ -2,7 +2,7 @@
 <%@ include file="../../layout/header.jsp" %>
 <%@ include file="../../layout/headerBook.jsp" %>
 
-    <div class="" style="border: 1px solid orange" >
+    <div class="" style="border: 1px solid gray" >
 
         <table class="table">
             <thead>

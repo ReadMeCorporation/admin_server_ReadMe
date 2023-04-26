@@ -1,4 +1,4 @@
-package shop.readmecorp.adminserverreadme.common.util;
+package shop.readmecorp.adminserverreadme.util;
 
 public class Script {
     public static String back(String msg) {

@@ -9,7 +9,8 @@ import shop.readmecorp.adminserverreadme.common.jpa.BaseTime;
 import shop.readmecorp.adminserverreadme.modules.book.dto.BookDTO;
 import shop.readmecorp.adminserverreadme.modules.book.enums.BookStatus;
 import shop.readmecorp.adminserverreadme.modules.book.response.BookResponse;
-import shop.readmecorp.adminserverreadme.modules.category.entity.Category;
+import shop.readmecorp.adminserverreadme.modules.category.entity.BigCategory;
+import shop.readmecorp.adminserverreadme.modules.category.entity.SmallCategory;
 import shop.readmecorp.adminserverreadme.modules.file.entity.FileInfo;
 import shop.readmecorp.adminserverreadme.modules.publisher.entity.Publisher;
 
@@ -42,17 +43,21 @@ public class Book extends BaseTime {
     @Comment("책 소개")
     private String introduction;
 
-    @Comment("책 내용")
-    private String content;
+    @Comment("파일 경로")
+    private String filePath;
 
-    @Comment("책 카테고리")
+    @Comment("대분류 카테고리")
     @OneToOne
-    private Category category;
+    private BigCategory bigCategory;
+
+    @Comment("소분류 카테고리")
+    @OneToOne
+    private SmallCategory smallCategory;
 
     @Comment("저자 정보")
     private String authorInfo;
 
-    @Comment("파일 출처")
+    @Comment("표지 사진")
     @ManyToOne
     private FileInfo fileInfo;
 
@@ -61,26 +66,27 @@ public class Book extends BaseTime {
     private BookStatus status;
 
     @Builder
-    public Book(Integer id, Publisher publisher, String title, String author, Integer price, String introduction, String content, Category category,String authorInfo,FileInfo fileInfo, BookStatus status) {
+    public Book(Integer id, Publisher publisher, String title, String author, Integer price, String introduction, String filePath, BigCategory bigCategory, SmallCategory smallCategory, String authorInfo, FileInfo fileInfo, BookStatus status) {
         this.id = id;
         this.publisher = publisher;
         this.title = title;
         this.author = author;
         this.price = price;
         this.introduction = introduction;
-        this.content = content;
-        this.category = category;
+        this.filePath = filePath;
+        this.bigCategory = bigCategory;
+        this.smallCategory = smallCategory;
         this.authorInfo = authorInfo;
         this.fileInfo = fileInfo;
         this.status = status;
     }
 
     public BookDTO toDTO() {
-        return new BookDTO(id, publisher.toDTO(), title, author,price, introduction, content, category.toDTO(), authorInfo, fileInfo.toDTO(), status.name() );
+        return new BookDTO(id, publisher.toDTO(), title, author,price, introduction, filePath, bigCategory.toDTO(), smallCategory.toDTO() , authorInfo, fileInfo.toDTO(), status.name() );
     }
 
     public BookResponse toResponse() {
-        return new BookResponse(id, publisher.toDTO(), title, author,price, introduction, content, category.toDTO(), authorInfo, fileInfo.toDTO(), status.name());
+        return new BookResponse(id, publisher.toDTO(), title, author,price, introduction, filePath, bigCategory.toDTO(), smallCategory.toDTO(), authorInfo, fileInfo.toDTO(), status.name());
     }
 
 }

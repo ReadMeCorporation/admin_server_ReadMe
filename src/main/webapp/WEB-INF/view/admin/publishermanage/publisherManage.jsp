@@ -6,7 +6,7 @@
     출판사관리
 </h1>
 
-<div class="" style="border: 1px solid orange" >
+<div class="" style="border: 1px solid gray" >
 
     <table class="table">
         <thead>

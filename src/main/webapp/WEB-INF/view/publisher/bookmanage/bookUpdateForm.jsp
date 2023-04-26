@@ -2,7 +2,7 @@
 <%@ include file="../../layout/header.jsp" %>
 <%@ include file="../../layout/headerBook.jsp" %>
 
-<div class="p-3" style="border: 1px solid orange" >
+<div class="p-3" style="border: 1px solid #00539C" >
 
     <h2>도서 수정 요청</h2>
     <hr>

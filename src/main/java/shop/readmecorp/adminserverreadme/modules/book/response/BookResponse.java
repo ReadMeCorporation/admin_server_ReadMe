@@ -4,7 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import shop.readmecorp.adminserverreadme.modules.category.dto.CategoryDTO;
+import shop.readmecorp.adminserverreadme.modules.category.dto.BigCategoryDTO;
+import shop.readmecorp.adminserverreadme.modules.category.dto.SmallCategoryDTO;
 import shop.readmecorp.adminserverreadme.modules.file.dto.FileInfoDTO;
 import shop.readmecorp.adminserverreadme.modules.publisher.dto.PublisherDTO;
 
@@ -26,9 +27,11 @@ public class BookResponse {
 
     private String introduction;
 
-    private String content;
+    private String filepath;
 
-    private CategoryDTO category;
+    private BigCategoryDTO bigCategory;
+
+    private SmallCategoryDTO smallCategory;
 
     private String authorInfo;
 

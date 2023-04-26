@@ -1,5 +1,7 @@
 package shop.readmecorp.adminserverreadme.modules.book.service;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -34,12 +36,14 @@ public class BookService {
     private final ReviewRepository reviewRepository;
     private final PublisherRepository publisherRepository;
     private final HeartRepository heartRepository;
+    private final ObjectMapper objectMapper;
 
-    public BookService(BookRepository bookRepository, ReviewRepository reviewRepository, PublisherRepository publisherRepository, HeartRepository heartRepository) {
+    public BookService(BookRepository bookRepository, ReviewRepository reviewRepository, PublisherRepository publisherRepository, HeartRepository heartRepository, ObjectMapper objectMapper) {
         this.bookRepository = bookRepository;
         this.reviewRepository = reviewRepository;
         this.publisherRepository = publisherRepository;
         this.heartRepository = heartRepository;
+        this.objectMapper = objectMapper;
     }
 
     public Page<Book> getBookList(Pageable pageable) {
@@ -57,6 +61,7 @@ public class BookService {
         List<Book> books = bookRepository.findByUserId(userId);
         List<Review> reviews = reviewRepository.findByBookPublisherId(userId);
 
+        //TODO ACTIVE 리뷰만
         Map<Integer, List<Review>> reviewsByBookId = reviews.stream()
                 .filter(review -> review.getStatus().equals(ReviewStatus.ACTIVE))
                 .collect(Collectors.groupingBy(review -> review.getBook().getId()));
@@ -90,9 +95,11 @@ public class BookService {
     }
 
     @Transactional
-    public Book updateState(BookUpdateRequest request, Book book) {
+    public Book updateState(String status, Book book) throws Exception {
+        Map<String, Object> jsonData = objectMapper.readValue(status, new TypeReference<Map<String, Object>>() {});
+        String bookStatus = jsonData.get("status").toString();
         // 책 상태 변경
-        book.setStatus(BookStatus.valueOf(request.getStatus()));
+        book.setStatus(BookStatus.valueOf(bookStatus));
         return bookRepository.save(book);
     }
 

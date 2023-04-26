@@ -1,4 +1,4 @@
-package shop.readmecorp.adminserverreadme.modules.category.dto;
+package shop.readmecorp.adminserverreadme.modules.category.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,13 +9,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CategoryDTO {
+public class BigCategoryResponse {
 
     private Integer id;
 
     private String bigCategory;
-
-    private String smallCategory;
 
     private String status;
 

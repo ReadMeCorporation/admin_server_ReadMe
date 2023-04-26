@@ -18,12 +18,12 @@
 <body>
 
 
-<div style="border: 1px solid red; text-align: center;">
+<div style="text-align: center;">
     <img src="/images/readme_long.png" style="max-width: 100%;">
 </div>
 
 
-<div class="p-3" style="border: 1px solid green" >
+<div class="p-3" >
 
 
 <c:choose>
