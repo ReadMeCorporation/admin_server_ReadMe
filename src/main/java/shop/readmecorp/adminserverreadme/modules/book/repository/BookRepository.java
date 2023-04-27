@@ -19,5 +19,5 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
     Page<Book> findByStatusWait(@Param("status") BookStatus status, Pageable pageable);
 
     @Query("select b from Book b where b.publisher.id = :userId")
-    List<Book> findByUserId(Integer userId);
+    List<Book> findByUserId(@Param("userId") Integer userId);
 }

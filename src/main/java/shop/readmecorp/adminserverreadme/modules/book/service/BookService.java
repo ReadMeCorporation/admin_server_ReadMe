@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import shop.readmecorp.adminserverreadme.common.exception.Exception400;
+import shop.readmecorp.adminserverreadme.common.util.S3Upload;
 import shop.readmecorp.adminserverreadme.modules.book.dto.PublishersBookListDTO;
 import shop.readmecorp.adminserverreadme.modules.book.entity.Book;
 import shop.readmecorp.adminserverreadme.modules.book.entity.Heart;
@@ -32,6 +33,7 @@ import shop.readmecorp.adminserverreadme.modules.review.entity.Review;
 import shop.readmecorp.adminserverreadme.modules.review.enums.ReviewStatus;
 import shop.readmecorp.adminserverreadme.modules.review.repository.ReviewRepository;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -40,7 +42,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class BookService {
-
 
     private final BookRepository bookRepository;
     private final ReviewRepository reviewRepository;
@@ -51,8 +52,9 @@ public class BookService {
     private final BigCategoryRepository bigCategoryRepository;
     private final SmallCategoryRepository smallCategoryRepository;
     private final ObjectMapper objectMapper;
+    private final S3Upload s3Upload;
 
-    public BookService(BookRepository bookRepository, ReviewRepository reviewRepository, PublisherRepository publisherRepository, FileInfoRepository fileInfoRepository, FileRepository fileRepository, HeartRepository heartRepository, BigCategoryRepository bigCategoryRepository, SmallCategoryRepository smallCategoryRepository, ObjectMapper objectMapper) {
+    public BookService(BookRepository bookRepository, ReviewRepository reviewRepository, PublisherRepository publisherRepository, FileInfoRepository fileInfoRepository, FileRepository fileRepository, HeartRepository heartRepository, BigCategoryRepository bigCategoryRepository, SmallCategoryRepository smallCategoryRepository, ObjectMapper objectMapper, S3Upload s3Upload) {
         this.bookRepository = bookRepository;
         this.reviewRepository = reviewRepository;
         this.publisherRepository = publisherRepository;
@@ -62,6 +64,7 @@ public class BookService {
         this.bigCategoryRepository = bigCategoryRepository;
         this.smallCategoryRepository = smallCategoryRepository;
         this.objectMapper = objectMapper;
+        this.s3Upload = s3Upload;
     }
 
     public Page<Book> getBookList(Pageable pageable) {
@@ -94,7 +97,7 @@ public class BookService {
     }
 
 
-    public Page<Book> getBookSaveList(Pageable pageable) {
+    public Page<Book> getBookSaveList(Pageable pageable){
         return bookRepository.findByStatusWait(BookStatus.WAIT,pageable);
     }
 
@@ -109,16 +112,24 @@ public class BookService {
         Optional<SmallCategory> optionalSmallCategory = smallCategoryRepository.findBySmallCategory(request.getSmallCategory());
 
         // fileInfo 생성
-        FileInfo fileInfo =fileInfoRepository.save(FileInfo.builder().type(FileType.BOOK).build());
+        FileInfo fileInfo = fileInfoRepository.save(FileInfo.builder().type(FileType.BOOK).build());
+        String epubUrl = "";
+        String coverUrl = "";
+        try {
+            epubUrl = s3Upload.upload(request.getEpubFile());
+            coverUrl = s3Upload.upload(request.getBookCover());
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
 
         // 도서 생성에 필요한 filePath 만들기
         //TODO AWS S3를 이용해서 epub 파일경로 받아오기
-        String filePath = ""; // epub파일경로
+        String filePath = epubUrl; // epub파일경로
 
         // 파일생성에 필요한 fileName, fileUrl 만들기
         String fileName= request.getBookCover().getOriginalFilename(); // 표지 파일이름
         //TODO AWS S3를 이용해서 표지 파일경로 받아오기
-        String fileUrl = ""; // 표지 파일경로
+        String fileUrl = coverUrl; // 표지 파일경로
 
         // 파일생성
         File file = fileRepository.save(File.builder()
