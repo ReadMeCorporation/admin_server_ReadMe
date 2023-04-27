@@ -29,7 +29,7 @@ public class PublishersBookListDTO {
 
     private String status;
 
-    //TODO 수정필요
+
     public PublishersBookListDTO(Book book, List<Review> reviews, List<Heart> hearts) {
         this.id = book.getId();
         this.title = book.getTitle();
@@ -41,7 +41,7 @@ public class PublishersBookListDTO {
     }
 
 
-    //TODO 별점 평균계산
+    // 별점 평균계산
     private Double calculateAverageStars(List<Review> reviews) {
         if (reviews == null || reviews.isEmpty()) {
             return 0.0;

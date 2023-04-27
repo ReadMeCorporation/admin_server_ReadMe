@@ -72,12 +72,12 @@ insert into HEART_TB(user_id, book_id, status) values (3, 4, 'ACTIVE');
 insert into HEART_TB(user_id, book_id, status) values (4, 1, 'ACTIVE');
 insert into HEART_TB(user_id, book_id, status) values (5, 1, 'ACTIVE');
 
-insert into REVIEW_TB(user_id, book_id, stars, content, write_time, status) values (1,1,2.4,'리뷰내용1','2021-01-01 00:03', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content, write_time, status) values (1,2,3.2,'리뷰내용2','2021-01-01 00:03', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content, write_time, status) values (1,3,4.8,'리뷰내용3','2021-01-01 00:03', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content, write_time, status) values (2,1,2.3,'리뷰내용4','2021-01-01 00:03', 'DELETE');
-insert into REVIEW_TB(user_id, book_id, stars, content, write_time, status) values (2,2,2.6,'리뷰내용5','2021-01-01 00:03', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content, write_time, status) values (2,3,4.6,'리뷰내용6','2021-01-01 00:03', 'ACTIVE');
+insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1,1,2.4, '리뷰내용1', 'ACTIVE');
+insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1,2,3.2, '리뷰내용2', 'ACTIVE');
+insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1,3,4.8, '리뷰내용3', 'ACTIVE');
+insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (2,1,2.3, '리뷰내용4', 'DELETE');
+insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (2,2,2.6, '리뷰내용5', 'ACTIVE');
+insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (2,3,4.6, '리뷰내용6', 'ACTIVE');
 
 
 commit;

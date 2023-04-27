@@ -1,29 +1,26 @@
 package shop.readmecorp.adminserverreadme.modules.book.controller;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import shop.readmecorp.adminserverreadme.common.exception.Exception400;
+import shop.readmecorp.adminserverreadme.modules.ResponseDto;
 import shop.readmecorp.adminserverreadme.modules.book.BookConst;
 import shop.readmecorp.adminserverreadme.modules.book.dto.BookDTO;
 import shop.readmecorp.adminserverreadme.modules.book.dto.PublishersBookListDTO;
 import shop.readmecorp.adminserverreadme.modules.book.entity.Book;
-import shop.readmecorp.adminserverreadme.modules.book.enums.BookStatus;
 import shop.readmecorp.adminserverreadme.modules.book.request.BookSaveRequest;
 import shop.readmecorp.adminserverreadme.modules.book.request.BookUpdateRequest;
 import shop.readmecorp.adminserverreadme.modules.book.response.BookResponse;
 import shop.readmecorp.adminserverreadme.modules.book.service.BookService;
 
 import javax.validation.Valid;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -32,7 +29,8 @@ public class BookController {
 
     private final BookService bookService;
 
-    public BookController(BookService bookService, ObjectMapper objectMapper) {
+
+    public BookController(BookService bookService) {
         this.bookService = bookService;
     }
 
@@ -80,16 +78,16 @@ public class BookController {
     }
 
     @PostMapping("/books")
-    public ResponseEntity<BookResponse> saveBook(
-            @Valid @RequestBody BookSaveRequest request,
+    public ResponseEntity<?> saveBook(
+            @Valid BookSaveRequest request,
             Errors error) {
+        // TODO Validation 체크 필요
         if (error.hasErrors()) {
             throw new Exception400(error.getAllErrors().get(0).getDefaultMessage());
         }
 
-        Book save = bookService.save(request);
-
-        return ResponseEntity.ok(save.toResponse());
+        bookService.save(request);
+        return new ResponseEntity<>(new ResponseDto<>(1, "도서 등록 요청 성공", null), HttpStatus.CREATED);
     }
 
     @PutMapping("/books/{id}")

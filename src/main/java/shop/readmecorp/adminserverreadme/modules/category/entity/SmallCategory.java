@@ -6,12 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Comment;
 import shop.readmecorp.adminserverreadme.common.jpa.BaseTime;
-import shop.readmecorp.adminserverreadme.modules.category.dto.BigCategoryDTO;
 import shop.readmecorp.adminserverreadme.modules.category.dto.SmallCategoryDTO;
-import shop.readmecorp.adminserverreadme.modules.category.enums.BigCategoryType;
 import shop.readmecorp.adminserverreadme.modules.category.enums.CategoryStatus;
 import shop.readmecorp.adminserverreadme.modules.category.enums.SmallCategoryType;
-import shop.readmecorp.adminserverreadme.modules.category.response.BigCategoryResponse;
 import shop.readmecorp.adminserverreadme.modules.category.response.SmallCategoryResponse;
 
 import javax.persistence.*;

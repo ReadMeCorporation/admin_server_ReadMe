@@ -1,12 +1,13 @@
 package shop.readmecorp.adminserverreadme.modules.category.dto;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import shop.readmecorp.adminserverreadme.common.ValueOfEnum;
 import shop.readmecorp.adminserverreadme.modules.category.entity.BigCategory;
-import shop.readmecorp.adminserverreadme.modules.category.entity.SmallCategory;
 import shop.readmecorp.adminserverreadme.modules.category.enums.BigCategoryType;
 import shop.readmecorp.adminserverreadme.modules.category.enums.CategoryStatus;
-import shop.readmecorp.adminserverreadme.modules.category.enums.SmallCategoryType;
 import shop.readmecorp.adminserverreadme.modules.category.response.BigCategoryResponse;
 
 import javax.validation.constraints.NotBlank;

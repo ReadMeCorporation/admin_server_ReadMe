@@ -1,26 +1,22 @@
 package shop.readmecorp.adminserverreadme.modules.book.request;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
-import shop.readmecorp.adminserverreadme.modules.book.entity.Book;
-import shop.readmecorp.adminserverreadme.modules.book.enums.BookStatus;
-import shop.readmecorp.adminserverreadme.modules.category.dto.BigCategoryDTO;
-import shop.readmecorp.adminserverreadme.modules.category.dto.SmallCategoryDTO;
-import shop.readmecorp.adminserverreadme.modules.file.dto.FileInfoDTO;
-import shop.readmecorp.adminserverreadme.modules.publisher.dto.PublisherDTO;
+import shop.readmecorp.adminserverreadme.modules.category.enums.BigCategoryType;
+import shop.readmecorp.adminserverreadme.modules.category.enums.SmallCategoryType;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 public class BookSaveRequest {
 
-    @Valid
-    private PublisherDTO publisher;
+    @NotBlank(message = "출판사명이 없습니다.")
+    private String publisher;
 
     @NotBlank(message = "도서명을 입력해주세요.")
     private String title;
@@ -37,46 +33,47 @@ public class BookSaveRequest {
     @NotNull(message = "책 파일을 업로드해주세요.")
     private MultipartFile epubFile;
 
-    @Valid
-    private BigCategoryDTO bigCategory;
+    @NotNull(message = "큰 카테고리를 입력해주세요.")
+    private BigCategoryType bigCategory;
 
-    @Valid
-    private SmallCategoryDTO smallCategory;
+    @NotNull(message = "작은 카테고리를 입력해주세요.")
+    private SmallCategoryType smallCategory;
 
     @NotBlank(message = "저자소개를 입력해주세요.")
     private String authorInfo;
 
-    private MultipartFile files;
+    @NotNull(message = "표지를 업로드해주세요.")
+    private MultipartFile bookCover;
 
-    @Builder
-    public BookSaveRequest(PublisherDTO publisher, String title, String author, Integer price, String introduction, MultipartFile epubFile, BigCategoryDTO bigCategory, SmallCategoryDTO smallCategory, String authorInfo, MultipartFile file) {
-        this.publisher = publisher;
-        this.title = title;
-        this.author = author;
-        this.price = price;
-        this.introduction = introduction;
-        this.epubFile = epubFile;
-        this.bigCategory = bigCategory;
-        this.smallCategory = smallCategory;
-        this.authorInfo = authorInfo;
-        this.files = file;
-    }
-
-    public Book toEntity() {
-        return Book.builder()
-                .id(null)
-                .publisher(publisher.toEntity())
-                .title(title)
-                .author(author)
-                .price(price)
-                .introduction(introduction)
-                .filePath(null)
-                .bigCategory(bigCategory.toEntity())
-                .smallCategory(smallCategory.toEntity())
-                .authorInfo(authorInfo)
-                .fileInfo(null)
-                .status(BookStatus.WAIT)
-                .build();
-    }
+//    @Builder
+//    public BookSaveRequest(PublisherDTO publisher, String title, String author, Integer price, String introduction, MultipartFile epubFile, BigCategoryDTO bigCategory, SmallCategoryDTO smallCategory, String authorInfo, MultipartFile file) {
+//        this.publisher = publisher;
+//        this.title = title;
+//        this.author = author;
+//        this.price = price;
+//        this.introduction = introduction;
+//        this.epubFile = epubFile;
+//        this.bigCategory = bigCategory;
+//        this.smallCategory = smallCategory;
+//        this.authorInfo = authorInfo;
+//        this.files = file;
+//    }
+//
+//    public Book toEntity() {
+//        return Book.builder()
+//                .id(null)
+//                .publisher(publisher.toEntity())
+//                .title(title)
+//                .author(author)
+//                .price(price)
+//                .introduction(introduction)
+//                .filePath(null)
+//                .bigCategory(bigCategory.toEntity())
+//                .smallCategory(smallCategory.toEntity())
+//                .authorInfo(authorInfo)
+//                .fileInfo(null)
+//                .status(BookStatus.WAIT)
+//                .build();
+//    }
 
 }
