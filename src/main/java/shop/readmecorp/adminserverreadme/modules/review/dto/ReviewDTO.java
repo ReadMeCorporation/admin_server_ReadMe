@@ -23,8 +23,6 @@ public class ReviewDTO {
 
     private String content;
 
-    private String writeTime;
-
     private String status;
 
     public ReviewDTO(Review review) {
@@ -33,7 +31,6 @@ public class ReviewDTO {
         this.book = review.getBook().toDTO();
         this.stars = review.getStars();
         this.content = review.getContent();
-        this.writeTime = review.getWriteTime().toString();
         this.status = review.getStatus().name();
     }
 }

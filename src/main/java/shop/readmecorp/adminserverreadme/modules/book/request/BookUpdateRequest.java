@@ -7,7 +7,6 @@ import lombok.Setter;
 import shop.readmecorp.adminserverreadme.common.ValueOfEnum;
 import shop.readmecorp.adminserverreadme.modules.book.enums.BookStatus;
 import shop.readmecorp.adminserverreadme.modules.category.dto.BigCategoryDTO;
-import shop.readmecorp.adminserverreadme.modules.file.dto.FileInfoDTO;
 import shop.readmecorp.adminserverreadme.modules.publisher.dto.PublisherDTO;
 
 import javax.validation.Valid;

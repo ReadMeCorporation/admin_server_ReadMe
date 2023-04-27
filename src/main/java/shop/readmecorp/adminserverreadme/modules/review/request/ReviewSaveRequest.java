@@ -21,6 +21,4 @@ public class ReviewSaveRequest {
 
     private String content;
 
-    private String writeTime;
-
 }

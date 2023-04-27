@@ -13,7 +13,6 @@ import shop.readmecorp.adminserverreadme.modules.review.response.ReviewResponse;
 import shop.readmecorp.adminserverreadme.modules.user.entity.User;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -40,29 +39,25 @@ public class Review extends BaseTime {
     @Comment("리뷰 내용")
     private String content;
 
-    @Comment("작성한 시간")
-    private LocalDateTime writeTime;
-
     @Comment("리뷰 활성화 상태")
     @Enumerated(EnumType.STRING)
     private ReviewStatus status;
 
     @Builder
-    public Review(Integer id, User user, Book book,Double stars ,String content,LocalDateTime writeTime , ReviewStatus status) {
+    public Review(Integer id, User user, Book book,Double stars ,String content, ReviewStatus status) {
         this.id = id;
         this.user = user;
         this.book = book;
         this.stars = stars;
         this.content = content;
-        this.writeTime = writeTime;
         this.status = status;
     }
 
     public ReviewDTO toDTO() {
-        return new ReviewDTO(id, user.toDTO(), book.toDTO(), stars, content, writeTime.toString(), status.name());
+        return new ReviewDTO(id, user.toDTO(), book.toDTO(), stars, content, status.name());
     }
 
     public ReviewResponse toResponse() {
-        return new ReviewResponse(id, user.toDTO(), book.toDTO(), stars, content, writeTime.toString(), status.name());
+        return new ReviewResponse(id, user.toDTO(), book.toDTO(), stars, content, status.name());
     }
 }

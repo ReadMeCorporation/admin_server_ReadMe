@@ -1,6 +1,18 @@
+<%@ page import="shop.readmecorp.adminserverreadme.modules.publisher.entity.Publisher" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="../../layout/header.jsp" %>
 <%@ include file="../../layout/headerBook.jsp" %>
+
+
+<%
+    Publisher publisher = (Publisher) session.getAttribute("principal");
+    String businessName = "";
+    if (publisher != null) {
+        businessName = publisher.getBusinessName();
+    }
+%>
+
+
 
 <div class="p-3" style="border: 1px solid #00539C" >
 
@@ -8,7 +20,7 @@
     <hr>
 
 
-    <form action="/books" method="post" >
+    <form>
 
         <div class="px-3" style="border: 1px solid olive">
             <div class="d-flex justify-content" style="border: 1px solid palegreen">
@@ -19,22 +31,22 @@
                 <div>
                     도서명
                     <div class="form-group pb-1">
-                        <input type="text" class="form-control form-control" placeholder="도서명을 입력해주세요" name="title" id="title" >
+                        <input type="text" class="form-control form-control" placeholder="도서명을 입력해주세요" name="title" id="title" value="책제목 테스트">
                     </div>
 
                     저자
                     <div class="form-group pb-1">
-                        <input type="text" class="form-control form-control" placeholder="도서명을 입력해주세요" name="author" id="author" >
+                        <input type="text" class="form-control form-control" placeholder="저자를 입력해주세요" name="author" id="author" value="저자 테스트">
                     </div>
 
                     출판사
                     <div class="form-group pb-1">
-                        <input type="text" class="form-control form-control" placeholder="도서명을 입력해주세요" name="author" id="publisher" readonly value="" >
+                        <input type="text" class="form-control form-control" placeholder="출판사를 입력해주세요" name="publisher" id="publisher" readonly value="<%=businessName %>" >
                     </div>
 
                     가격
                     <div class="form-group pb-1">
-                        <input type="text" class="form-control form-control" placeholder="도서명을 입력해주세요" name="price" id="price" >
+                        <input type="text" class="form-control form-control" placeholder="가격을 입력해주세요" name="price" id="price" value="1000">
                     </div>
                 </div>
             </div>
@@ -60,19 +72,19 @@
 
             <div class="mb-3 mt-3" >
                 <label for="introduction" class="form-label">책소개</label>
-                <textarea class="form-control" id="introduction" rows="5"></textarea>
+                <textarea class="form-control" id="introduction" rows="5" >책소개 테스트</textarea>
             </div>
             <div class="mb-3 mt-3" >
                 <label for="authorInfo" class="form-label">저자소개</label>
-                <textarea class="form-control" id="authorInfo" rows="5"></textarea>
+                <textarea class="form-control" id="authorInfo" rows="5" > 저자소개 테스트</textarea>
             </div>
             <div class="mb-3 mt-3">
-                <label for="content" class="form-label">도서 파일</label>
-                <input type="file" class="form-control" id="content" name="content">
+                <label for="epubFile" class="form-label">도서 파일</label>
+                <input type="file" class="form-control" id="epubFile" name="epubFile" accept=".epub">
             </div>
             <div class="mb-3 mt-3">
-                <label for="content" class="form-label">표지</label>
-                <input type="file" class="form-control" id="bookCover" name="bookCover">
+                <label for="bookCover" class="form-label">표지</label>
+                <input type="file" class="form-control" id="bookCover" name="bookCover" accept="image/*">
             </div>
 
             <div class="d-flex justify-content-center">
@@ -81,6 +93,41 @@
         </div>
     </form>
 </div>
+
+<script>
+    function save() {
+        // FormData 객체 생성
+        var formData = new FormData();
+
+        // input 요소에서 값을 가져와서 FormData 객체에 추가
+        formData.append('title', $('#title').val());
+        formData.append('author', $('#author').val());
+        formData.append('publisher', $('#publisher').val());
+        formData.append('price', $('#price').val());
+        formData.append('introduction', $('#introduction').val());
+
+        formData.append('epubFile', $('#epubFile').get(0).files[0]);
+        formData.append('bookCover', $('#bookCover').get(0).files[0]);
+
+        formData.append('bigCategory', $('#bigCategory').val());
+        formData.append('smallCategory', $('#smallCategory').val());
+        formData.append('authorInfo', $('#authorInfo').val());
+
+        $.ajax({
+            type: 'post',
+            url: '/books',
+            data: formData,
+            contentType: false,
+            processData: false, // 필수: contentType을 false로 줬을 때 QueryString 자동 설정됨. 해제
+            dataType: "json"
+        }).done((res) => { // 20X 일때
+            alert(res.msg);
+            location.href = "/publishers/books";
+        }).fail((err) => { // 40X, 50X 일때
+            alert(err.responseJSON.msg);
+        });
+    }
+</script>
 
 <script>
     function changeSmallCategory() {
