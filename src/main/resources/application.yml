@@ -33,4 +33,14 @@ server:
     encoding:
       force-response: true
 
-
+cloud:
+  aws:
+    credentials:
+      accessKey: ${AWS_ACCESS_KEY}
+      secretKey: ${AWS_SECRET_KEY}
+    s3:
+      bucket: ${AWS_BUCKET}
+    region:
+      static: ${AWS_REGION_STATIC}
+    stack:
+      auto: false
