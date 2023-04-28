@@ -18,12 +18,12 @@ insert into FILE_INFO_TB(type) values ('BOOK');
 insert into FILE_INFO_TB(type) values ('BOOK');
 insert into FILE_INFO_TB(type) values ('BOOK');
 
-insert into FILE_TB(file_info_id, file_name, file_url, status) values (1, 'book1.epub', 'bookepub/https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/89fed89c-96a4-439a-9342-57b390810c15-book1.epub', 'ACTIVE');
-insert into FILE_TB(file_info_id, file_name, file_url, status) values (1, 'book1.png', 'bookcover/https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/28cba331-9723-455d-b750-5fee5a30abd1-book1.png', 'ACTIVE');
-insert into FILE_TB(file_info_id, file_name, file_url, status) values (2, 'book2.epub', 'bookepub/https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/667510e6-291f-4a33-bcff-c510cff086c2-book2.epub', 'ACTIVE');
-insert into FILE_TB(file_info_id, file_name, file_url, status) values (2, 'book2.png', 'bookcover/https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/b17b0b3f-a676-4694-b4db-ae3eb1fb9e22-book2.png', 'ACTIVE');
-insert into FILE_TB(file_info_id, file_name, file_url, status) values (3, 'book3.epub', 'bookepub/https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/46cc7d18-2122-44a2-a213-8314bf922e52-book3.epub', 'ACTIVE');
-insert into FILE_TB(file_info_id, file_name, file_url, status) values (3, 'book3.png', 'bookcover/https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/af62b013-2ba8-4d35-824e-51b1e736d310-book3.png', 'ACTIVE');
+insert into FILE_TB(file_info_id, file_name, file_url, status) values (1, 'book1.epub', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/60f2fc61-323d-410b-b501-3d0a76beed5d-book1.epub', 'ACTIVE');
+insert into FILE_TB(file_info_id, file_name, file_url, status) values (1, 'book1.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/893f6a77-47be-452c-9b1a-148b79785e24-book1.png', 'ACTIVE');
+insert into FILE_TB(file_info_id, file_name, file_url, status) values (2, 'book2.epub', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/335ce2ff-c7c6-4bc3-971c-6bc58c46d70b-book2.epub', 'ACTIVE');
+insert into FILE_TB(file_info_id, file_name, file_url, status) values (2, 'book2.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/e7c6f9c3-fefe-4384-8553-ddbe2929aed3-book2.png', 'ACTIVE');
+insert into FILE_TB(file_info_id, file_name, file_url, status) values (3, 'book3.epub', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/40eae962-86bb-465a-9273-10467848c9b3-book3.epub', 'ACTIVE');
+insert into FILE_TB(file_info_id, file_name, file_url, status) values (3, 'book3.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/7aedba39-c496-4b34-866c-942493a292ac-book3.png', 'ACTIVE');
 
 
 insert into USER_TB(username, password, role, is_membership, is_auto_payment, join_time, file_info_id, status) values ('유저이름1','1234', 'USER', true, true, '2021-01-01 00:01', 1, 'ACTIVE');

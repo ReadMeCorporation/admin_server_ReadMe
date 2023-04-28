@@ -115,11 +115,11 @@ public class BookService {
         FileInfo fileInfo = fileInfoRepository.save(FileInfo.builder().type(FileType.BOOK).build());
 
 
-        String epubUrl = "bookepub/";
-        String coverUrl = "bookcover/";
+        String epubUrl = "";
+        String coverUrl = "";
         try {
-            epubUrl += s3Upload.upload(request.getEpubFile());
-            coverUrl += s3Upload.upload(request.getBookCover());
+            epubUrl += s3Upload.upload(request.getEpubFile(), "bookepub/");
+            coverUrl += s3Upload.upload(request.getBookCover(), "bookcover/");
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
@@ -130,14 +130,14 @@ public class BookService {
         String coverName= request.getBookCover().getOriginalFilename(); // 표지 파일이름
 
         // 파일생성
-        File epubFile = fileRepository.save(File.builder()
+        fileRepository.save(File.builder()
                 .fileInfo(fileInfo)
                 .fileName(epubName)
                 .fileUrl(epubUrl)
                 .status(FileStatus.WAIT)
                 .build());
 
-        File imageFile = fileRepository.save(File.builder()
+        fileRepository.save(File.builder()
                 .fileInfo(fileInfo)
                 .fileName(coverName)
                 .fileUrl(coverUrl)
