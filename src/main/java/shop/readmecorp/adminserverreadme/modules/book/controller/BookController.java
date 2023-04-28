@@ -13,6 +13,7 @@ import shop.readmecorp.adminserverreadme.modules.ResponseDto;
 import shop.readmecorp.adminserverreadme.modules.book.BookConst;
 import shop.readmecorp.adminserverreadme.modules.book.dto.BookDTO;
 import shop.readmecorp.adminserverreadme.modules.book.dto.PublishersBookListDTO;
+import shop.readmecorp.adminserverreadme.modules.book.dto.PublishersBookRequestDTO;
 import shop.readmecorp.adminserverreadme.modules.book.entity.Book;
 import shop.readmecorp.adminserverreadme.modules.book.request.BookSaveRequest;
 import shop.readmecorp.adminserverreadme.modules.book.request.BookUpdateRequest;
@@ -34,37 +35,34 @@ public class BookController {
         this.bookService = bookService;
     }
 
+    //책 정보 (ACTIVE)
     @GetMapping("/api/books")
-    public ResponseEntity<Page<BookDTO>> getBookList(Pageable pageable) {
-        Page<Book> page = bookService.getBookList(pageable);
-        List<BookDTO> content = page.getContent()
-                .stream()
-                .map(Book::toDTO)
-                .collect(Collectors.toList());
-
-        return ResponseEntity.ok(new PageImpl<>(content, pageable, page.getTotalElements()));
+    public ResponseEntity<Page<BookDTO>> getBookListActive(Pageable pageable) {
+        return ResponseEntity.ok(bookService.getBookListActive(pageable));
     }
 
-    //TODO 수정필요
+    //책 정보 (ACTIVE, DELETE)
+    @GetMapping("/api/books/activeOrDelete")
+    public ResponseEntity<Page<BookDTO>> getBookListActiveOrDelete(Pageable pageable) {
+        return ResponseEntity.ok(bookService.getBookListActiveOrDelete(pageable));
+    }
+
+    //책 정보 + 별점평균 + 스크랩 (
     @GetMapping("/api/publishers/books")
-    public ResponseEntity<?> getPublishersBookList(Integer userId) {
-
-
-        List<PublishersBookListDTO> publishersBookListDTO = bookService.getPublishersBookList(userId);
-
-        return ResponseEntity.ok(publishersBookListDTO);
+    public ResponseEntity<List<PublishersBookListDTO>> getPublishersBookList(Integer publisherId) {
+        return ResponseEntity.ok(bookService.getPublishersBookList(publisherId));
     }
 
-    //어드민에서 사용
+    //
+    @GetMapping("/api/publishers/books/request")
+    public ResponseEntity<List<PublishersBookRequestDTO>> getPublishersBookListRequest(Integer publisherId) {
+        return ResponseEntity.ok(bookService.getPublishersBookRequest(publisherId));
+    }
+
+    // 도서 신규승인 (어드민에서 사용)
     @GetMapping("/api/books/saveList")
     public ResponseEntity<Page<BookDTO>> getBookSaveList(Pageable pageable) {
-        Page<Book> page = bookService.getBookSaveList(pageable);
-        List<BookDTO> content = page.getContent()
-                .stream()
-                .map(Book::toDTO)
-                .collect(Collectors.toList());
-
-        return ResponseEntity.ok(new PageImpl<>(content, pageable, page.getTotalElements()));
+        return ResponseEntity.ok(bookService.getBookSaveList(pageable));
     }
 
     @GetMapping("/api/books/{id}")

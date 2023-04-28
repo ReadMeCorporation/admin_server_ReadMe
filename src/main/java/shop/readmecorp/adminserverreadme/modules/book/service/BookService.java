@@ -4,13 +4,16 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import shop.readmecorp.adminserverreadme.common.exception.Exception400;
 import shop.readmecorp.adminserverreadme.common.util.ParseMultipart;
 import shop.readmecorp.adminserverreadme.common.util.S3Upload;
+import shop.readmecorp.adminserverreadme.modules.book.dto.BookDTO;
 import shop.readmecorp.adminserverreadme.modules.book.dto.PublishersBookListDTO;
+import shop.readmecorp.adminserverreadme.modules.book.dto.PublishersBookRequestDTO;
 import shop.readmecorp.adminserverreadme.modules.book.entity.Book;
 import shop.readmecorp.adminserverreadme.modules.book.entity.Heart;
 import shop.readmecorp.adminserverreadme.modules.book.enums.BookStatus;
@@ -69,38 +72,128 @@ public class BookService {
         this.s3Upload = s3Upload;
     }
 
-    public Page<Book> getBookList(Pageable pageable) {
-        return bookRepository.findByStatusActiveOrDelete(BookStatus.ACTIVE,BookStatus.DELETE,pageable);
+    public Page<BookDTO> getBookListActive(Pageable pageable) {
+
+//        Page<Book> page = bookRepository.findByStatusActive(BookStatus.ACTIVE,pageable);
+//
+//        List<BookDTO> content = page.getContent()
+//                .stream()
+//                .map(Book::toDTO)
+//                .collect(Collectors.toList());
+
+        Page<Book> page = bookRepository.findByStatusActive(BookStatus.ACTIVE,pageable);
+
+        List<BookDTO> content = page.getContent()
+                .stream()
+                .map(book -> {
+                    BookDTO bookDTO = book.toDTO();
+                    FileInfo fileInfo = book.getFileInfo();
+
+                    List<File> files = fileRepository.findByFileInfo(fileInfo);
+                    files.forEach(file -> {
+                        bookDTO.setEpubUrl(file.getFileUrl());
+                        bookDTO.setCoverUrl(file.getFileUrl());
+                    });
+
+                    return bookDTO;
+                })
+                .collect(Collectors.toList());
+
+        return new PageImpl<>(content, pageable, page.getTotalElements());
     }
 
-    public List<PublishersBookListDTO> getPublishersBookList(Integer userId) {
-        Optional<Publisher> publisher = publisherRepository.findById(userId);
+    public Page<BookDTO> getBookListActiveOrDelete(Pageable pageable) {
+
+        Page<Book> page = bookRepository.findByStatusActiveOrDelete(BookStatus.ACTIVE,BookStatus.DELETE,pageable);
+
+
+        List<BookDTO> content = page.getContent()
+                .stream()
+                .map(book -> {
+                    BookDTO bookDTO = book.toDTO();
+                    FileInfo fileInfo = book.getFileInfo();
+
+                    List<File> files = fileRepository.findByFileInfo(fileInfo);
+                    files.forEach(file -> {
+                        bookDTO.setEpubUrl(file.getFileUrl());
+                        bookDTO.setCoverUrl(file.getFileUrl());
+                    });
+
+                    return bookDTO;
+                })
+                .collect(Collectors.toList());
+        return new PageImpl<>(content, pageable, page.getTotalElements());
+    }
+
+    public List<PublishersBookListDTO> getPublishersBookList(Integer publisherId) {
+        Optional<Publisher> publisher = publisherRepository.findById(publisherId);
 
         if (publisher.isEmpty()) {
             throw new Exception400(PublisherConst.notFound);
         }
 
-        List<Book> books = bookRepository.findByUserId(userId);
-        List<Review> reviews = reviewRepository.findByBookPublisherId(userId);
+        List<Book> books = bookRepository.findByPublisherId(publisherId);
+        List<Review> reviews = reviewRepository.findByBookPublisherId(publisherId);
 
         // ACTIVE 리뷰만
         Map<Integer, List<Review>> reviewsByBookId = reviews.stream()
                 .filter(review -> review.getStatus().equals(ReviewStatus.ACTIVE))
                 .collect(Collectors.groupingBy(review -> review.getBook().getId()));
 
-
         return books.stream()
                 .map(book -> {
+                    BookDTO bookDTO = book.toDTO();
+
+                    //파일정보 불러오기
+                    FileInfo fileInfo = book.getFileInfo();
+
+                    //파일정보에 있는 파일 불러오기
+                    List<File> files = fileRepository.findByFileInfo(fileInfo);
+
+                    // 파일에 있는 url을 책DTO안 url에 입력
+                    files.forEach(file -> {
+                        bookDTO.setEpubUrl(file.getFileUrl());
+                        bookDTO.setCoverUrl(file.getFileUrl());
+                    });
+
                     List<Review> bookReviews = reviewsByBookId.getOrDefault(book.getId(), Collections.emptyList());
                     List<Heart> bookHearts = heartRepository.findByBookId(book.getId()); // 여기에서 book.getId()를 사용합니다.
-                    return new PublishersBookListDTO(book, bookReviews, bookHearts);
+                    return new PublishersBookListDTO(bookDTO, bookReviews, bookHearts);
                 })
                 .collect(Collectors.toList());
     }
 
+    public List<PublishersBookRequestDTO> getPublishersBookRequest(Integer publisherId) {
+        Optional<Publisher> publisher = publisherRepository.findById(publisherId);
 
-    public Page<Book> getBookSaveList(Pageable pageable){
-        return bookRepository.findByStatusWait(BookStatus.WAIT,pageable);
+        if (publisher.isEmpty()) {
+            throw new Exception400(PublisherConst.notFound);
+        }
+
+        return bookRepository.findByStatusWaitOrRejected(BookStatus.WAIT, BookStatus.REJECTED, publisherId);
+
+    }
+
+    public Page<BookDTO> getBookSaveList(Pageable pageable){
+
+        Page<Book> page = bookRepository.findByStatusWait(BookStatus.WAIT,pageable);
+
+        List<BookDTO> content = page.getContent()
+                .stream()
+                .map(book -> {
+                    BookDTO bookDTO = book.toDTO();
+                    FileInfo fileInfo = book.getFileInfo();
+
+                    List<File> files = fileRepository.findByFileInfo(fileInfo);
+                    files.forEach(file -> {
+                        bookDTO.setEpubUrl(file.getFileUrl());
+                        bookDTO.setCoverUrl(file.getFileUrl());
+                    });
+
+                    return bookDTO;
+                })
+                .collect(Collectors.toList());
+        return new PageImpl<>(content, pageable, page.getTotalElements());
     }
 
     public Optional<Book> getBook(Integer id) {
@@ -190,4 +283,5 @@ public class BookService {
 
     public void delete(Book book) {
     }
+
 }

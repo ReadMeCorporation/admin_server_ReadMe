@@ -19,6 +19,8 @@ public class PublishersBookListDTO {
 
     private Integer id;
 
+    private String coverUrl;
+
     private String title;
 
     private String author;
@@ -30,13 +32,14 @@ public class PublishersBookListDTO {
     private String status;
 
 
-    public PublishersBookListDTO(Book book, List<Review> reviews, List<Heart> hearts) {
+    public PublishersBookListDTO(BookDTO book, List<Review> reviews, List<Heart> hearts) {
         this.id = book.getId();
+        this.coverUrl = book.getCoverUrl();
         this.title = book.getTitle();
         this.author = book.getAuthor();
         this.stars = calculateAverageStars(reviews);
         this.hearts = hearts.size();
-        this.status = book.getStatus().name();
+        this.status = book.getStatus();
 
     }
 

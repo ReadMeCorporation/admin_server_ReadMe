@@ -1,6 +1,15 @@
+<%@ page import="shop.readmecorp.adminserverreadme.modules.publisher.entity.Publisher" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="../../layout/header.jsp" %>
 <%@ include file="../../layout/headerBook.jsp" %>
+
+<%
+    Publisher publisher = (Publisher) session.getAttribute("principal");
+    String businessName = "";
+    if (publisher != null) {
+        businessName = publisher.getBusinessName();
+    }
+%>
 
 <div class="p-3" style="border: 1px solid #00539C" >
 
@@ -21,14 +30,20 @@
                     <div class="form-group pb-1">
                         <input type="text" class="form-control form-control" placeholder="도서명을 입력해주세요" name="title" id="title" >
                     </div>
+
                     저자
                     <div class="form-group pb-1">
-                        <input type="text" class="form-control form-control" placeholder="도서명을 입력해주세요" name="author" id="author" >
+                        <input type="text" class="form-control form-control" placeholder="저자를 입력해주세요" name="author" id="author" >
+                    </div>
+
+                    출판사
+                    <div class="form-group pb-1">
+                        <input type="text" class="form-control form-control" placeholder="출판사를 입력해주세요" name="publisher" id="publisher" readonly value="<%=businessName %>">
                     </div>
 
                     가격
                     <div class="form-group pb-1">
-                        <input type="text" class="form-control form-control" placeholder="도서명을 입력해주세요" name="price" id="price" >
+                        <input type="text" class="form-control form-control" placeholder="가격을 입력해주세요" name="price" id="price" >
                     </div>
                 </div>
             </div>
@@ -75,6 +90,30 @@
         </div>
     </form>
 </div>
+
+<script>
+    $(document).ready(function() {
+        // 세션에서 publisherId 가져오기
+        const publisherId = '<%= request.getSession().getAttribute("principal") != null ? ((Publisher) request.getSession().getAttribute("principal")).getId() : 0 %>';
+
+        // publisherId 존재하는 경우에만 API 요청을 보냅니다.
+        if (publisherId !== 0) {
+            $.ajax({
+                url: `http://localhost:8080/api/books/`+${id},
+                type: 'GET',
+                dataType: 'json',
+                data: { publisherId: publisherId }
+            })
+                .done((res) => {
+                    populateTable(res);
+                })
+                .fail((err) => {
+                    alert(err.responseJSON.msg);
+                })
+        }
+    });
+
+</script>
 
 <script>
     function changeSmallCategory() {

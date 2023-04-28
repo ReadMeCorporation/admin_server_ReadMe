@@ -29,6 +29,9 @@ spring:
       format_sql: true
       ddl-auto: create
     defer-datasource-initialization: true
+  cloud:
+    aws:
+      enabled: false
 
 server:
   servlet:

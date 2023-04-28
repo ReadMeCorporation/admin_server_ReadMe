@@ -4,27 +4,27 @@
 <h1>
     도서관리
 </h1>
-    <div class="" style="border: 1px solid gray" >
+<div class="" style="border: 1px solid gray" >
 
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">NO</th>
-                <th scope="col">표지</th>
-                <th scope="col">도서명</th>
-                <th scope="col">저자</th>
-                <th scope="col">출판사</th>
-                <th scope="col">등록일</th>
-                <th scope="col">상태</th>
-                <th scope="col"> </th>
-            </tr>
-            </thead>
-            <tbody id="bookSaveListTbody">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">NO</th>
+            <th scope="col">표지</th>
+            <th scope="col">도서명</th>
+            <th scope="col">저자</th>
+            <th scope="col">출판사</th>
+            <th scope="col">등록일</th>
+            <th scope="col">상태</th>
+            <th scope="col"> </th>
+        </tr>
+        </thead>
+        <tbody id="bookSaveListTbody">
 
-            </tbody>
-        </table>
+        </tbody>
+    </table>
 
-    </div>
+</div>
 
 </div>
 
@@ -51,7 +51,7 @@
             var book = books[i];
             var tr = $('<tr>');
             tr.append('<th>' + (i+1) + '</th>');
-            tr.append('<td><img src="/images/gray.png" style="width: 75px;height: 100px"></td>');
+            tr.append('<td><img src="' + book.coverUrl + '" style="width: 75px;height: 100px"></td>');
             tr.append('<td>' + book.title + '</td>');
             tr.append('<td>' + book.author + '</td>');
             tr.append('<td>' + book.publisher.businessName + '</td>');
@@ -61,7 +61,7 @@
                 <select class="form-select" name="status" id="status-` + book.id + `">
                     <option selected>상태를 선택해주세요</option>
                     <option value="ACTIVE">승인</option>
-                    <option value="DELETE">반려</option>
+                    <option value="REJECTED">반려</option>
                 </select>
             `;
             tr.append('<td>' + selectStatus + '</td>');
@@ -102,4 +102,4 @@
 </script>
 
 
-    <%@ include file="../../layout/footer.jsp" %>
+<%@ include file="../../layout/footer.jsp" %>

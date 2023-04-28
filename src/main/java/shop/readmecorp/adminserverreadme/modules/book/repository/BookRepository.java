@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import shop.readmecorp.adminserverreadme.modules.book.dto.PublishersBookRequestDTO;
 import shop.readmecorp.adminserverreadme.modules.book.entity.Book;
 import shop.readmecorp.adminserverreadme.modules.book.enums.BookStatus;
 
@@ -12,12 +13,20 @@ import java.util.List;
 
 public interface BookRepository extends JpaRepository<Book, Integer> {
 
+    @Query("select b from Book b where b.status = :status")
+    Page<Book> findByStatusActive(@Param("status") BookStatus status, Pageable pageable);
+
     @Query("select b from Book b where b.status = :status1 OR b.status = :status2")
     Page<Book> findByStatusActiveOrDelete(@Param("status1") BookStatus status1, @Param("status2") BookStatus status2, Pageable pageable);
 
     @Query("select b from Book b where b.status = :status ")
     Page<Book> findByStatusWait(@Param("status") BookStatus status, Pageable pageable);
 
-    @Query("select b from Book b where b.publisher.id = :userId")
-    List<Book> findByUserId(@Param("userId") Integer userId);
+    @Query("select b from Book b where b.publisher.id = :publisherId AND (b.status = :status1 OR b.status = :status2)")
+    List<PublishersBookRequestDTO> findByStatusWaitOrRejected(@Param("status1") BookStatus status1, @Param("status2") BookStatus status2, Integer publisherId);
+
+    @Query("select b from Book b where b.publisher.id = :publisherId")
+    List<Book> findByPublisherId(@Param("publisherId") Integer publisherId);
+
+
 }

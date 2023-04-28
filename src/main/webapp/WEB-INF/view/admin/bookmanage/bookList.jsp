@@ -31,7 +31,7 @@
 <script>
     $(document).ready(function() {
         $.ajax({
-            url: 'http://localhost:8080/api/books',
+            url: 'http://localhost:8080/api/books/activeOrDelete',
             type: 'GET',
             dataType: 'json',
         })
@@ -49,7 +49,7 @@
             var book = books[i];
             var tr = $('<tr>');
             tr.append('<th>' + (i+1) + '</th>');
-            tr.append('<td><img src="/images/gray.png" style="width: 75px;height: 100px"></td>');
+            tr.append('<td><img src="' + book.coverUrl + '" style="width: 75px;height: 100px"></td>');
             tr.append('<td>' + book.title + '</td>');
             tr.append('<td>' + book.author + '</td>');
             tr.append('<td>' + book.publisher.businessName + '</td>');
