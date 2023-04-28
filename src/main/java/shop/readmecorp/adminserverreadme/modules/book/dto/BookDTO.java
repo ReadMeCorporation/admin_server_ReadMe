@@ -1,9 +1,6 @@
 package shop.readmecorp.adminserverreadme.modules.book.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import shop.readmecorp.adminserverreadme.modules.book.entity.Book;
 import shop.readmecorp.adminserverreadme.modules.book.enums.BookStatus;
 import shop.readmecorp.adminserverreadme.modules.category.dto.BigCategoryDTO;
@@ -15,7 +12,6 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 public class BookDTO {
 
@@ -32,15 +28,15 @@ public class BookDTO {
 
     private String introduction;
 
-    private String filePath;
+    private String epubUrl;
+
+    private String coverUrl;
 
     private BigCategoryDTO bigCategory;
 
     private SmallCategoryDTO smallCategory;
 
     private String authorInfo;
-
-    private FileInfoDTO fileInfo;
 
     private String status;
 
@@ -52,12 +48,26 @@ public class BookDTO {
                 .author(author)
                 .price(price)
                 .introduction(introduction)
-                .filePath(filePath)
                 .bigCategory(bigCategory.toEntity())
                 .smallCategory(smallCategory.toEntity())
                 .authorInfo(authorInfo)
-                .fileInfo(fileInfo.toEntity())
                 .status(BookStatus.valueOf(status))
                 .build();
+    }
+
+    @Builder
+    public BookDTO(Integer id, PublisherDTO publisher, String title, String author, Integer price, String introduction, String epubUrl, String coverUrl, BigCategoryDTO bigCategory, SmallCategoryDTO smallCategory, String authorInfo, String status) {
+        this.id = id;
+        this.publisher = publisher;
+        this.title = title;
+        this.author = author;
+        this.price = price;
+        this.introduction = introduction;
+        this.epubUrl = epubUrl;
+        this.coverUrl = coverUrl;
+        this.bigCategory = bigCategory;
+        this.smallCategory = smallCategory;
+        this.authorInfo = authorInfo;
+        this.status = status;
     }
 }

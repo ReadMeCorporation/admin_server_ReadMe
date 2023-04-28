@@ -1,5 +1,7 @@
 spring:
   servlet:
+    multipart:
+      max-file-size: 10MB
     encoding:
       charset: UTF-8
       force: true

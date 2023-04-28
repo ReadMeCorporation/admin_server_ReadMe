@@ -43,8 +43,8 @@ public class Book extends BaseTime {
     @Comment("책 소개")
     private String introduction;
 
-    @Comment("파일 경로")
-    private String filePath;
+//    @Comment("파일 경로")
+//    private String filePath;
 
     @Comment("대분류 카테고리")
     @OneToOne
@@ -66,14 +66,13 @@ public class Book extends BaseTime {
     private BookStatus status;
 
     @Builder
-    public Book(Integer id, Publisher publisher, String title, String author, Integer price, String introduction, String filePath, BigCategory bigCategory, SmallCategory smallCategory, String authorInfo, FileInfo fileInfo, BookStatus status) {
+    public Book(Integer id, Publisher publisher, String title, String author, Integer price, String introduction, BigCategory bigCategory, SmallCategory smallCategory, String authorInfo, FileInfo fileInfo, BookStatus status) {
         this.id = id;
         this.publisher = publisher;
         this.title = title;
         this.author = author;
         this.price = price;
         this.introduction = introduction;
-        this.filePath = filePath;
         this.bigCategory = bigCategory;
         this.smallCategory = smallCategory;
         this.authorInfo = authorInfo;
@@ -82,11 +81,32 @@ public class Book extends BaseTime {
     }
 
     public BookDTO toDTO() {
-        return new BookDTO(id, publisher.toDTO(), title, author,price, introduction, filePath, bigCategory.toDTO(), smallCategory.toDTO() , authorInfo, fileInfo.toDTO(), status.name() );
+        return BookDTO.builder()
+                .id(id)
+                .publisher(publisher.toDTO())
+                .title(title)
+                .author(author)
+                .price(price)
+                .introduction(introduction)
+                .bigCategory(bigCategory.toDTO())
+                .authorInfo(authorInfo)
+                .status(status.name())
+                .build();
     }
 
     public BookResponse toResponse() {
-        return new BookResponse(id, publisher.toDTO(), title, author,price, introduction, filePath, bigCategory.toDTO(), smallCategory.toDTO(), authorInfo, fileInfo.toDTO(), status.name());
+        return BookResponse.builder()
+                .id(id)
+                .publisher(publisher.toDTO())
+                .title(title)
+                .author(author)
+                .price(price)
+                .introduction(introduction)
+                .bigCategory(bigCategory.toDTO())
+                .smallCategory(smallCategory.toDTO())
+                .authorInfo(authorInfo)
+                .status(status.name())
+                .build();
     }
 
 }

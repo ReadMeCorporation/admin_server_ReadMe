@@ -11,11 +11,20 @@ insert into PUBLISHER_TB(username, password, role, business_number, business_nam
 insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('test6@nate.com', '1234', 'PUBLISHER', '11-22-33','사업자이름6', '2021-01-01 00:03', 'DELETE');
 
 insert into FILE_INFO_TB(type) values ('BOOK');
-insert into FILE_INFO_TB(type) values ('USER');
-insert into FILE_INFO_TB(type) values ('USER');
+insert into FILE_INFO_TB(type) values ('BOOK');
+insert into FILE_INFO_TB(type) values ('BOOK');
+insert into FILE_INFO_TB(type) values ('BOOK');
+insert into FILE_INFO_TB(type) values ('BOOK');
+insert into FILE_INFO_TB(type) values ('BOOK');
+insert into FILE_INFO_TB(type) values ('BOOK');
 
-insert into FILE_TB(file_info_id, file_name, file_url, status) values (1, '8.jpg', 'https://news.samsungdisplay.com/wp-content/uploads/2018/08/8.jpg', 'ACTIVE');
-insert into FILE_TB(file_info_id, file_name, file_url, status) values (2, 'aa.jpg', 'https://news.dbhasjuhwuha.com/wp-content/uploads/2021/08/aa.jpg', 'ACTIVE');
+insert into FILE_TB(file_info_id, file_name, file_url, status) values (1, 'book1.epub', 'bookepub/https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/89fed89c-96a4-439a-9342-57b390810c15-book1.epub', 'ACTIVE');
+insert into FILE_TB(file_info_id, file_name, file_url, status) values (1, 'book1.png', 'bookcover/https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/28cba331-9723-455d-b750-5fee5a30abd1-book1.png', 'ACTIVE');
+insert into FILE_TB(file_info_id, file_name, file_url, status) values (2, 'book2.epub', 'bookepub/https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/667510e6-291f-4a33-bcff-c510cff086c2-book2.epub', 'ACTIVE');
+insert into FILE_TB(file_info_id, file_name, file_url, status) values (2, 'book2.png', 'bookcover/https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/b17b0b3f-a676-4694-b4db-ae3eb1fb9e22-book2.png', 'ACTIVE');
+insert into FILE_TB(file_info_id, file_name, file_url, status) values (3, 'book3.epub', 'bookepub/https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/46cc7d18-2122-44a2-a213-8314bf922e52-book3.epub', 'ACTIVE');
+insert into FILE_TB(file_info_id, file_name, file_url, status) values (3, 'book3.png', 'bookcover/https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/af62b013-2ba8-4d35-824e-51b1e736d310-book3.png', 'ACTIVE');
+
 
 insert into USER_TB(username, password, role, is_membership, is_auto_payment, join_time, file_info_id, status) values ('유저이름1','1234', 'USER', true, true, '2021-01-01 00:01', 1, 'ACTIVE');
 insert into USER_TB(username, password, role, is_membership, is_auto_payment, join_time, file_info_id, status) values ('유저이름2','1234', 'USER', true, false, '2021-01-01 00:02', 2, 'ACTIVE');
@@ -47,13 +56,13 @@ insert into SMALL_CATEGORY_TB(small_category, big_category_id, status) values ('
 insert into SMALL_CATEGORY_TB(small_category, big_category_id, status) values ('심리_에세이', 3, 'ACTIVE');
 insert into SMALL_CATEGORY_TB(small_category, big_category_id, status) values ('사랑_연애_에세이', 3, 'ACTIVE');
 
-insert into BOOK_TB(publisher_id, title, author, price, introduction, file_path, big_category_id, small_category_id, author_info, file_info_id, status) values (1, '책제목1', '저자1', 1000,'책소개1', '책경로1', 1, 1, '저자정보1', 1, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, file_path, big_category_id, small_category_id, author_info, file_info_id, status) values (1, '책제목2', '저자2', 1000,'책소개2', '책경로2', 2, 2, '저자정보2', 1, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, file_path, big_category_id, small_category_id, author_info, file_info_id, status) values (1, '책제목3', '저자3', 1000,'책소개3', '책경로3', 3, 3, '저자정보3', 1, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, file_path, big_category_id, small_category_id, author_info, file_info_id, status) values (2, '책제목4', '저자4', 1000,'책소개4', '책경로4', 4, 4, '저자정보4', 1, 'WAIT');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, file_path, big_category_id, small_category_id, author_info, file_info_id, status) values (2, '책제목5', '저자5', 1000,'책소개5', '책경로5', 5, 5, '저자정보5', 1, 'DELETE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, file_path, big_category_id, small_category_id, author_info, file_info_id, status) values (3, '책제목6', '저자6', 1000,'책소개6', '책경로6', 5, 5, '저자정보6', 1, 'DELETE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, file_path, big_category_id, small_category_id, author_info, file_info_id, status) values (3, '책제목7', '저자7', 1000,'책소개7', '책경로7', 5, 5, '저자정보7', 1, 'DELETE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, file_info_id, status) values (1, '책제목1', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 1, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, file_info_id, status) values (1, '책제목2', '저자2', 1000,'책소개2', 2, 2, '저자정보2', 2, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, file_info_id, status) values (1, '책제목3', '저자3', 1000,'책소개3', 3, 3, '저자정보3', 3, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, file_info_id, status) values (2, '책제목4', '저자4', 1000,'책소개4', 4, 4, '저자정보4', 4, 'WAIT');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, file_info_id, status) values (2, '책제목5', '저자5', 1000,'책소개5', 5, 5, '저자정보5', 5, 'DELETE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, file_info_id, status) values (3, '책제목6', '저자6', 1000,'책소개6', 5, 5, '저자정보6', 6, 'DELETE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, file_info_id, status) values (3, '책제목7', '저자7', 1000,'책소개7', 5, 5, '저자정보7', 7, 'DELETE');
 
 insert into BOOKMARK_TB(user_id, book_id, page_num, status) values (1, 2, 15, 'ACTIVE');
 insert into BOOKMARK_TB(user_id, book_id, page_num, status) values (1, 3, 29, 'ACTIVE');
