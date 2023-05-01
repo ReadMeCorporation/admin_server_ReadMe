@@ -1,7 +1,6 @@
 package shop.readmecorp.adminserverreadme.modules.book.controller;
 
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,19 +10,19 @@ import org.springframework.web.bind.annotation.*;
 import shop.readmecorp.adminserverreadme.common.exception.Exception400;
 import shop.readmecorp.adminserverreadme.modules.ResponseDto;
 import shop.readmecorp.adminserverreadme.modules.book.BookConst;
+import shop.readmecorp.adminserverreadme.modules.book.dto.AdminsBookUpdateAndDeleteListDTO;
 import shop.readmecorp.adminserverreadme.modules.book.dto.BookDTO;
 import shop.readmecorp.adminserverreadme.modules.book.dto.PublishersBookListDTO;
-import shop.readmecorp.adminserverreadme.modules.book.dto.PublishersBookRequestDTO;
 import shop.readmecorp.adminserverreadme.modules.book.entity.Book;
 import shop.readmecorp.adminserverreadme.modules.book.request.BookSaveRequest;
 import shop.readmecorp.adminserverreadme.modules.book.request.BookUpdateRequest;
 import shop.readmecorp.adminserverreadme.modules.book.response.BookResponse;
 import shop.readmecorp.adminserverreadme.modules.book.service.BookService;
+import shop.readmecorp.adminserverreadme.modules.bookupdatelist.response.BookUpdateListResponse;
 
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Controller
 public class BookController {
@@ -47,15 +46,15 @@ public class BookController {
         return ResponseEntity.ok(bookService.getBookListActiveOrDelete(pageable));
     }
 
-    //책 정보 + 별점평균 + 스크랩 (
+    //책 정보 + 별점평균 + 스크랩
     @GetMapping("/api/publishers/books")
     public ResponseEntity<List<PublishersBookListDTO>> getPublishersBookList(Integer publisherId) {
         return ResponseEntity.ok(bookService.getPublishersBookList(publisherId));
     }
 
-    //
+    // 도서 대기 (출판사에서 사용)
     @GetMapping("/api/publishers/books/request")
-    public ResponseEntity<List<PublishersBookRequestDTO>> getPublishersBookListRequest(Integer publisherId) {
+    public ResponseEntity<List<BookDTO>> getPublishersBookListRequest(Integer publisherId) {
         return ResponseEntity.ok(bookService.getPublishersBookRequest(publisherId));
     }
 
@@ -64,15 +63,20 @@ public class BookController {
     public ResponseEntity<Page<BookDTO>> getBookSaveList(Pageable pageable) {
         return ResponseEntity.ok(bookService.getBookSaveList(pageable));
     }
+    // 도서 수정&삭제 요청목록 (어드민에서 사용)
+    @GetMapping("/api/books/updateListAndDeleteList")
+    public ResponseEntity<List<AdminsBookUpdateAndDeleteListDTO>> getBookUpdateAndDeleteList() {
+        return ResponseEntity.ok(bookService.getBookUpdateAndDeleteList());
+    }
+    // 도서 수정 요청 (어드민에서 사용)
+    @GetMapping("/api/books/updateRequest/{id}")
+    public ResponseEntity<BookUpdateListResponse> getBookUpdateRequest(@PathVariable Integer id) {
+        return ResponseEntity.ok(bookService.getBookUpdateRequest(id));
+    }
 
     @GetMapping("/api/books/{id}")
-    public ResponseEntity<BookResponse> getBook(@PathVariable Integer id) {
-        var optionalBook = bookService.getBook(id);
-        if (optionalBook.isEmpty()) {
-            throw new Exception400(BookConst.notFound);
-        }
-
-        return ResponseEntity.ok(optionalBook.get().toResponse());
+    public ResponseEntity<BookResponse> getBookWithBookCover(@PathVariable Integer id) {
+        return ResponseEntity.ok(bookService.getBookWithBookCover(id));
     }
 
     @PostMapping("/books")
@@ -143,6 +147,21 @@ public class BookController {
     @GetMapping("/admins/books/saveList")
     public String adminsBookSaveList(){
         return "/admin/bookmanage/bookSaveList";
+    }
+
+    @GetMapping("/admins/books/bookUpdateAndDeleteList")
+    public String adminsBookUpdateAndDeleteList(){
+        return "/admin/bookmanage/bookUpdateAndDeleteList";
+    }
+
+    @GetMapping("/admins/books/bookUpdateRequest/{id}")
+    public String adminsBookUpdateList(@PathVariable Integer id){
+        return "/admin/bookmanage/bookUpdateRequest";
+    }
+
+    @GetMapping("/admins/books/bookDeleteRequest/{id}")
+    public String adminsBookDeleteList(@PathVariable Integer id){
+        return "/admin/bookmanage/bookDeleteRequest";
     }
 
     @GetMapping("/admins/books/detail/{id}")

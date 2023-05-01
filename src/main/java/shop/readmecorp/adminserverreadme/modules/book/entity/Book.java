@@ -43,9 +43,6 @@ public class Book extends BaseTime {
     @Comment("책 소개")
     private String introduction;
 
-    @Comment("파일 경로")
-    private String filePath;
-
     @Comment("대분류 카테고리")
     @OneToOne
     @JoinColumn(name = "big_category_id")
@@ -79,7 +76,6 @@ public class Book extends BaseTime {
         this.author = author;
         this.price = price;
         this.introduction = introduction;
-        this.filePath = filePath;
         this.bigCategory = bigCategory;
         this.smallCategory = smallCategory;
         this.authorInfo = authorInfo;

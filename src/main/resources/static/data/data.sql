@@ -3,12 +3,12 @@ INSERT INTO ADMIN_TB (username, password, role, status) VALUES
                                                             ('admin@readme.com', '1234', 'ADMIN', 'ACTIVE'),
                                                             ('admin2@readme.com', '1234', 'ADMIN', 'DELETE');
 
-insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('test1@nate.com', '1234', 'PUBLISHER', '123','사업자이름1', '2021-01-01 00:01', 'ACTIVE');
-insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('test2@nate.com', '1234', 'PUBLISHER', '456','사업자이름2', '2021-01-01 00:02', 'ACTIVE');
-insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('test3@nate.com', '1234', 'PUBLISHER', '789','사업자이름3', '2021-01-01 00:03', 'WAIT');
-insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('test4@nate.com', '1234', 'PUBLISHER', '11-22-33','사업자이름4', '2021-01-01 00:03', 'WAIT');
-insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('test5@nate.com', '1234', 'PUBLISHER', '11-22-33','사업자이름5', '2021-01-01 00:03', 'WAIT');
-insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('test6@nate.com', '1234', 'PUBLISHER', '11-22-33','사업자이름6', '2021-01-01 00:03', 'DELETE');
+insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('test1@nate.com', '1234', 'PUBLISHER', '123','출판사이름1', '2021-01-01 00:01:01', 'ACTIVE');
+insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('test2@nate.com', '1234', 'PUBLISHER', '456','출판사이름2', '2021-01-01 00:02:01', 'ACTIVE');
+insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('test3@nate.com', '1234', 'PUBLISHER', '789','출판사이름3', '2021-01-01 00:03:01', 'WAIT');
+insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('test4@nate.com', '1234', 'PUBLISHER', '11-22-33','출판사이름4', '2021-01-01 00:03:01', 'WAIT');
+insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('test5@nate.com', '1234', 'PUBLISHER', '11-22-33','출판사이름5', '2021-01-01 00:03:01', 'WAIT');
+insert into PUBLISHER_TB(username, password, role, business_number, business_name, join_time, status) values ('test6@nate.com', '1234', 'PUBLISHER', '11-22-33','출판사이름6', '2021-01-01 00:03:01', 'DELETE');
 
 insert into FILE_INFO_TB(type) values ('BOOK_EPUB');
 insert into FILE_INFO_TB(type) values ('BOOK_COVER');
@@ -127,12 +127,11 @@ insert into FILE_TB(file_info_id, file_name, file_url, file_size, extension, sta
 -- insert into FILE_TB(file_info_id, file_name, file_url, status) values (7, 'book7.epub', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/40eae962-86bb-465a-9273-10467848c9b3-book3.epub', 'ACTIVE');
 -- insert into FILE_TB(file_info_id, file_name, file_url, status) values (7, 'book7.png', 'https://cdn.pixabay.com/photo/2023/04/14/12/38/bird-7924990__340.jpg', 'ACTIVE');
 
-
-insert into USER_TB(username, password, role, is_membership, is_auto_payment, join_time, file_info_id, status) values ('유저이름1','1234', 'USER', true, true, '2021-01-01 00:01', 1, 'ACTIVE');
-insert into USER_TB(username, password, role, is_membership, is_auto_payment, join_time, file_info_id, status) values ('유저이름2','1234', 'USER', true, false, '2021-01-01 00:02', 2, 'ACTIVE');
-insert into USER_TB(username, password, role, is_membership, is_auto_payment, join_time, file_info_id, status) values ('유저이름3','1234', 'USER', false, false, '2021-01-01 00:03', 3, 'ACTIVE');
-insert into USER_TB(username, password, role, is_membership, is_auto_payment, join_time, file_info_id, status) values ('유저이름4','1234', 'USER', false, false, '2021-01-01 00:03', 3, 'ACTIVE');
-insert into USER_TB(username, password, role, is_membership, is_auto_payment, join_time, file_info_id, status) values ('유저이름5','1234', 'USER', false, false, '2021-01-01 00:03', 3, 'ACTIVE');
+insert into USER_TB(username, password, role, is_membership, is_auto_payment, join_time, file_info_id, status) values ('유저이름1','1234', 'USER', true, true, '2021-01-01 00:01:01', 1, 'ACTIVE');
+insert into USER_TB(username, password, role, is_membership, is_auto_payment, join_time, file_info_id, status) values ('유저이름2','1234', 'USER', true, false, '2021-01-01 00:02:01', 2, 'ACTIVE');
+insert into USER_TB(username, password, role, is_membership, is_auto_payment, join_time, file_info_id, status) values ('유저이름3','1234', 'USER', false, false, '2021-01-01 00:03:01', 3, 'ACTIVE');
+insert into USER_TB(username, password, role, is_membership, is_auto_payment, join_time, file_info_id, status) values ('유저이름4','1234', 'USER', false, false, '2021-01-01 00:03:01', 3, 'ACTIVE');
+insert into USER_TB(username, password, role, is_membership, is_auto_payment, join_time, file_info_id, status) values ('유저이름5','1234', 'USER', false, false, '2021-01-01 00:03:01', 3, 'ACTIVE');
 
 insert into BIG_CATEGORY_TB(big_category, status) values ('자기계발', 'ACTIVE');
 insert into BIG_CATEGORY_TB(big_category, status) values ('에세이', 'ACTIVE');
@@ -597,5 +596,8 @@ INSERT INTO BOOK_PAYMENT_TB(user_id, book_id, price, payment_time, status) VALUE
 INSERT INTO BOOK_PAYMENT_TB(user_id, book_id, price, payment_time, status) VALUES(2, 50, 15000, '2021-01-01 00:01', 'ACTIVE');
 INSERT INTO BOOK_PAYMENT_TB(user_id, book_id, price, payment_time, status) VALUES(3, 50, 15000, '2021-01-01 00:01', 'ACTIVE');
 
+insert into BOOK_UPDATE_LIST_TB(book_id, publisher_id, title, author, price, introduction, epub_url, cover_url, big_category_id, small_category_id, author_info, content, status) values (1,1,'수정할 제목','수정할 저자', 2000, '수정할 책 소개', 'https://test.com/test.epub', 'https://cdn.pixabay.com/photo/2023/04/22/02/20/insect-7942861_640.jpg', 1,1,'수정할 저자정보','수정하고싶어요', 'ACTIVE');
+
+insert into BOOK_DELETE_LIST_TB(book_id, cover_url, content, status) values (2, 'https://cdn.pixabay.com/photo/2023/04/22/22/58/bird-7944578__340.jpg', '그냥 삭제하고싶어서', 'ACTIVE');
 
 commit;

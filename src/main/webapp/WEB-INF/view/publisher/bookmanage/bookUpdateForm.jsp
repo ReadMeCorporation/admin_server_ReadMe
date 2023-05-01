@@ -3,14 +3,6 @@
 <%@ include file="../../layout/header.jsp" %>
 <%@ include file="../../layout/headerBook.jsp" %>
 
-<%
-    Publisher publisher = (Publisher) session.getAttribute("principal");
-    String businessName = "";
-    if (publisher != null) {
-        businessName = publisher.getBusinessName();
-    }
-%>
-
 <div class="p-3" style="border: 1px solid #00539C" >
 
     <h2>도서 수정 요청</h2>
@@ -23,7 +15,7 @@
             <div class="d-flex justify-content" style="border: 1px solid palegreen">
                 <div>
                     <h5><b>표지</b></h5>
-                    <img src="/images/gray.png" style="height: 170px; width: 140px">
+                    <img src="" style="height: 170px; width: 140px" id="coverUrl">
                 </div>
                 <div>
                     도서명
@@ -38,7 +30,7 @@
 
                     출판사
                     <div class="form-group pb-1">
-                        <input type="text" class="form-control form-control" placeholder="출판사를 입력해주세요" name="publisher" id="publisher" readonly value="<%=businessName %>">
+                        <input type="text" class="form-control form-control" placeholder="출판사를 입력해주세요" name="publisher" id="publisher" readonly >
                     </div>
 
                     가격
@@ -50,7 +42,7 @@
 
             <div class="input-group mb-3">
                 <span class="input-group-text">큰 카테고리</span>
-                <select class="form-select" name="BigCategory" id="BigCategory" onchange="changeSmallCategory()">
+                <select class="form-select" name="bigCategory" id="bigCategory" onchange="changeSmallCategory()">
                     <option selected>큰 카테고리를 선택해주세요</option>
                     <option value="자기계발">자기계발</option>
                     <option value="에세이">에세이</option>
@@ -62,26 +54,36 @@
                 </select>
 
                 <span class="input-group-text">작은 카테고리</span>
-                <select class="form-select" name="SmallCategory" id="SmallCategory">
+                <select class="form-select" name="smallCategory" id="smallCategory">
                     <option selected>작은 카테고리를 선택해주세요</option>
                 </select>
             </div>
 
-            <div class="mb-3 mt-3" style="border: 1px solid darkcyan">
+            <div class="mb-3 mt-3" >
                 <label for="introduction" class="form-label">책소개</label>
                 <textarea class="form-control" id="introduction" rows="5"></textarea>
             </div>
-            <div class="mb-3 mt-3" style="border: 1px solid darkcyan">
+            <div class="mb-3 mt-3" >
                 <label for="authorInfo" class="form-label">저자소개</label>
                 <textarea class="form-control" id="authorInfo" rows="5"></textarea>
             </div>
-            <div class="mb-3 mt-3" style="border: 1px solid darkcyan">
-                <label for="content" class="form-label">책내용</label>
-                <textarea class="form-control" id="content" rows="5"></textarea>
+
+
+
+            <div class="mb-3 mt-3">
+                <label for="epubFile" class="form-label">도서 파일</label>
+                <input type="file" class="form-control" id="epubFile" name="epubFile" accept=".epub">
             </div>
-            <div class="mb-3 mt-3" style="border: 1px solid darkcyan">
+            <div class="mb-3 mt-3">
+                <label for="bookCover" class="form-label">표지</label>
+                <input type="file" class="form-control" id="bookCover" name="bookCover" accept="image/*">
+            </div>
+
+
+
+            <div class="mb-3 mt-3" >
                 <label for="content" class="form-label">수정사항 디테일</label>
-                <textarea class="form-control" id="detail" rows="5"></textarea>
+                <textarea class="form-control" id="content" rows="5"></textarea>
             </div>
 
             <div class="d-flex justify-content-center">
@@ -92,33 +94,78 @@
 </div>
 
 <script>
-    $(document).ready(function() {
-        // 세션에서 publisherId 가져오기
-        const publisherId = '<%= request.getSession().getAttribute("principal") != null ? ((Publisher) request.getSession().getAttribute("principal")).getId() : 0 %>';
+    const id = ${id}
 
-        // publisherId 존재하는 경우에만 API 요청을 보냅니다.
-        if (publisherId !== 0) {
-            $.ajax({
-                url: `http://localhost:8080/api/books/`+${id},
-                type: 'GET',
-                dataType: 'json',
-                data: { publisherId: publisherId }
+    $(document).ready(function() {
+        $.ajax({
+            url: `http://localhost:8080/api/books/`+ id,
+            type: 'GET',
+            dataType: 'json',
+        })
+            .done((res) => {
+                populateTable(res);
             })
-                .done((res) => {
-                    populateTable(res);
+            .fail((err) => {
+                alert(err.responseJSON.msg);
                 })
-                .fail((err) => {
-                    alert(err.responseJSON.msg);
-                })
-        }
-    });
+        });
+
+    function populateTable(book) {
+        $('#title').val(book.title);
+        $('#author').val(book.author);
+        $('#publisher').val(book.publisher.businessName);
+        $('#price').val(book.price);
+        $('#bigCategory').val(book.bigCategory.bigCategory);
+        changeSmallCategory();
+        $('#introduction').text(book.introduction);
+        $('#authorInfo').text(book.authorInfo);
+        $('#coverUrl').attr('src', book.coverUrl);
+    }
+
+    function save() {
+        // FormData 객체 생성
+        var formData = new FormData();
+
+        // input 요소에서 값을 가져와서 FormData 객체에 추가
+        formData.append('title', $('#title').val());
+        formData.append('author', $('#author').val());
+        formData.append('publisher', $('#publisher').val());
+        formData.append('price', $('#price').val());
+        formData.append('introduction', $('#introduction').val());
+
+        formData.append('epubFile', $('#epubFile').get(0).files[0]);
+        formData.append('bookCover', $('#bookCover').get(0).files[0]);
+
+        formData.append('bigCategory', $('#bigCategory').val());
+        changeSmallCategory();
+        formData.append('smallCategory', $('#smallCategory').val());
+
+        formData.append('authorInfo', $('#authorInfo').val());
+
+        formData.append('content', $('#content').val());
+
+        $.ajax({
+            type: 'post',
+            url: '/bookUpdateList/'+ id,
+            data: formData,
+            contentType: false,
+            processData: false,
+            dataType: "json"
+        }).done((res) => { // 20X 일때
+            alert(res.msg);
+            location.href = "/publishers/books";
+        }).fail((err) => { // 40X, 50X 일때
+            alert(err.responseJSON.msg);
+        });
+    }
+
 
 </script>
 
 <script>
     function changeSmallCategory() {
-        var bigCategory = document.getElementById("BigCategory").value;
-        var smallCategory = document.getElementById("SmallCategory");
+        var bigCategory = document.getElementById("bigCategory").value;
+        var smallCategory = document.getElementById("smallCategory");
 
         var 자기계발 = ["성공_처세", "인간_관계", "화술_협상", "시간_관리", "리더십"];
         var 에세이 = ["여행_에세이", "예술_에세이", "독서_에세이", "심리_에세이", "사랑_연애_에세이"];
@@ -147,7 +194,6 @@
         } else if (bigCategory === "역사") {
             options = 역사;
         }
-        // Add other big categories here
 
         for (var i = 0; i < options.length; i++) {
             var option = document.createElement("option");

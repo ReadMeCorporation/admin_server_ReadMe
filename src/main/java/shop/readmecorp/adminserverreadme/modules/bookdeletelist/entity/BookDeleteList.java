@@ -8,7 +8,7 @@ import org.hibernate.annotations.Comment;
 import shop.readmecorp.adminserverreadme.common.jpa.BaseTime;
 import shop.readmecorp.adminserverreadme.modules.book.entity.Book;
 import shop.readmecorp.adminserverreadme.modules.bookdeletelist.dto.BookDeleteListDTO;
-import shop.readmecorp.adminserverreadme.modules.bookdeletelist.enums.BookDeleteStatus;
+import shop.readmecorp.adminserverreadme.modules.bookdeletelist.enums.BookDeleteListStatus;
 import shop.readmecorp.adminserverreadme.modules.bookdeletelist.response.BookDeleteListResponse;
 
 import javax.persistence.*;
@@ -28,17 +28,21 @@ public class BookDeleteList extends BaseTime {
     @ManyToOne
     private Book book;
 
+    @Comment("삭제할 책 표지")
+    private String coverUrl;
+
     @Comment("요청사항")
     private String content;
 
     @Comment("삭제요청 활성화 상태")
     @Enumerated(EnumType.STRING)
-    private BookDeleteStatus status;
+    private BookDeleteListStatus status;
 
     @Builder
-    public BookDeleteList(Integer id, Book book, String content, BookDeleteStatus status) {
+    public BookDeleteList(Integer id, Book book, String coverUrl,String content, BookDeleteListStatus status) {
         this.id = id;
         this.book = book;
+        this.coverUrl =coverUrl;
         this.content = content;
         this.status = status;
     }

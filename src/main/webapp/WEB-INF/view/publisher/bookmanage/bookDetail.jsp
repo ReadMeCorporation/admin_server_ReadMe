@@ -12,7 +12,7 @@
         <div class="d-flex justify-content" style="border: 1px solid palegreen">
             <div>
                 <h5><b>표지</b></h5>
-                <img src="/images/gray.png" style="height: 170px; width: 140px">
+                <img src="" style="height: 170px; width: 140px" id="coverUrl">
             </div>
             <div>
                 도서명
@@ -66,18 +66,10 @@
 
 <script>
 
-    function getBookIdFromUrl() {
-        const url = window.location.href;
-        const parts = url.split('/');
-        const id = parts[parts.length - 1];
-        return id;
-    }
-
     $(document).ready(function() {
-        const id = getBookIdFromUrl();
 
         $.ajax({
-            url: `http://localhost:8080/api/books/`+id,
+            url: `http://localhost:8080/api/books/`+${id},
             type: 'GET',
         })
             .done((res) => {
@@ -97,7 +89,7 @@
         $('#SmallCategory').val(book.smallCategory.smallCategory);
         $('#introduction').text(book.introduction);
         $('#authorInfo').text(book.authorInfo);
-
+        $('#coverUrl').attr('src', book.coverUrl);
     }
 
 </script>

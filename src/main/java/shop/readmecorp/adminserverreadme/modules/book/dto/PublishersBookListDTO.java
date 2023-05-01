@@ -43,7 +43,6 @@ public class PublishersBookListDTO {
 
     }
 
-
     // 별점 평균계산
     private Double calculateAverageStars(List<Review> reviews) {
         if (reviews == null || reviews.isEmpty()) {
@@ -51,17 +50,12 @@ public class PublishersBookListDTO {
         }
 
         double sum = 0;
-        int count = 0;
+        int count = reviews.size();
 
         for (Review review : reviews) {
-            if (review.getStatus().equals(ReviewStatus.ACTIVE)) {
-                sum += review.getStars();
-                count++;
-            }
+            sum += review.getStars();
         }
-
         return (count > 0) ? Math.round((sum / count) * 100) / 100.0 : 0;
     }
-
 
 }

@@ -6,6 +6,6 @@ package shop.readmecorp.adminserverreadme.modules.bookdeletelist.enums;
  * WAIT 대기
  */
 
-public enum BookDeleteStatus {
+public enum BookDeleteListStatus {
     ACTIVE, DELETE, WAIT
 }

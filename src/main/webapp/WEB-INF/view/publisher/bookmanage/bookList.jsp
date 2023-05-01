@@ -64,12 +64,22 @@
             tr.append('<td>' + book.stars + '</td>');
             tr.append('<td>' + book.hearts + '</td>');
             tr.append('<td>' + book.status + '</td>');
-            tr.append(`
-            <td>
-                <a href="/publishers/books/updateForm/`+ book.id + `"><button type="button" class="btn btn-warning">수정</button></a>
-                <a href="/publishers/books/deleteForm/`+ book.id + `"><button type="button" class="btn btn-danger">삭제</button></a>
-            </td>
-        `);
+
+            if (book.status == 'WAIT'){
+                tr.append(`
+                    <td>
+                        <button type="button" class="btn btn-warning" disabled>수정</button>
+                        <button type="button" class="btn btn-danger" disabled>삭제</button>
+                    </td>
+                `);
+            } else{
+                tr.append(`
+                    <td>
+                        <a href="/publishers/books/updateForm/`+ book.id + `"><button type="button" class="btn btn-warning">수정</button></a>
+                        <a href="/publishers/books/deleteForm/`+ book.id + `"><button type="button" class="btn btn-danger">삭제</button></a>
+                    </td>
+                `);
+            }
             tbody.append(tr);
         }
     }

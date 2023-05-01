@@ -11,9 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 import shop.readmecorp.adminserverreadme.common.exception.Exception400;
 import shop.readmecorp.adminserverreadme.common.util.ParseMultipart;
 import shop.readmecorp.adminserverreadme.common.util.S3Upload;
+import shop.readmecorp.adminserverreadme.modules.book.BookConst;
+import shop.readmecorp.adminserverreadme.modules.book.dto.AdminsBookUpdateAndDeleteListDTO;
 import shop.readmecorp.adminserverreadme.modules.book.dto.BookDTO;
 import shop.readmecorp.adminserverreadme.modules.book.dto.PublishersBookListDTO;
-import shop.readmecorp.adminserverreadme.modules.book.dto.PublishersBookRequestDTO;
 import shop.readmecorp.adminserverreadme.modules.book.entity.Book;
 import shop.readmecorp.adminserverreadme.modules.book.entity.Heart;
 import shop.readmecorp.adminserverreadme.modules.book.enums.BookStatus;
@@ -21,6 +22,16 @@ import shop.readmecorp.adminserverreadme.modules.book.repository.BookRepository;
 import shop.readmecorp.adminserverreadme.modules.book.repository.HeartRepository;
 import shop.readmecorp.adminserverreadme.modules.book.request.BookSaveRequest;
 import shop.readmecorp.adminserverreadme.modules.book.request.BookUpdateRequest;
+import shop.readmecorp.adminserverreadme.modules.book.response.BookResponse;
+import shop.readmecorp.adminserverreadme.modules.bookdeletelist.BookUpdateListConst;
+import shop.readmecorp.adminserverreadme.modules.bookdeletelist.entity.BookDeleteList;
+import shop.readmecorp.adminserverreadme.modules.bookdeletelist.enums.BookDeleteListStatus;
+import shop.readmecorp.adminserverreadme.modules.bookdeletelist.repository.BookDeleteListRepository;
+import shop.readmecorp.adminserverreadme.modules.bookupdatelist.dto.BookUpdateListDTO;
+import shop.readmecorp.adminserverreadme.modules.bookupdatelist.entity.BookUpdateList;
+import shop.readmecorp.adminserverreadme.modules.bookupdatelist.enums.BookUpdateListStatus;
+import shop.readmecorp.adminserverreadme.modules.bookupdatelist.repository.BookUpdateListRepository;
+import shop.readmecorp.adminserverreadme.modules.bookupdatelist.response.BookUpdateListResponse;
 import shop.readmecorp.adminserverreadme.modules.category.entity.BigCategory;
 import shop.readmecorp.adminserverreadme.modules.category.entity.SmallCategory;
 import shop.readmecorp.adminserverreadme.modules.category.repository.BigCategoryRepository;
@@ -39,10 +50,7 @@ import shop.readmecorp.adminserverreadme.modules.review.enums.ReviewStatus;
 import shop.readmecorp.adminserverreadme.modules.review.repository.ReviewRepository;
 
 import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -56,10 +64,12 @@ public class BookService {
     private final HeartRepository heartRepository;
     private final BigCategoryRepository bigCategoryRepository;
     private final SmallCategoryRepository smallCategoryRepository;
+    private final BookUpdateListRepository bookUpdateListRepository;
+    private final BookDeleteListRepository bookDeleteListRepository;
     private final ObjectMapper objectMapper;
     private final S3Upload s3Upload;
 
-    public BookService(BookRepository bookRepository, ReviewRepository reviewRepository, PublisherRepository publisherRepository, FileInfoRepository fileInfoRepository, FileRepository fileRepository, HeartRepository heartRepository, BigCategoryRepository bigCategoryRepository, SmallCategoryRepository smallCategoryRepository, ObjectMapper objectMapper, S3Upload s3Upload) {
+    public BookService(BookRepository bookRepository, ReviewRepository reviewRepository, PublisherRepository publisherRepository, FileInfoRepository fileInfoRepository, FileRepository fileRepository, HeartRepository heartRepository, BigCategoryRepository bigCategoryRepository, SmallCategoryRepository smallCategoryRepository, BookUpdateListRepository bookUpdateListRepository, BookDeleteListRepository bookDeleteListRepository, ObjectMapper objectMapper, S3Upload s3Upload) {
         this.bookRepository = bookRepository;
         this.reviewRepository = reviewRepository;
         this.publisherRepository = publisherRepository;
@@ -68,6 +78,8 @@ public class BookService {
         this.heartRepository = heartRepository;
         this.bigCategoryRepository = bigCategoryRepository;
         this.smallCategoryRepository = smallCategoryRepository;
+        this.bookUpdateListRepository = bookUpdateListRepository;
+        this.bookDeleteListRepository = bookDeleteListRepository;
         this.objectMapper = objectMapper;
         this.s3Upload = s3Upload;
     }
@@ -91,8 +103,12 @@ public class BookService {
 
                     List<File> files = fileRepository.findByFileInfo(fileInfo);
                     files.forEach(file -> {
-                        bookDTO.setEpubUrl(file.getFileUrl());
-                        bookDTO.setCoverUrl(file.getFileUrl());
+                        String fileName = file.getFileName();
+                        if (fileName.endsWith(".epub")) {
+                            bookDTO.setEpubUrl(file.getFileUrl());
+                        } else if (fileName.endsWith(".png") || fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")) {
+                            bookDTO.setCoverUrl(file.getFileUrl());
+                        }
                     });
 
                     return bookDTO;
@@ -115,8 +131,12 @@ public class BookService {
 
                     List<File> files = fileRepository.findByFileInfo(fileInfo);
                     files.forEach(file -> {
-                        bookDTO.setEpubUrl(file.getFileUrl());
-                        bookDTO.setCoverUrl(file.getFileUrl());
+                        String fileName = file.getFileName();
+                        if (fileName.endsWith(".epub")) {
+                            bookDTO.setEpubUrl(file.getFileUrl());
+                        } else if (fileName.endsWith(".png") || fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")) {
+                            bookDTO.setCoverUrl(file.getFileUrl());
+                        }
                     });
 
                     return bookDTO;
@@ -152,8 +172,12 @@ public class BookService {
 
                     // 파일에 있는 url을 책DTO안 url에 입력
                     files.forEach(file -> {
-                        bookDTO.setEpubUrl(file.getFileUrl());
-                        bookDTO.setCoverUrl(file.getFileUrl());
+                        String fileName = file.getFileName();
+                        if (fileName.endsWith(".epub")) {
+                            bookDTO.setEpubUrl(file.getFileUrl());
+                        } else if (fileName.endsWith(".png") || fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")) {
+                            bookDTO.setCoverUrl(file.getFileUrl());
+                        }
                     });
 
                     List<Review> bookReviews = reviewsByBookId.getOrDefault(book.getId(), Collections.emptyList());
@@ -163,15 +187,33 @@ public class BookService {
                 .collect(Collectors.toList());
     }
 
-    public List<PublishersBookRequestDTO> getPublishersBookRequest(Integer publisherId) {
+    public List<BookDTO> getPublishersBookRequest(Integer publisherId) {
         Optional<Publisher> publisher = publisherRepository.findById(publisherId);
 
         if (publisher.isEmpty()) {
             throw new Exception400(PublisherConst.notFound);
         }
 
-        return bookRepository.findByStatusWaitOrRejected(BookStatus.WAIT, BookStatus.REJECTED, publisherId);
+        List<Book> books = bookRepository.findByStatusWaitOrRejected(BookStatus.WAIT, BookStatus.REJECTED, publisherId);
 
+        return books.stream()
+                .map(book->{
+                    BookDTO bookDTO = book.toDTO();
+                    FileInfo fileInfo = book.getFileInfo();
+
+                    List<File> files = fileRepository.findByFileInfo(fileInfo);
+                    files.forEach(file -> {
+                        String fileName = file.getFileName();
+                        if (fileName.endsWith(".epub")) {
+                            bookDTO.setEpubUrl(file.getFileUrl());
+                        } else if (fileName.endsWith(".png") || fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")) {
+                            bookDTO.setCoverUrl(file.getFileUrl());
+                        }
+                    });
+
+                    return bookDTO;
+                })
+                .collect(Collectors.toList());
     }
 
     public Page<BookDTO> getBookSaveList(Pageable pageable){
@@ -186,8 +228,12 @@ public class BookService {
 
                     List<File> files = fileRepository.findByFileInfo(fileInfo);
                     files.forEach(file -> {
-                        bookDTO.setEpubUrl(file.getFileUrl());
-                        bookDTO.setCoverUrl(file.getFileUrl());
+                        String fileName = file.getFileName();
+                        if (fileName.endsWith(".epub")) {
+                            bookDTO.setEpubUrl(file.getFileUrl());
+                        } else if (fileName.endsWith(".png") || fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")) {
+                            bookDTO.setCoverUrl(file.getFileUrl());
+                        }
                     });
 
                     return bookDTO;
@@ -196,10 +242,119 @@ public class BookService {
         return new PageImpl<>(content, pageable, page.getTotalElements());
     }
 
-    public Optional<Book> getBook(Integer id) {
-        return bookRepository.findById(id);
+    public List<AdminsBookUpdateAndDeleteListDTO> getBookUpdateAndDeleteList() {
+
+        List<BookUpdateList> bookUpdateLists = bookUpdateListRepository.findByStatus(BookUpdateListStatus.ACTIVE);
+        List<BookDeleteList> bookDeleteLists = bookDeleteListRepository.findByStatus(BookDeleteListStatus.ACTIVE);
+
+        List<AdminsBookUpdateAndDeleteListDTO> dtoList = new ArrayList<>();
+
+        for (BookUpdateList updateList : bookUpdateLists) {
+            AdminsBookUpdateAndDeleteListDTO dto = AdminsBookUpdateAndDeleteListDTO.builder()
+                    .id(updateList.getId())
+                    .coverUrl(updateList.getCoverUrl())
+                    .title(updateList.getBook().getTitle())
+                    .author(updateList.getBook().getAuthor())
+                    .publisher(updateList.getPublisher().getBusinessName())
+//                    .createdDate(updateList.getCreatedDate().toString())
+                    .requestType("UPDATE")
+                    .status(updateList.getStatus().toString())
+                    .build();
+            dtoList.add(dto);
+        }
+
+        for (BookDeleteList deleteList : bookDeleteLists) {
+            AdminsBookUpdateAndDeleteListDTO dto = AdminsBookUpdateAndDeleteListDTO.builder()
+                    .id(deleteList.getId())
+                    .coverUrl(deleteList.getCoverUrl())
+                    .title(deleteList.getBook().getTitle())
+                    .author(deleteList.getBook().getAuthor())
+                    .publisher(deleteList.getBook().getPublisher().getBusinessName())
+//                    .createdDate(deleteList.getCreatedDate().toString())
+                    .requestType("DELETE")
+                    .status(deleteList.getStatus().toString())
+                    .build();
+            dtoList.add(dto);
+        }
+        return dtoList;
     }
 
+
+    public BookDTO bookUpdate(Integer id) {
+
+        Optional<BookUpdateList> optionalBookUpdateList = bookUpdateListRepository.findById(id);
+
+        Optional<Book> optionalBook = bookRepository.findById(optionalBookUpdateList.get().getBook().getId());
+
+        if (optionalBookUpdateList.isEmpty()) {
+            throw new Exception400(BookUpdateListConst.notFound);
+        }
+
+        BookUpdateList bookUpdateList = optionalBookUpdateList.get();
+
+        Book book = optionalBook.get();
+
+        book.setTitle(bookUpdateList.getTitle());
+        book.setAuthor(bookUpdateList.getAuthor());
+        book.setPrice(bookUpdateList.getPrice());
+        book.setIntroduction(bookUpdateList.getIntroduction());
+        book.setBigCategory(bookUpdateList.getBigCategory());
+        book.setSmallCategory(bookUpdateList.getSmallCategory());
+        book.setAuthorInfo(bookUpdateList.getAuthorInfo());
+
+        return bookRepository.save(book).toDTO();
+    }
+
+    public BookUpdateListResponse getBookUpdateRequest(Integer id) {
+
+        Optional<BookUpdateList> optionalBookUpdateList = bookUpdateListRepository.findById(id);
+
+        if (optionalBookUpdateList.isEmpty()){
+            throw new Exception400(BookUpdateListConst.notFound);
+        }
+
+        BookUpdateListResponse bookUpdateListResponse = optionalBookUpdateList.get().toResponse();
+
+        return bookUpdateListResponse;
+    }
+
+
+    public BookResponse getBookWithBookCover(Integer id) {
+
+        var optionalBook = bookRepository.findById(id);
+        if (optionalBook.isEmpty()) {
+            throw new Exception400(BookConst.notFound);
+        }
+
+        Book book = optionalBook.get();
+        BookResponse bookResponse = book.toResponse();
+
+        //파일정보 불러오기
+        FileInfo fileInfo = book.getFileInfo();
+
+        //파일정보에 있는 파일 불러오기
+        List<File> files = fileRepository.findByFileInfo(fileInfo);
+
+        // 파일에 있는 url을 책DTO안 url에 입력
+        files.forEach(file -> {
+            String fileName = file.getFileName();
+            if (fileName.endsWith(".png") || fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")) {
+                bookResponse.setCoverUrl(file.getFileUrl());
+            }
+        });
+        return bookResponse;
+
+    }
+
+    public Optional<Book> getBook(Integer id) {
+        var optionalBook = bookRepository.findById(id);
+        if (optionalBook.isEmpty()) {
+            throw new Exception400(BookConst.notFound);
+        }
+        return optionalBook;
+    }
+
+    @Transactional
     public Book save(BookSaveRequest request) {
 
         Optional<Publisher> optionalPublisher = publisherRepository.findByBusinessName(request.getPublisher());
@@ -268,6 +423,7 @@ public class BookService {
         return bookRepository.save(book);
     }
 
+    @Transactional
     public Book update(BookUpdateRequest request, Book book) {
         return null;
     }
@@ -283,5 +439,6 @@ public class BookService {
 
     public void delete(Book book) {
     }
+
 
 }

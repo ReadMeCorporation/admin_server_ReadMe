@@ -1,15 +1,7 @@
-<%@ page import="shop.readmecorp.adminserverreadme.modules.publisher.entity.Publisher" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="../../layout/header.jsp" %>
 <%@ include file="../../layout/headerBook.jsp" %>
 
-<%
-    Publisher publisher = (Publisher) session.getAttribute("principal");
-    String businessName = "";
-    if (publisher != null) {
-        businessName = publisher.getBusinessName();
-    }
-%>
 
 <div class="p-3" style="border: 1px solid #00539C" >
 

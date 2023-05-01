@@ -6,10 +6,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Comment;
 import shop.readmecorp.adminserverreadme.common.jpa.BaseTime;
+import shop.readmecorp.adminserverreadme.modules.book.dto.BookDTO;
 import shop.readmecorp.adminserverreadme.modules.book.entity.Book;
 import shop.readmecorp.adminserverreadme.modules.bookupdatelist.dto.BookUpdateListDTO;
 import shop.readmecorp.adminserverreadme.modules.bookupdatelist.enums.BookUpdateListStatus;
 import shop.readmecorp.adminserverreadme.modules.bookupdatelist.response.BookUpdateListResponse;
+import shop.readmecorp.adminserverreadme.modules.category.entity.BigCategory;
+import shop.readmecorp.adminserverreadme.modules.category.entity.SmallCategory;
+import shop.readmecorp.adminserverreadme.modules.publisher.entity.Publisher;
 
 import javax.persistence.*;
 
@@ -28,6 +32,39 @@ public class BookUpdateList extends BaseTime {
     @ManyToOne
     private Book book;
 
+    @Comment("수정할 책의 출판사")
+    @ManyToOne
+    private Publisher publisher;
+
+    @Comment("수정할 책 제목")
+    private String title;
+
+    @Comment("수정할 책 저자")
+    private String author;
+
+    @Comment("수정할 책 가격")
+    private Integer price;
+
+    @Comment("수정할 책 소개")
+    private String introduction;
+
+    @Comment("수정할 책 파일")
+    private String epubUrl;
+
+    @Comment("수정할 책 표지")
+    private String coverUrl;
+
+    @Comment("수정할 대분류 카테고리")
+    @OneToOne
+    private BigCategory bigCategory;
+
+    @Comment("수정할 소분류 카테고리")
+    @OneToOne
+    private SmallCategory smallCategory;
+
+    @Comment("수정할 저자 정보")
+    private String authorInfo;
+
     @Comment("요청사항")
     private String content;
 
@@ -36,9 +73,19 @@ public class BookUpdateList extends BaseTime {
     private BookUpdateListStatus status;
 
     @Builder
-    public BookUpdateList(Integer id, Book book, String content, BookUpdateListStatus status) {
+    public BookUpdateList(Integer id, Book book, Publisher publisher, String title, String author, Integer price, String introduction, String epubUrl, String coverUrl, BigCategory bigCategory, SmallCategory smallCategory, String authorInfo, String content, BookUpdateListStatus status) {
         this.id = id;
         this.book = book;
+        this.publisher = publisher;
+        this.title = title;
+        this.author = author;
+        this.price = price;
+        this.introduction = introduction;
+        this.epubUrl = epubUrl;
+        this.coverUrl = coverUrl;
+        this.bigCategory = bigCategory;
+        this.smallCategory = smallCategory;
+        this.authorInfo = authorInfo;
         this.content = content;
         this.status = status;
     }
@@ -48,6 +95,10 @@ public class BookUpdateList extends BaseTime {
     }
 
     public BookUpdateListResponse toResponse() {
-        return new BookUpdateListResponse(id, book.toDTO(), content, status.name());
+        BookDTO bookDTO = book.toDTO();
+        bookDTO.setEpubUrl(epubUrl);
+        bookDTO.setCoverUrl(coverUrl);
+        return new BookUpdateListResponse(id, bookDTO, content, status.name());
     }
+
 }

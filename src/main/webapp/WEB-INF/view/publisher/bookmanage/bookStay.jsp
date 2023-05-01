@@ -55,7 +55,7 @@
             var tr = $('<tr>');
             tr.append('<th scope="row">' + (i + 1) + '</th>');
             tr.append('<td><img src="' + book.coverUrl + '" style="width: 75px;height: 100px"></td>');
-            tr.append('<td><a href="/books/detail/' + book.id + '">' + book.title + '</a></td>');
+            tr.append('<td><a href="detail/' + book.id + '">' + book.title + '</a></td>');
             tr.append('<td>' + book.author + '</td>');
             tr.append('<td>' + book.status + '</td>');
             tbody.append(tr);

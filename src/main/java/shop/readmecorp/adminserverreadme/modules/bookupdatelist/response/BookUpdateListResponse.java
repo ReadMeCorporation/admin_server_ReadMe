@@ -1,9 +1,6 @@
 package shop.readmecorp.adminserverreadme.modules.bookupdatelist.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import shop.readmecorp.adminserverreadme.modules.book.dto.BookDTO;
 
 @Getter

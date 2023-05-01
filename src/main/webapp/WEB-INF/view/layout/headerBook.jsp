@@ -14,7 +14,7 @@
         <div class="btn-group" role="group" aria-label="Basic outlined example">
             <a href="/admins/books" class="btn btn-outline-primary">전체</a>
             <a href="/admins/books/saveList" class="btn btn-outline-primary">신규승인</a>
-            <a href="#" class="btn btn-outline-primary">수정/삭제</a>
+            <a href="/admins/books/bookUpdateAndDeleteList" class="btn btn-outline-primary">수정/삭제</a>
         </div>
     </c:when>
 </c:choose>
