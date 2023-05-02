@@ -52,6 +52,6 @@ public class BookDeleteList extends BaseTime {
     }
 
     public BookDeleteListResponse toResponse() {
-        return new BookDeleteListResponse(id, book.toDTO(), content, status.name());
+        return new BookDeleteListResponse(id, book.toDTO(), coverUrl, content, status.name());
     }
 }

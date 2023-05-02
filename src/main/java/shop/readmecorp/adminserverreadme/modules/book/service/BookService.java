@@ -21,13 +21,12 @@ import shop.readmecorp.adminserverreadme.modules.book.enums.BookStatus;
 import shop.readmecorp.adminserverreadme.modules.book.repository.BookRepository;
 import shop.readmecorp.adminserverreadme.modules.book.repository.HeartRepository;
 import shop.readmecorp.adminserverreadme.modules.book.request.BookSaveRequest;
-import shop.readmecorp.adminserverreadme.modules.book.request.BookUpdateRequest;
 import shop.readmecorp.adminserverreadme.modules.book.response.BookResponse;
 import shop.readmecorp.adminserverreadme.modules.bookdeletelist.BookUpdateListConst;
 import shop.readmecorp.adminserverreadme.modules.bookdeletelist.entity.BookDeleteList;
 import shop.readmecorp.adminserverreadme.modules.bookdeletelist.enums.BookDeleteListStatus;
 import shop.readmecorp.adminserverreadme.modules.bookdeletelist.repository.BookDeleteListRepository;
-import shop.readmecorp.adminserverreadme.modules.bookupdatelist.dto.BookUpdateListDTO;
+import shop.readmecorp.adminserverreadme.modules.bookdeletelist.response.BookDeleteListResponse;
 import shop.readmecorp.adminserverreadme.modules.bookupdatelist.entity.BookUpdateList;
 import shop.readmecorp.adminserverreadme.modules.bookupdatelist.enums.BookUpdateListStatus;
 import shop.readmecorp.adminserverreadme.modules.bookupdatelist.repository.BookUpdateListRepository;
@@ -85,13 +84,6 @@ public class BookService {
     }
 
     public Page<BookDTO> getBookListActive(Pageable pageable) {
-
-//        Page<Book> page = bookRepository.findByStatusActive(BookStatus.ACTIVE,pageable);
-//
-//        List<BookDTO> content = page.getContent()
-//                .stream()
-//                .map(Book::toDTO)
-//                .collect(Collectors.toList());
 
         Page<Book> page = bookRepository.findByStatusActive(BookStatus.ACTIVE,pageable);
 
@@ -249,10 +241,29 @@ public class BookService {
 
         List<AdminsBookUpdateAndDeleteListDTO> dtoList = new ArrayList<>();
 
+
+
+
+
         for (BookUpdateList updateList : bookUpdateLists) {
+
+            // 수정요청 하기 전 책표지를 찾기위해서
+            String coverUrl = "";
+            // 파일정보 불러오기
+            FileInfo fileInfo = updateList.getBook().getFileInfo();
+            // 파일정보에 있는 파일 불러오기
+            List<File> files = fileRepository.findByFileInfo(fileInfo);
+            // 파일에 있는 url을 변수에 입력
+            for (File file : files) {
+                String fileName = file.getFileName();
+                if (fileName.endsWith(".png") || fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")) {
+                    coverUrl = file.getFileUrl();
+                }
+            }
+
             AdminsBookUpdateAndDeleteListDTO dto = AdminsBookUpdateAndDeleteListDTO.builder()
                     .id(updateList.getId())
-                    .coverUrl(updateList.getCoverUrl())
+                    .coverUrl(coverUrl)
                     .title(updateList.getBook().getTitle())
                     .author(updateList.getBook().getAuthor())
                     .publisher(updateList.getPublisher().getBusinessName())
@@ -270,6 +281,7 @@ public class BookService {
                     .title(deleteList.getBook().getTitle())
                     .author(deleteList.getBook().getAuthor())
                     .publisher(deleteList.getBook().getPublisher().getBusinessName())
+                    //TODO 시간
 //                    .createdDate(deleteList.getCreatedDate().toString())
                     .requestType("DELETE")
                     .status(deleteList.getStatus().toString())
@@ -277,32 +289,6 @@ public class BookService {
             dtoList.add(dto);
         }
         return dtoList;
-    }
-
-
-    public BookDTO bookUpdate(Integer id) {
-
-        Optional<BookUpdateList> optionalBookUpdateList = bookUpdateListRepository.findById(id);
-
-        Optional<Book> optionalBook = bookRepository.findById(optionalBookUpdateList.get().getBook().getId());
-
-        if (optionalBookUpdateList.isEmpty()) {
-            throw new Exception400(BookUpdateListConst.notFound);
-        }
-
-        BookUpdateList bookUpdateList = optionalBookUpdateList.get();
-
-        Book book = optionalBook.get();
-
-        book.setTitle(bookUpdateList.getTitle());
-        book.setAuthor(bookUpdateList.getAuthor());
-        book.setPrice(bookUpdateList.getPrice());
-        book.setIntroduction(bookUpdateList.getIntroduction());
-        book.setBigCategory(bookUpdateList.getBigCategory());
-        book.setSmallCategory(bookUpdateList.getSmallCategory());
-        book.setAuthorInfo(bookUpdateList.getAuthorInfo());
-
-        return bookRepository.save(book).toDTO();
     }
 
     public BookUpdateListResponse getBookUpdateRequest(Integer id) {
@@ -313,11 +299,48 @@ public class BookService {
             throw new Exception400(BookUpdateListConst.notFound);
         }
 
-        BookUpdateListResponse bookUpdateListResponse = optionalBookUpdateList.get().toResponse();
+        BookUpdateList bookUpdateList = optionalBookUpdateList.get();
+        // 수정요청안에 있는 수정할 책 찾기
+        Optional<Book> optionalBook = bookRepository.findById(bookUpdateList.getBook().getId());
+
+        String epubUrl = "";
+        String coverUrl = "";
+
+        Book book = optionalBook.get();
+
+        // 파일정보 불러오기
+        FileInfo fileInfo = book.getFileInfo();
+        // 파일정보에 있는 파일 불러오기
+        List<File> files = fileRepository.findByFileInfo(fileInfo);
+
+        // 파일에 있는 url을 변수에 입력
+        for (File file : files) {
+            String fileName = file.getFileName();
+            if (fileName.endsWith(".epub")) {
+                epubUrl = file.getFileUrl();
+            } else if (fileName.endsWith(".png") || fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")) {
+                coverUrl = file.getFileUrl();
+            }
+        }
+
+
+        BookUpdateListResponse bookUpdateListResponse = optionalBookUpdateList.get().toResponse(epubUrl, coverUrl);
 
         return bookUpdateListResponse;
     }
 
+    public BookDeleteListResponse getBookDeleteRequest(Integer id) {
+
+        Optional<BookDeleteList> optionalBookDeleteList = bookDeleteListRepository.findById(id);
+
+        if (optionalBookDeleteList.isEmpty()){
+            throw new Exception400(BookUpdateListConst.notFound);
+        }
+
+        BookDeleteListResponse bookDeleteListResponse = optionalBookDeleteList.get().toResponse();
+
+        return bookDeleteListResponse;
+    }
 
     public BookResponse getBookWithBookCover(Integer id) {
 
@@ -338,12 +361,13 @@ public class BookService {
         // 파일에 있는 url을 책DTO안 url에 입력
         files.forEach(file -> {
             String fileName = file.getFileName();
-            if (fileName.endsWith(".png") || fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")) {
+            if (fileName.endsWith(".epub")) {
+                bookResponse.setEpubUrl(file.getFileUrl());
+            } else if (fileName.endsWith(".png") || fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")) {
                 bookResponse.setCoverUrl(file.getFileUrl());
             }
         });
         return bookResponse;
-
     }
 
     public Optional<Book> getBook(Integer id) {
@@ -365,7 +389,6 @@ public class BookService {
         FileInfo epubFileInfo = fileInfoRepository.save(FileInfo.builder().type(FileType.BOOK_EPUB).build());
         FileInfo coverFileInfo = fileInfoRepository.save(FileInfo.builder().type(FileType.BOOK_COVER).build());
 
-
         String epubUrl = "";
         String coverUrl = "";
         Integer epubSize = 0;
@@ -381,12 +404,11 @@ public class BookService {
             ioException.printStackTrace();
         }
 
-
         // 파일생성에 필요한 fileName, fileUrl 만들기
         String epubName= request.getEpubFile().getOriginalFilename(); // epub 파일이름
         String coverName= request.getBookCover().getOriginalFilename(); // 표지 파일이름
 
-        // 파일생성
+        // 파일생성 - epub파일
         fileRepository.save(File.builder()
                 .fileInfo(epubFileInfo)
                 .fileName(epubName)
@@ -395,7 +417,7 @@ public class BookService {
                 .extension(ParseMultipart.getFileExtension(request.getEpubFile()))
                 .status(FileStatus.WAIT)
                 .build());
-
+        // 파일생성 - 도서 표지
         fileRepository.save(File.builder()
                 .fileInfo(coverFileInfo)
                 .fileName(coverName)
@@ -424,8 +446,54 @@ public class BookService {
     }
 
     @Transactional
-    public Book update(BookUpdateRequest request, Book book) {
-        return null;
+    public Book update(Integer id) {
+
+        // id로 수정요청 찾기
+        Optional<BookUpdateList> optionalBookUpdateList = bookUpdateListRepository.findById(id);
+
+        if (optionalBookUpdateList.isEmpty()) {
+            throw new Exception400(BookUpdateListConst.notFound);
+        }
+        BookUpdateList bookUpdateList = optionalBookUpdateList.get();
+
+        // 수정요청안에 있는 수정할 책 찾기
+        Optional<Book> optionalBook = bookRepository.findById(bookUpdateList.getBook().getId());
+
+        if (optionalBook.isEmpty()) {
+            throw new Exception400(BookConst.notFound);
+        }
+
+        Book book = optionalBook.get();
+
+        // 파일정보 불러오기
+        FileInfo fileInfo = book.getFileInfo();
+
+        // 파일정보에 있는 파일 불러오기
+        List<File> files = fileRepository.findByFileInfo(fileInfo);
+
+        // 파일에 있는 url 수정
+        for (File file : files) {
+            String fileName = file.getFileName();
+            if (fileName.endsWith(".epub")) {
+                file.setFileUrl(bookUpdateList.getEpubUrl());
+            } else if (fileName.endsWith(".png") || fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")) {
+                file.setFileUrl(bookUpdateList.getCoverUrl());
+            }
+        }
+
+        // 도서 수정 (수정요청사항을 도서에 덮어쓰기)
+        book.setTitle(bookUpdateList.getTitle());
+        book.setAuthor(bookUpdateList.getAuthor());
+        book.setPrice(bookUpdateList.getPrice());
+        book.setIntroduction(bookUpdateList.getIntroduction());
+        book.setBigCategory(bookUpdateList.getBigCategory());
+        book.setSmallCategory(bookUpdateList.getSmallCategory());
+        book.setAuthorInfo(bookUpdateList.getAuthorInfo());
+
+        // 수정요청 상태값 변경
+        bookUpdateList.setStatus(BookUpdateListStatus.DELETE);
+
+        return bookRepository.save(book);
     }
 
     @Transactional
@@ -439,6 +507,5 @@ public class BookService {
 
     public void delete(Book book) {
     }
-
 
 }

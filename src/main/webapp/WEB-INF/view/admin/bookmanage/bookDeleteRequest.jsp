@@ -51,24 +51,21 @@
 
             <div class="mb-3 mt-3" >
                 <label for="introduction" class="form-label">책소개</label>
-                <textarea class="form-control" id="introduction" rows="5" readonly>
-
-            </textarea>
+                <textarea class="form-control" id="introduction" rows="5" readonly></textarea>
             </div>
+
             <div class="mb-3 mt-3" >
                 <label for="authorInfo" class="form-label">저자소개</label>
-                <textarea class="form-control" id="authorInfo" rows="5" readonly>
-
-            </textarea>
+                <textarea class="form-control" id="authorInfo" rows="5" readonly></textarea>
             </div>
 
             <div class="mb-3 mt-3" >
-                <label for="detail" class="form-label">삭제 사유</label>
-                <textarea class="form-control" id="detail" rows="5"></textarea>
+                <label for="content" class="form-label">삭제 사유</label>
+                <textarea class="form-control" id="content" rows="5" readonly></textarea>
             </div>
 
             <div class="d-flex justify-content-center">
-                <button onclick="save()" type="button" class="btn btn-primary">삭제 요청</button>
+                <button onclick="save()" type="button" class="btn btn-primary">삭제 승인</button>
             </div>
         </div>
     </form>
@@ -80,7 +77,7 @@
 
     $(document).ready(function() {
         $.ajax({
-            url: `http://localhost:8080/api/books/` + id,
+            url: `http://localhost:8080/api/books/deleteRequest/` + id,
             type: 'GET',
             dataType: 'json',
         })
@@ -92,7 +89,9 @@
             })
     });
 
-    function populateTable(book) {
+    function populateTable(res) {
+        let book = res.book;
+        $('#coverUrl').attr('src', res.coverUrl);
         $('#title').val(book.title);
         $('#author').val(book.author);
         $('#publisher').val(book.publisher.businessName);
@@ -101,7 +100,7 @@
         $('#SmallCategory').val(book.smallCategory.smallCategory);
         $('#introduction').text(book.introduction);
         $('#authorInfo').text(book.authorInfo);
-        $('#coverUrl').attr('src', book.coverUrl);
+        $('#content').text(res.content);
     }
 
     function save() {

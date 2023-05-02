@@ -596,7 +596,7 @@ INSERT INTO BOOK_PAYMENT_TB(user_id, book_id, price, payment_time, status) VALUE
 INSERT INTO BOOK_PAYMENT_TB(user_id, book_id, price, payment_time, status) VALUES(2, 50, 15000, '2021-01-01 00:01', 'ACTIVE');
 INSERT INTO BOOK_PAYMENT_TB(user_id, book_id, price, payment_time, status) VALUES(3, 50, 15000, '2021-01-01 00:01', 'ACTIVE');
 
-insert into BOOK_UPDATE_LIST_TB(book_id, publisher_id, title, author, price, introduction, epub_url, cover_url, big_category_id, small_category_id, author_info, content, status) values (1,1,'수정할 제목','수정할 저자', 2000, '수정할 책 소개', 'https://test.com/test.epub', 'https://cdn.pixabay.com/photo/2023/04/22/02/20/insect-7942861_640.jpg', 1,1,'수정할 저자정보','수정하고싶어요', 'ACTIVE');
+insert into BOOK_UPDATE_LIST_TB(book_id, publisher_id, title, author, price, introduction, epub_url, cover_url, big_category_id, small_category_id, author_info, content, status) values (1,1,'수정할 제목','수정할 저자', 2000, '수정할 책 소개', 'https://test.com/test.epub', 'https://cdn.pixabay.com/photo/2023/04/10/15/12/succulent-7914023__340.jpg', 1,1,'수정할 저자정보','수정하고싶어요', 'ACTIVE');
 
 insert into BOOK_DELETE_LIST_TB(book_id, cover_url, content, status) values (2, 'https://cdn.pixabay.com/photo/2023/04/22/22/58/bird-7944578__340.jpg', '그냥 삭제하고싶어서', 'ACTIVE');
 

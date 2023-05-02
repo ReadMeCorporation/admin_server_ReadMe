@@ -73,7 +73,7 @@
             </div>
 
             <div class="d-flex justify-content-center">
-                <button onclick="save()" type="button" class="btn btn-primary">수정 승인</button>
+                <button onclick="update()" type="button" class="btn btn-primary">수정 승인</button>
             </div>
         </div>
     </form>
@@ -98,7 +98,7 @@
 
     function populateTable(res) {
         let book = res.book;
-        $('#coverUrl').attr('src', book.coverUrl);
+        $('#coverUrl').attr('src', res.coverUrl);
         $('#title').val(book.title);
         $('#author').val(book.author);
         $('#publisher').val(book.publisher.businessName);
@@ -109,7 +109,21 @@
         $('#authorInfo').text(book.authorInfo);
         $('#epubFileName').text(book.epubUrl.split('/').pop());
         $('#bookCoverName').text(book.coverUrl.split('/').pop());
-        $('#content').text(res.content);
+        $('#content').text(book.content);
+    }
+
+    function update(){
+        $.ajax({
+            type: 'PUT',
+            url: '/books/'+ id,
+            contentType: 'application/json',
+            dataType: "json"
+        }).done((res) => { // 20X 일때
+            alert(res.msg);
+            location.href = "/admins/books/bookUpdateAndDeleteList";
+        }).fail((err) => { // 40X, 50X 일때
+            alert(err.responseJSON.msg);
+        });
     }
 
 </script>

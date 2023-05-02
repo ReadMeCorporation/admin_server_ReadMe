@@ -68,18 +68,15 @@
                 <textarea class="form-control" id="authorInfo" rows="5"></textarea>
             </div>
 
-
-
             <div class="mb-3 mt-3">
-                <label for="epubFile" class="form-label">도서 파일</label>
+<%--TODO 업로드 안했을때 기존값 보이게 하고싶음--%>
+                <label for="epubFile" class="form-label">도서 파일 - 업로드 하지않을시 기존파일로 설정됩니다</label>
                 <input type="file" class="form-control" id="epubFile" name="epubFile" accept=".epub">
             </div>
             <div class="mb-3 mt-3">
-                <label for="bookCover" class="form-label">표지</label>
+                <label for="bookCover" class="form-label">표지 - 업로드 하지않을시 기존파일로 설정됩니다</label>
                 <input type="file" class="form-control" id="bookCover" name="bookCover" accept="image/*">
             </div>
-
-
 
             <div class="mb-3 mt-3" >
                 <label for="content" class="form-label">수정사항 디테일</label>
@@ -133,8 +130,15 @@
         formData.append('price', $('#price').val());
         formData.append('introduction', $('#introduction').val());
 
-        formData.append('epubFile', $('#epubFile').get(0).files[0]);
-        formData.append('bookCover', $('#bookCover').get(0).files[0]);
+        // 파일이 있을 경우에만 추가
+        if ($('#epubFile').get(0).files[0]) {
+            formData.append('epubFile', $('#epubFile').get(0).files[0]);
+        }
+
+        // 파일이 있을 경우에만 추가
+        if ($('#bookCover').get(0).files[0]) {
+            formData.append('bookCover', $('#bookCover').get(0).files[0]);
+        }
 
         formData.append('bigCategory', $('#bigCategory').val());
         changeSmallCategory();

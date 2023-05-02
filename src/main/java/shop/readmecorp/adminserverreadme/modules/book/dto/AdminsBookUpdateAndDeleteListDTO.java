@@ -1,7 +1,10 @@
 package shop.readmecorp.adminserverreadme.modules.book.dto;
 
 
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter

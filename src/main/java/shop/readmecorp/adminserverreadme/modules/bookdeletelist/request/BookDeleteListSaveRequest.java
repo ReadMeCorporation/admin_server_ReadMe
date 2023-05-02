@@ -12,8 +12,6 @@ import shop.readmecorp.adminserverreadme.modules.book.dto.BookDTO;
 @NoArgsConstructor
 public class BookDeleteListSaveRequest {
 
-    private BookDTO book;
-
     private String content;
 
 }

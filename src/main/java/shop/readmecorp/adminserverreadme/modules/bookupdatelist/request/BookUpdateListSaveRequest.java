@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
-import shop.readmecorp.adminserverreadme.modules.book.dto.BookDTO;
 import shop.readmecorp.adminserverreadme.modules.category.enums.BigCategoryType;
 import shop.readmecorp.adminserverreadme.modules.category.enums.SmallCategoryType;
 
@@ -33,7 +32,6 @@ public class BookUpdateListSaveRequest {
     @NotBlank(message = "책 소개를 입력해주세요.")
     private String introduction;
 
-    @NotNull(message = "책 파일을 업로드해주세요.")
     private MultipartFile epubFile;
 
     @NotNull(message = "큰 카테고리를 입력해주세요.")
@@ -45,7 +43,6 @@ public class BookUpdateListSaveRequest {
     @NotBlank(message = "저자소개를 입력해주세요.")
     private String authorInfo;
 
-    @NotNull(message = "표지를 업로드해주세요.")
     private MultipartFile bookCover;
 
     private String content;

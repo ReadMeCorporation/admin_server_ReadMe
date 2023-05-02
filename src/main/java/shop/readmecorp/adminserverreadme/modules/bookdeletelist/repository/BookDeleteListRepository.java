@@ -5,8 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import shop.readmecorp.adminserverreadme.modules.bookdeletelist.entity.BookDeleteList;
 import shop.readmecorp.adminserverreadme.modules.bookdeletelist.enums.BookDeleteListStatus;
-import shop.readmecorp.adminserverreadme.modules.bookupdatelist.entity.BookUpdateList;
-import shop.readmecorp.adminserverreadme.modules.bookupdatelist.enums.BookUpdateListStatus;
 
 import java.util.List;
 import java.util.Optional;
