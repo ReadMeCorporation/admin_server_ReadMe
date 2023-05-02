@@ -497,15 +497,38 @@ public class BookService {
     }
 
     @Transactional
+    public Book deleteBook(String status, Integer id) throws Exception {
+        Map<String, Object> jsonData = objectMapper.readValue(status, new TypeReference<Map<String, Object>>() {});
+        String bookStatus = jsonData.get("status").toString();
+
+        // id로 수정요청 찾기
+        Optional<BookDeleteList> optionalBookDeleteList = bookDeleteListRepository.findById(id);
+        if (optionalBookDeleteList.isEmpty()) {
+            throw new Exception400(BookUpdateListConst.notFound);
+        }
+        BookDeleteList bookDeleteList = optionalBookDeleteList.get();
+
+        Optional<Book> optionalBook = bookRepository.findById(bookDeleteList.getBook().getId());
+        if (optionalBook.isEmpty()) {
+            throw new Exception400(BookConst.notFound);
+        }
+
+        Book book = optionalBook.get();
+        // 도서 상태변경
+        book.setStatus(BookStatus.valueOf(bookStatus));
+
+        // 삭제요청 상태변경
+        bookDeleteList.setStatus(BookDeleteListStatus.DELETE);
+        return bookRepository.save(book);
+    }
+
+    @Transactional
     public Book updateState(String status, Book book) throws Exception {
         Map<String, Object> jsonData = objectMapper.readValue(status, new TypeReference<Map<String, Object>>() {});
         String bookStatus = jsonData.get("status").toString();
         // 책 상태 변경
         book.setStatus(BookStatus.valueOf(bookStatus));
         return bookRepository.save(book);
-    }
-
-    public void delete(Book book) {
     }
 
 }

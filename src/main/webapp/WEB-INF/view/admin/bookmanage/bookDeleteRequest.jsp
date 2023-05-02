@@ -65,7 +65,7 @@
             </div>
 
             <div class="d-flex justify-content-center">
-                <button onclick="save()" type="button" class="btn btn-primary">삭제 승인</button>
+                <button onclick="changeStatus()" type="button" class="btn btn-primary">삭제 승인</button>
             </div>
         </div>
     </form>
@@ -73,7 +73,7 @@
 </div>
 
 <script>
-    const id = ${id}
+    const id = ${id};
 
     $(document).ready(function() {
         $.ajax({
@@ -103,23 +103,28 @@
         $('#content').text(res.content);
     }
 
-    function save() {
-        content = $('#detail').val();
-
+    // 변경된 상태를 서버에 전송하는 코드
+    function changeStatus() {
         $.ajax({
-            type: 'post',
-            url: '/bookDeleteList/'+id,
-            data: JSON.stringify({ content: content }),
+            url: 'http://localhost:8080/books/' + id +'/delete',
+            type: 'PUT',
+            dataType: 'json',
             contentType: 'application/json',
-            processData: false,
-            dataType: "json"
-        }).done((res) => { // 20X 일때
-            alert(res.msg);
-            location.href = "/publishers/books";
-        }).fail((err) => { // 40X, 50X 일때
-            alert(err.responseJSON.msg);
-        });
+            data: JSON.stringify({
+                status: 'DELETE'
+            })
+        })
+            .done((res) => {
+                // 성공 시 처리할 내용 (예: 알림 표시, 테이블 업데이트 등)
+                alert("비활성화 되었습니다.");
+                location.href = "/admins/books/bookUpdateAndDeleteList"
+            })
+            .fail((err) => {
+                // 실패 시 처리할 내용 (예: 오류 메시지 표시 등)
+                alert("비활성화에 실패했습니다. 오류: " + err.responseJSON.msg);
+            });
     }
+
 
 </script>
 

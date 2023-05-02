@@ -109,33 +109,28 @@ public class BookController {
         return new ResponseEntity<>(new ResponseDto<>(1, "도서 수정 성공", null), HttpStatus.CREATED);
     }
 
+    // 도서 삭제 승인
+    @PutMapping("/books/{id}/delete")
+    public ResponseEntity<BookResponse> deleteBook(
+            @PathVariable Integer id,
+            @RequestBody String status
+    ) throws Exception {
+        Book update = bookService.deleteBook(status, id);
+        return ResponseEntity.ok(update.toResponse());
+    }
+
     // 도서 상태 변경
     @PutMapping("/books/{id}/state")
     public ResponseEntity<BookResponse> updateBookState(
             @PathVariable Integer id,
-            @RequestBody String status,
-            Errors error
+            @RequestBody String status
     ) throws Exception {
-
         Optional<Book> optionalBook = bookService.getBook(id);
         if (optionalBook.isEmpty()) {
             throw new Exception400(BookConst.notFound);
         }
-
         Book update = bookService.updateState(status, optionalBook.get());
         return ResponseEntity.ok(update.toResponse());
-    }
-
-    @DeleteMapping("/books/{id}")
-    public ResponseEntity<String> delete(@PathVariable Integer id) {
-        Optional<Book> optionalBook = bookService.getBook(id);
-        if (optionalBook.isEmpty()) {
-            throw new Exception400(BookConst.notFound);
-        }
-
-        bookService.delete(optionalBook.get());
-
-        return ResponseEntity.ok("삭제가 완료되었습니다.");
     }
 
     @GetMapping("/admins/books")
