@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Comment;
 
 @Getter
 @Setter
@@ -13,11 +14,13 @@ public class FileDTO {
 
     private Integer id;
 
-    private FileInfoDTO fileInfo;
-
     private String fileName;
 
     private String fileUrl;
+
+    private Integer fileSize;
+
+    private String extension;
 
     private String status;
 

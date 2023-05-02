@@ -1,5 +1,6 @@
 package shop.readmecorp.adminserverreadme.modules.book.service;
 
+import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.data.domain.Page;
@@ -7,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import shop.readmecorp.adminserverreadme.common.exception.Exception400;
+import shop.readmecorp.adminserverreadme.common.util.ParseMultipart;
 import shop.readmecorp.adminserverreadme.common.util.S3Upload;
 import shop.readmecorp.adminserverreadme.modules.book.dto.PublishersBookListDTO;
 import shop.readmecorp.adminserverreadme.modules.book.entity.Book;
@@ -112,14 +114,21 @@ public class BookService {
         Optional<SmallCategory> optionalSmallCategory = smallCategoryRepository.findBySmallCategory(request.getSmallCategory());
 
         // fileInfo 생성
-        FileInfo fileInfo = fileInfoRepository.save(FileInfo.builder().type(FileType.BOOK).build());
+        FileInfo epubFileInfo = fileInfoRepository.save(FileInfo.builder().type(FileType.BOOK_EPUB).build());
+        FileInfo coverFileInfo = fileInfoRepository.save(FileInfo.builder().type(FileType.BOOK_COVER).build());
 
 
         String epubUrl = "";
         String coverUrl = "";
+        Integer epubSize = 0;
+        Integer coverSize = 0;
+        ObjectMetadata objMeta = new ObjectMetadata();
         try {
             epubUrl += s3Upload.upload(request.getEpubFile(), "bookepub/");
             coverUrl += s3Upload.upload(request.getBookCover(), "bookcover/");
+            epubSize = request.getEpubFile().getInputStream().available();
+            coverSize = request.getBookCover().getInputStream().available();
+
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
@@ -131,16 +140,20 @@ public class BookService {
 
         // 파일생성
         fileRepository.save(File.builder()
-                .fileInfo(fileInfo)
+                .fileInfo(epubFileInfo)
                 .fileName(epubName)
                 .fileUrl(epubUrl)
+                .fileSize(epubSize)
+                .extension(ParseMultipart.getFileExtension(request.getEpubFile()))
                 .status(FileStatus.WAIT)
                 .build());
 
         fileRepository.save(File.builder()
-                .fileInfo(fileInfo)
+                .fileInfo(coverFileInfo)
                 .fileName(coverName)
                 .fileUrl(coverUrl)
+                .fileSize(coverSize)
+                .extension(ParseMultipart.getFileExtension(request.getBookCover()))
                 .status(FileStatus.WAIT)
                 .build());
 
@@ -154,7 +167,8 @@ public class BookService {
                 .bigCategory(optionalBigCategory.get())
                 .smallCategory(optionalSmallCategory.get())
                 .authorInfo(request.getAuthorInfo())
-                .fileInfo(fileInfo)
+                .epub(epubFileInfo)
+                .cover(coverFileInfo)
                 .status(BookStatus.WAIT)
                 .build();
 

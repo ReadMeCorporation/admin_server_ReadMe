@@ -43,40 +43,48 @@ public class Book extends BaseTime {
     @Comment("책 소개")
     private String introduction;
 
-//    @Comment("파일 경로")
-//    private String filePath;
+    @Comment("파일 경로")
+    private String filePath;
 
     @Comment("대분류 카테고리")
     @OneToOne
+    @JoinColumn(name = "big_category_id")
     private BigCategory bigCategory;
 
     @Comment("소분류 카테고리")
     @OneToOne
+    @JoinColumn(name = "small_category_id")
     private SmallCategory smallCategory;
 
     @Comment("저자 정보")
     private String authorInfo;
 
-    @Comment("표지 사진")
+    @Comment("epub 파일 출처")
     @ManyToOne
-    private FileInfo fileInfo;
+    private FileInfo epub;
+
+    @Comment("cover 파일 출처")
+    @ManyToOne
+    private FileInfo cover;
 
     @Comment("책 활성화 상태")
     @Enumerated(EnumType.STRING)
     private BookStatus status;
 
     @Builder
-    public Book(Integer id, Publisher publisher, String title, String author, Integer price, String introduction, BigCategory bigCategory, SmallCategory smallCategory, String authorInfo, FileInfo fileInfo, BookStatus status) {
+    public Book(Integer id, Publisher publisher, String title, String author, Integer price, String introduction, String filePath, BigCategory bigCategory, SmallCategory smallCategory, String authorInfo, FileInfo epub, FileInfo cover, BookStatus status) {
         this.id = id;
         this.publisher = publisher;
         this.title = title;
         this.author = author;
         this.price = price;
         this.introduction = introduction;
+        this.filePath = filePath;
         this.bigCategory = bigCategory;
         this.smallCategory = smallCategory;
         this.authorInfo = authorInfo;
-        this.fileInfo = fileInfo;
+        this.epub = epub;
+        this.cover = cover;
         this.status = status;
     }
 
@@ -89,6 +97,7 @@ public class Book extends BaseTime {
                 .price(price)
                 .introduction(introduction)
                 .bigCategory(bigCategory.toDTO())
+                .smallCategory(smallCategory.toDTO())
                 .authorInfo(authorInfo)
                 .status(status.name())
                 .build();
