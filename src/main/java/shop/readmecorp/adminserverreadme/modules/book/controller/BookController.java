@@ -8,11 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import shop.readmecorp.adminserverreadme.common.exception.Exception400;
-import shop.readmecorp.adminserverreadme.modules.ResponseDto;
+import shop.readmecorp.adminserverreadme.modules.ResponseDTO;
 import shop.readmecorp.adminserverreadme.modules.book.BookConst;
 import shop.readmecorp.adminserverreadme.modules.book.dto.AdminsBookUpdateAndDeleteListDTO;
 import shop.readmecorp.adminserverreadme.modules.book.dto.BookDTO;
-import shop.readmecorp.adminserverreadme.modules.book.dto.PublishersBookListDTO;
+//import shop.readmecorp.adminserverreadme.modules.book.dto.PublishersBookListDTO;
 import shop.readmecorp.adminserverreadme.modules.book.entity.Book;
 import shop.readmecorp.adminserverreadme.modules.book.request.BookSaveRequest;
 import shop.readmecorp.adminserverreadme.modules.book.response.BookResponse;
@@ -34,46 +34,61 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    // 도서 조회 (ACTIVE)
+    // 전체 도서 리스트 조회 (ACTIVE)
     @GetMapping("/api/books")
-    public ResponseEntity<Page<BookDTO>> getBookListActive(Pageable pageable) {
-        return ResponseEntity.ok(bookService.getBookListActive(pageable));
+    public ResponseEntity<?> getBookListActive(Pageable pageable) {
+        return ResponseEntity.ok(new ResponseDTO<>(1, "전체 도서 리스트 조회 성공", bookService.getBookListActive(pageable)));
     }
 
-    // 도서 조회 한건
+    // 도서 조회 한건 ( 도서 id )
     @GetMapping("/api/books/{id}")
-    public ResponseEntity<BookResponse> getBookWithBookCover(@PathVariable Integer id) {
-        return ResponseEntity.ok(bookService.getBookWithBookCover(id));
+    public ResponseEntity<?> getBookWithBookCover(@PathVariable Integer id) {
+
+        return ResponseEntity.ok(new ResponseDTO<>(1, "도서 조회 성공", bookService.getBookWithBookCover(id)));
     }
 
-    // 도서 조회 (ACTIVE, DELETE)
+    // 도서 조회한건 (표지없고 책테이블만)
+    @GetMapping("/{id}")
+    public ResponseEntity<BookResponse> getBook (@PathVariable Integer id) {
+        var optionalBook = bookService.getBook(id);
+        if (optionalBook.isEmpty()) {
+            throw new Exception400(BookConst.notFound);
+        }
+
+        return ResponseEntity.ok(
+                optionalBook.get().toResponse()
+        );
+    }
+
+    // 도서 리스트 조회 (ACTIVE, DELETE)
     @GetMapping("/api/books/activeOrDelete")
-    public ResponseEntity<Page<BookDTO>> getBookListActiveOrDelete(Pageable pageable) {
-        return ResponseEntity.ok(bookService.getBookListActiveOrDelete(pageable));
+    public ResponseEntity<?> getBookListActiveOrDelete(Pageable pageable) {
+        return ResponseEntity.ok(new ResponseDTO<>(1, "도서 리스트 조회(ACTIVE, DELETE) 성공", bookService.getBookListActiveOrDelete(pageable)));
     }
 
-    // 도서 조회 + 별점평균 + 스크랩
+    // 도서 리스트 조회 (해당 출판사도서만)
     @GetMapping("/api/publishers/books")
-    public ResponseEntity<List<PublishersBookListDTO>> getPublishersBookList(Integer publisherId) {
-        return ResponseEntity.ok(bookService.getPublishersBookList(publisherId));
+    public ResponseEntity<?> getPublishersBookList(Integer publisherId, Pageable pageable) {
+        return ResponseEntity.ok(bookService.getPublishersBookList(publisherId, pageable));
     }
 
     // 도서 대기 (출판사에서 사용)
     @GetMapping("/api/publishers/books/request")
-    public ResponseEntity<List<BookDTO>> getPublishersBookListRequest(Integer publisherId) {
-        return ResponseEntity.ok(bookService.getPublishersBookRequest(publisherId));
+    public ResponseEntity<?> getPublishersBookListRequest(Integer publisherId, Pageable pageable) {
+        return ResponseEntity.ok(bookService.getPublishersBookRequest(publisherId, pageable));
     }
 
-    // 도서 신규승인 (어드민에서 사용)
+
+    // 도서 신규승인 조회(어드민에서 사용)
     @GetMapping("/api/books/saveList")
-    public ResponseEntity<Page<BookDTO>> getBookSaveList(Pageable pageable) {
-        return ResponseEntity.ok(bookService.getBookSaveList(pageable));
+    public ResponseEntity<?> getBookSaveList(Pageable pageable) {
+        return ResponseEntity.ok(new ResponseDTO<>(1, "도서 신규승인 조회 성공", bookService.getBookSaveList(pageable)));
     }
 
-    // 도서 수정&삭제 요청목록 (어드민에서 사용)
+    // 도서 수정&삭제 요청목록 조회 (어드민에서 사용)
     @GetMapping("/api/books/updateListAndDeleteList")
-    public ResponseEntity<List<AdminsBookUpdateAndDeleteListDTO>> getBookUpdateAndDeleteList() {
-        return ResponseEntity.ok(bookService.getBookUpdateAndDeleteList());
+    public ResponseEntity<?> getBookUpdateAndDeleteList(Pageable pageable) {
+        return ResponseEntity.ok(new ResponseDTO<>(1, "도서 수정&삭제 요청목록 조회 성공", bookService.getBookUpdateAndDeleteList(pageable)));
     }
 
     // 도서 수정 요청화면 (어드민에서 사용)
@@ -98,15 +113,14 @@ public class BookController {
             throw new Exception400(error.getAllErrors().get(0).getDefaultMessage());
         }
 
-        bookService.save(request);
-        return new ResponseEntity<>(new ResponseDto<>(1, "도서 등록 요청 성공", null), HttpStatus.CREATED);
+        return new ResponseEntity<>(new ResponseDTO<>(1, "도서 등록 요청 성공", bookService.save(request)), HttpStatus.CREATED);
     }
 
     // 도서 수정 승인 (어드민에서 사용)
     @PutMapping("/books/{id}")
     public ResponseEntity<?> updateBook(@PathVariable Integer id) {
-        bookService.update(id);
-        return new ResponseEntity<>(new ResponseDto<>(1, "도서 수정 성공", null), HttpStatus.CREATED);
+
+        return new ResponseEntity<>(new ResponseDTO<>(1, "도서 수정 성공", bookService.update(id)), HttpStatus.CREATED);
     }
 
     // 도서 삭제 승인
@@ -118,7 +132,7 @@ public class BookController {
         Book update = bookService.deleteBook(status, id);
         return ResponseEntity.ok(update.toResponse());
     }
-
+//
     // 도서 상태 변경
     @PutMapping("/books/{id}/state")
     public ResponseEntity<BookResponse> updateBookState(

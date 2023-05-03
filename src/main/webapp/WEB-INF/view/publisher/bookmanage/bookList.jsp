@@ -41,7 +41,7 @@
                 data: { publisherId: publisherId }
             })
                 .done((res) => {
-                    populateTable(res);
+                    populateTable(res.content);
                 })
                 .fail((err) => {
                     alert(err.responseJSON.msg);
@@ -58,14 +58,14 @@
             var book = books[i];
             var tr = $('<tr>');
             tr.append('<th scope="row">' + (i + 1) + '</th>');
-            tr.append('<td><img src="' + book.coverUrl + '" style="width: 75px;height: 100px"></td>');
+            tr.append('<td><img src="' + book.coverFile.fileUrl + '" style="width: 75px;height: 100px"></td>');
             tr.append('<td><a href="/publishers/books/detail/' + book.id + '">' + book.title + '</a></td>');
             tr.append('<td>' + book.author + '</td>');
             tr.append('<td>' + book.stars + '</td>');
             tr.append('<td>' + book.hearts + '</td>');
-            tr.append('<td>' + book.status + '</td>');
+            tr.append('<td>' + getStatusInKorean(book.status) + '</td>');
 
-            if (book.status == 'WAIT'){
+            if (book.status == 'WAIT' || book.status == 'UPDATEREQUEST' || book.status == 'DELETEREQUEST'){
                 tr.append(`
                     <td>
                         <button type="button" class="btn btn-warning" disabled>수정</button>
@@ -83,6 +83,27 @@
             tbody.append(tr);
         }
     }
+
+    // 상태값을 한글로 치환
+    function getStatusInKorean(status) {
+        switch (status) {
+            case 'ACTIVE':
+                return '활성';
+            case 'DELETE':
+                return '삭제';
+            case 'WAIT':
+                return '등록요청상태';
+            case 'REJECTED':
+                return '거부됨';
+            case 'UPDATEREQUEST':
+                return '수정요청상태';
+            case 'DELETEREQUEST':
+                return '삭제요청상태';
+            default:
+                return status;
+        }
+    }
+
 
 </script>
 

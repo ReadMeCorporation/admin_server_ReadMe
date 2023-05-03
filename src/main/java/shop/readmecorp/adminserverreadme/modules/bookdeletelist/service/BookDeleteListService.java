@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 import shop.readmecorp.adminserverreadme.common.exception.CustomException;
 import shop.readmecorp.adminserverreadme.modules.book.BookConst;
 import shop.readmecorp.adminserverreadme.modules.book.entity.Book;
+import shop.readmecorp.adminserverreadme.modules.book.enums.BookStatus;
 import shop.readmecorp.adminserverreadme.modules.book.repository.BookRepository;
 import shop.readmecorp.adminserverreadme.modules.bookdeletelist.entity.BookDeleteList;
 import shop.readmecorp.adminserverreadme.modules.bookdeletelist.enums.BookDeleteListStatus;
@@ -43,16 +44,13 @@ public class BookDeleteListService {
 
         String coverUrl = "";
         // 파일정보 불러오기
-        FileInfo fileInfo = book.getFileInfo();
+        FileInfo fileInfoCover = book.getCover();
         // 파일정보에 있는 파일 불러오기
-        List<File> files = fileRepository.findByFileInfo(fileInfo);
+        List<File> coverFiles = fileRepository.findByFileInfo(fileInfoCover);
 
         // 파일에 있는 url을 변수에 입력
-        for (File file : files) {
-            String fileName = file.getFileName();
-            if (fileName.endsWith(".png") || fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")) {
-                coverUrl = file.getFileUrl();
-            }
+        for (File file : coverFiles) {
+            coverUrl = file.getFileUrl();
         }
 
 
@@ -64,6 +62,8 @@ public class BookDeleteListService {
                 .status(BookDeleteListStatus.ACTIVE)
                 .build();
 
+        // 도서 상태변경
+        book.setStatus(BookStatus.DELETEREQUEST);
         return bookDeleteListRepository.save(bookDeleteList);
     }
 

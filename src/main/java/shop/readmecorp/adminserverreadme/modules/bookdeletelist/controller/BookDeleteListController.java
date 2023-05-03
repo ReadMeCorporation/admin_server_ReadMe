@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import shop.readmecorp.adminserverreadme.common.exception.Exception400;
-import shop.readmecorp.adminserverreadme.modules.ResponseDto;
+import shop.readmecorp.adminserverreadme.modules.ResponseDTO;
 import shop.readmecorp.adminserverreadme.modules.bookdeletelist.request.BookDeleteListSaveRequest;
 import shop.readmecorp.adminserverreadme.modules.bookdeletelist.service.BookDeleteListService;
 
@@ -31,7 +31,6 @@ public class BookDeleteListController {
             throw new Exception400(error.getAllErrors().get(0).getDefaultMessage());
         }
 
-        bookDeleteListService.save(request, bookId);
-        return new ResponseEntity<>(new ResponseDto<>(1, "도서 삭제 요청 성공", null), HttpStatus.CREATED);
+        return new ResponseEntity<>(new ResponseDTO<>(1, "도서 삭제 요청 성공", bookDeleteListService.save(request, bookId)), HttpStatus.CREATED);
     }
 }

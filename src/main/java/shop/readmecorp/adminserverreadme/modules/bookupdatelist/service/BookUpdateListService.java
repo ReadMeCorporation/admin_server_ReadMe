@@ -6,6 +6,7 @@ import shop.readmecorp.adminserverreadme.common.exception.CustomException;
 import shop.readmecorp.adminserverreadme.common.util.S3Upload;
 import shop.readmecorp.adminserverreadme.modules.book.BookConst;
 import shop.readmecorp.adminserverreadme.modules.book.entity.Book;
+import shop.readmecorp.adminserverreadme.modules.book.enums.BookStatus;
 import shop.readmecorp.adminserverreadme.modules.book.repository.BookRepository;
 import shop.readmecorp.adminserverreadme.modules.bookupdatelist.entity.BookUpdateList;
 import shop.readmecorp.adminserverreadme.modules.bookupdatelist.enums.BookUpdateListStatus;
@@ -65,19 +66,20 @@ public class BookUpdateListService {
             String coverUrl = "";
 
             // 파일정보 불러오기
-            FileInfo fileInfo = book.getFileInfo();
+            FileInfo fileInfoEpub = book.getEpub();
+            FileInfo fileInfoCover = book.getCover();
             // 파일정보에 있는 파일 불러오기
-            List<File> files = fileRepository.findByFileInfo(fileInfo);
+            List<File> epubFiles = fileRepository.findByFileInfo(fileInfoEpub);
+            List<File> coverFiles = fileRepository.findByFileInfo(fileInfoCover);
 
             // 파일에 있는 url을 변수에 입력
-            for (File file : files) {
-                String fileName = file.getFileName();
-                if (fileName.endsWith(".epub")) {
-                    epubUrl = file.getFileUrl();
-                } else if (fileName.endsWith(".png") || fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")) {
-                    coverUrl = file.getFileUrl();
-                }
+            for (File file : coverFiles) {
+                coverUrl = file.getFileUrl();
             }
+            for (File file : epubFiles) {
+                epubUrl = file.getFileUrl();
+            }
+
             // 업로드 했을시 epubUrl 수정
             if (request.getEpubFile() != null) {
                 try {
@@ -86,6 +88,7 @@ public class BookUpdateListService {
                     ioException.printStackTrace();
                 }
             }
+
             // 업로드 했을시 coverUrl 수정
             if (request.getBookCover() != null) {
                 try {
@@ -113,6 +116,8 @@ public class BookUpdateListService {
                     .status(BookUpdateListStatus.ACTIVE)
                     .build();
 
+            // 도서 상태변경
+            book.setStatus(BookStatus.UPDATEREQUEST);
             return bookUpdateListRepository.save(bookUpdateList);
         }
 }

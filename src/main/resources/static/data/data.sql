@@ -177,56 +177,56 @@ insert into SMALL_CATEGORY_TB(small_category, big_category_id, status) values ('
 insert into SMALL_CATEGORY_TB(small_category, big_category_id, status) values ('동양사', 7, 'ACTIVE');
 insert into SMALL_CATEGORY_TB(small_category, big_category_id, status) values ('신화',7, 'ACTIVE');
 
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목1', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 1, 2, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목2', '저자2', 1000,'책소개2', 2, 6, '저자정보2', 3, 4, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목1', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 1, 2, 'UPDATEREQUEST');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목2', '저자2', 1000,'책소개2', 2, 6, '저자정보2', 3, 4, 'DELETEREQUEST');
 insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목3', '저자3', 1000,'책소개3', 3, 11, '저자정보3', 5, 6, 'ACTIVE');
 insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (2, '책제목4', '저자4', 1000,'책소개4', 4, 16, '저자정보4', 7, 8, 'WAIT');
 insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (2, '책제목5', '저자5', 1000,'책소개5', 5, 21, '저자정보5', 9, 10, 'DELETE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (3, '책제목6', '저자6', 1000,'책소개6', 5, 21, '저자정보6', 1, 6, 'DELETE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (3, '책제목7', '저자7', 1000,'책소개7', 5, 21, '저자정보7', 1, 7, 'DELETE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (2, '책제목5', '저자5', 1000,'책소개5', 5, 21, '저자정보5', 1, 5, 'DELETE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (3, '책제목6', '저자6', 1000,'책소개6', 5, 21, '저자정보6', 1, 6, 'DELETE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (3, '책제목7', '저자7', 1000,'책소개7', 5, 21, '저자정보7', 1, 7, 'DELETE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (2, '책제목5', '저자5', 1000,'책소개5', 5, 21, '저자정보5', 1, 5, 'DELETE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (3, '책제목6', '저자6', 1000,'책소개6', 5, 21, '저자정보6', 1, 6, 'DELETE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (3, '책제목7', '저자7', 1000,'책소개7', 5, 21, '저자정보7', 1, 7, 'DELETE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목1', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 1, 1, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목2', '저자2', 1000,'책소개2', 2, 6, '저자정보2', 1, 2, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목3', '저자3', 1000,'책소개3', 3, 11, '저자정보3', 1, 3, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목1', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 1, 1, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목2', '저자2', 1000,'책소개2', 2, 6, '저자정보2', 1, 2, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목3', '저자3', 1000,'책소개3', 3, 11, '저자정보3', 1, 3, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목1', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 1, 1, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목2', '저자2', 1000,'책소개2', 2, 6, '저자정보2', 1, 2, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목3', '저자3', 1000,'책소개3', 3, 11, '저자정보3', 1, 3, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목1', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 1, 1, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목2', '저자2', 1000,'책소개2', 2, 6, '저자정보2', 1, 2, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목3', '저자3', 1000,'책소개3', 3, 11, '저자정보3', 1, 3, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목1', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 1, 1, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목2', '저자2', 1000,'책소개2', 2, 6, '저자정보2', 1, 2, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목3', '저자3', 1000,'책소개3', 3, 11, '저자정보3', 1, 3, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목1', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 1, 1, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목2', '저자2', 1000,'책소개2', 2, 6, '저자정보2', 1, 2, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목3', '저자3', 1000,'책소개3', 3, 11, '저자정보3', 1, 3, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목1', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 1, 1, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목2', '저자2', 1000,'책소개2', 2, 6, '저자정보2', 1, 2, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목3', '저자3', 1000,'책소개3', 3, 11, '저자정보3', 1, 3, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목1', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 1, 1, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목2', '저자2', 1000,'책소개2', 2, 6, '저자정보2', 1, 2, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목3', '저자3', 1000,'책소개3', 3, 11, '저자정보3', 1, 3, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목1', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 1, 1, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목2', '저자2', 1000,'책소개2', 2, 6, '저자정보2', 1, 2, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목3', '저자3', 1000,'책소개3', 3, 11, '저자정보3', 1, 3, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목1', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 1, 1, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목2', '저자2', 1000,'책소개2', 2, 6, '저자정보2', 1, 2, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목3', '저자3', 1000,'책소개3', 3, 11, '저자정보3', 1, 3, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목1', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 1, 1, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목2', '저자2', 1000,'책소개2', 2, 6, '저자정보2', 1, 2, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목3', '저자3', 1000,'책소개3', 3, 11, '저자정보3', 1, 3, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목1', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 1, 1, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목2', '저자2', 1000,'책소개2', 2, 6, '저자정보2', 1, 2, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목3', '저자3', 1000,'책소개3', 3, 11, '저자정보3', 1, 3, 'ACTIVE');
-insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목1', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 1, 1, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (3, '책제목6', '저자6', 1000,'책소개6', 5, 21, '저자정보6', 11, 12, 'DELETE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (3, '책제목7', '저자7', 1000,'책소개7', 5, 21, '저자정보7', 13, 14, 'DELETE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (2, '책제목8', '저자5', 1000,'책소개5', 5, 21, '저자정보5', 15, 16, 'DELETE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (3, '책제목9', '저자6', 1000,'책소개6', 5, 21, '저자정보6', 17, 18, 'DELETE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (3, '책제목10', '저자7', 1000,'책소개7', 5, 21, '저자정보7', 19, 20, 'DELETE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (2, '책제목11', '저자5', 1000,'책소개5', 5, 21, '저자정보5', 21, 22, 'DELETE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (3, '책제목12', '저자6', 1000,'책소개6', 5, 21, '저자정보6', 23, 24, 'DELETE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (3, '책제목13', '저자7', 1000,'책소개7', 5, 21, '저자정보7', 25, 26, 'DELETE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목14', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 27, 28, 'WAIT');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목15', '저자2', 1000,'책소개2', 2, 6, '저자정보2', 29, 30, 'WAIT');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목16', '저자3', 1000,'책소개3', 3, 11, '저자정보3', 31, 32, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목17', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 33, 34, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목18', '저자2', 1000,'책소개2', 2, 6, '저자정보2', 35, 36, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목19', '저자3', 1000,'책소개3', 3, 11, '저자정보3', 37, 38, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목20', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 39, 40, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목21', '저자2', 1000,'책소개2', 2, 6, '저자정보2', 41, 42, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목22', '저자3', 1000,'책소개3', 3, 11, '저자정보3', 43, 44, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목23', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 45, 46, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목2', '저자2', 1000,'책소개2', 2, 6, '저자정보2', 47, 48, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목3', '저자3', 1000,'책소개3', 3, 11, '저자정보3', 49, 50, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목1', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 1, 2, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목2', '저자2', 1000,'책소개2', 2, 6, '저자정보2', 3, 4, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목3', '저자3', 1000,'책소개3', 3, 11, '저자정보3', 5, 6, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목1', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 7, 8, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목2', '저자2', 1000,'책소개2', 2, 6, '저자정보2', 9, 10, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목3', '저자3', 1000,'책소개3', 3, 11, '저자정보3', 11, 12, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목1', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 13, 14, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목2', '저자2', 1000,'책소개2', 2, 6, '저자정보2', 15, 16, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목3', '저자3', 1000,'책소개3', 3, 11, '저자정보3', 17, 18, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목1', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 19, 20, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목2', '저자2', 1000,'책소개2', 2, 6, '저자정보2', 21, 22, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목3', '저자3', 1000,'책소개3', 3, 11, '저자정보3', 23, 24, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목1', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 25, 26, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목2', '저자2', 1000,'책소개2', 2, 6, '저자정보2', 27, 28, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목3', '저자3', 1000,'책소개3', 3, 11, '저자정보3', 29, 30, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목1', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 31, 32, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목2', '저자2', 1000,'책소개2', 2, 6, '저자정보2', 33, 34, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목3', '저자3', 1000,'책소개3', 3, 11, '저자정보3', 35, 36, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목1', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 37, 38, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목2', '저자2', 1000,'책소개2', 2, 6, '저자정보2', 39, 40, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목3', '저자3', 1000,'책소개3', 3, 11, '저자정보3', 41, 42, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목1', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 43, 44, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목2', '저자2', 1000,'책소개2', 2, 6, '저자정보2', 45, 46, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목3', '저자3', 1000,'책소개3', 3, 11, '저자정보3', 47, 48, 'ACTIVE');
+insert into BOOK_TB(publisher_id, title, author, price, introduction, big_category_id, small_category_id, author_info, epub_id, cover_id, status) values (1, '책제목1', '저자1', 1000,'책소개1', 1, 1, '저자정보1', 49, 50, 'ACTIVE');
 
 insert into BOOKMARK_TB(user_id, book_id, page_num, status) values (1, 2, 15, 'ACTIVE');
 insert into BOOKMARK_TB(user_id, book_id, page_num, status) values (1, 3, 29, 'ACTIVE');
@@ -266,74 +266,72 @@ INSERT INTO HEART_TB (user_id, book_id, status) VALUES
                                                     (1, 29, 'ACTIVE'),
                                                     (1, 31, 'ACTIVE'),
                                                     (1, 32, 'ACTIVE'),
-                                                    (2, 1, 'ACTIVE'),
-                                                    (2, 64, 'ACTIVE'),
-                                                    (2, 65, 'ACTIVE'),
-                                                    (2, 13, 'ACTIVE'),
-                                                    (2, 67, 'ACTIVE'),
                                                     (2, 14, 'ACTIVE'),
-                                                    (2, 69, 'ACTIVE'),
-                                                    (2, 31, 'ACTIVE'),
                                                     (2, 15, 'ACTIVE'),
-                                                    (2, 4, 'ACTIVE'),
-                                                    (2, 64, 'ACTIVE'),
                                                     (2, 16, 'ACTIVE'),
-                                                    (2, 66, 'ACTIVE'),
-                                                    (2, 67, 'ACTIVE'),
-                                                    (2, 68, 'ACTIVE'),
-                                                    (2, 69, 'ACTIVE'),
+                                                    (2, 17, 'ACTIVE'),
+                                                    (2, 18, 'ACTIVE'),
+                                                    (2, 19, 'ACTIVE'),
+                                                    (2, 20, 'ACTIVE'),
+                                                    (2, 21, 'ACTIVE'),
+                                                    (2, 22, 'ACTIVE'),
+                                                    (2, 23, 'ACTIVE'),
+                                                    (2, 24, 'ACTIVE'),
+                                                    (2, 25, 'ACTIVE'),
+                                                    (2, 26, 'ACTIVE'),
+                                                    (2, 27, 'ACTIVE'),
+                                                    (2, 28, 'ACTIVE'),
+                                                    (2, 29, 'ACTIVE'),
                                                     (2, 31, 'ACTIVE'),
-                                                    (2, 6, 'ACTIVE'),
-                                                    (2, 63, 'ACTIVE'),
-                                                    (2, 64, 'ACTIVE'),
-                                                    (2, 65, 'ACTIVE'),
-                                                    (2, 66, 'ACTIVE'),
-                                                    (2, 67, 'ACTIVE'),
-                                                    (2, 68, 'ACTIVE'),
-                                                    (2, 3, 'ACTIVE'),
-                                                    (2, 31, 'ACTIVE'),
-                                                    (2, 32, 'ACTIVE');
+                                                    (2, 32, 'ACTIVE'),
+                                                    (2, 1, 'ACTIVE'),
+                                                    (2, 2, 'ACTIVE'),
+                                                    (3, 1, 'ACTIVE'),
+                                                    (3, 4, 'ACTIVE'),
+                                                    (4, 1, 'ACTIVE'),
+                                                    (5, 2, 'ACTIVE');
 
-insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1, 1, 2.4, '리뷰내용1', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (2, 1, 3.2, '리뷰내용2', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (3, 1, 4.8, '리뷰내용3', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1, 2, 2.3, '리뷰내용4', 'DELETE');
+
+insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1, 1, 1.8, '리뷰내용1', 'ACTIVE');
+insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (2, 1, 1.2, '리뷰내용2', 'ACTIVE');
+insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (3, 1, 1.3, '리뷰내용3', 'ACTIVE');
+insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1, 2, 2.2, '리뷰내용4', 'DELETE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (2, 2, 2.6, '리뷰내용5', 'ACTIVE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (3, 2, 4.6, '리뷰내용6', 'ACTIVE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1, 3, 2.4, '리뷰내용1', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (2, 3, 3.2, '리뷰내용2', 'ACTIVE');
+insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (2, 3, 3.9, '리뷰내용2', 'ACTIVE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (3, 3, 4.8, '리뷰내용3', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1, 4, 2.3, '리뷰내용4', 'DELETE');
+insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1, 4, 2.1, '리뷰내용4', 'DELETE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (2, 4, 2.6, '리뷰내용5', 'ACTIVE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (3, 4, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1, 5, 2.4, '리뷰내용1', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (2, 5, 3.2, '리뷰내용2', 'ACTIVE');
+insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1, 5, 2.8, '리뷰내용1', 'ACTIVE');
+insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (2, 5, 3.6, '리뷰내용2', 'ACTIVE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (3, 5, 4.8, '리뷰내용3', 'ACTIVE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1, 6, 2.3, '리뷰내용4', 'DELETE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (2, 6, 2.6, '리뷰내용5', 'ACTIVE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (3, 6, 4.6, '리뷰내용6', 'ACTIVE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1, 7, 2.4, '리뷰내용1', 'ACTIVE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (2, 7, 3.2, '리뷰내용2', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (3, 7, 4.8, '리뷰내용3', 'ACTIVE');
+insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (3, 7, 4.2, '리뷰내용3', 'ACTIVE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1, 8, 2.3, '리뷰내용4', 'DELETE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (2, 8, 2.6, '리뷰내용5', 'ACTIVE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (3, 8, 4.6, '리뷰내용6', 'ACTIVE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1, 9, 2.4, '리뷰내용1', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (2, 9, 3.2, '리뷰내용2', 'ACTIVE');
+insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (2, 9, 3.3, '리뷰내용2', 'ACTIVE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (3, 9, 4.8, '리뷰내용3', 'ACTIVE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1, 10, 2.3, '리뷰내용4', 'DELETE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (2, 10, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (3, 10, 4.6, '리뷰내용6', 'ACTIVE');
+insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (3, 10, 4.4, '리뷰내용6', 'ACTIVE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1, 11, 2.4, '리뷰내용1', 'ACTIVE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (2, 11, 3.2, '리뷰내용2', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (3, 11, 4.8, '리뷰내용3', 'ACTIVE');
+insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (3, 11, 4.3, '리뷰내용3', 'ACTIVE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1, 12, 2.3, '리뷰내용4', 'DELETE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (2, 12, 2.6, '리뷰내용5', 'ACTIVE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (3, 12, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1, 13, 2.4, '리뷰내용1', 'ACTIVE');
+insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1, 13, 2.1, '리뷰내용1', 'ACTIVE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (2, 13, 3.2, '리뷰내용2', 'ACTIVE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (3, 13, 4.8, '리뷰내용3', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1, 14, 2.3, '리뷰내용4', 'DELETE');
+insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1, 14, 2.1, '리뷰내용4', 'DELETE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (2, 14, 2.6, '리뷰내용5', 'ACTIVE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (3, 14, 4.6, '리뷰내용6', 'ACTIVE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1, 15, 2.4, '리뷰내용1', 'ACTIVE');
@@ -432,18 +430,6 @@ insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (2, 45, 
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (3, 46, 2.6, '리뷰내용5', 'ACTIVE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1, 46, 4.6, '리뷰내용6', 'ACTIVE');
 insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (2, 46, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (3, 47, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1, 47, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (2, 47, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (3, 48, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1, 48, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (2, 48, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (3, 49, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1, 49, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (2, 49, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (3, 50, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (1, 50, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(user_id, book_id, stars, content,  status) values (2, 50, 4.6, '리뷰내용6', 'ACTIVE');
 
 INSERT INTO BOOK_PAYMENT_TB(user_id, book_id, price, payment_time, status) VALUES(1, 1, 15000, '2021-01-01 00:01', 'ACTIVE');
 INSERT INTO BOOK_PAYMENT_TB(user_id, book_id, price, payment_time, status) VALUES(2, 1, 15000, '2021-01-01 00:01', 'ACTIVE');
@@ -598,6 +584,6 @@ INSERT INTO BOOK_PAYMENT_TB(user_id, book_id, price, payment_time, status) VALUE
 
 insert into BOOK_UPDATE_LIST_TB(book_id, publisher_id, title, author, price, introduction, epub_url, cover_url, big_category_id, small_category_id, author_info, content, status) values (1,1,'수정할 제목','수정할 저자', 2000, '수정할 책 소개', 'https://test.com/test.epub', 'https://cdn.pixabay.com/photo/2023/04/10/15/12/succulent-7914023__340.jpg', 1,1,'수정할 저자정보','수정하고싶어요', 'ACTIVE');
 
-insert into BOOK_DELETE_LIST_TB(book_id, cover_url, content, status) values (2, 'https://cdn.pixabay.com/photo/2023/04/22/22/58/bird-7944578__340.jpg', '그냥 삭제하고싶어서', 'ACTIVE');
+insert into BOOK_DELETE_LIST_TB(book_id, cover_url, content, status) values (2, 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bookcover/e7c6f9c3-fefe-4384-8553-ddbe2929aed3-book2.png', '그냥 삭제하고싶어서', 'ACTIVE');
 
 commit;

@@ -99,17 +99,17 @@
     function populateTable(res) {
         let book = res.book;
         $('#coverUrl').attr('src', res.coverUrl);
-        $('#title').val(book.title);
-        $('#author').val(book.author);
+        $('#title').val(res.title);
+        $('#author').val(res.author);
         $('#publisher').val(book.publisher.businessName);
-        $('#price').val(book.price);
-        $('#bigCategory').val(book.bigCategory.bigCategory);
-        $('#smallCategory').val(book.smallCategory.smallCategory);
-        $('#introduction').text(book.introduction);
-        $('#authorInfo').text(book.authorInfo);
-        $('#epubFileName').text(book.epubUrl.split('/').pop());
-        $('#bookCoverName').text(book.coverUrl.split('/').pop());
-        $('#content').text(book.content);
+        $('#price').val(res.price);
+        $('#bigCategory').val(res.bigCategory.bigCategory);
+        $('#smallCategory').val(res.smallCategory.smallCategory);
+        $('#introduction').text(res.introduction);
+        $('#authorInfo').text(res.authorInfo);
+        $('#epubFileName').text(res.epubUrl.split('/').pop());
+        $('#bookCoverName').text(res.coverUrl.split('/').pop());
+        $('#content').text(res.content);
     }
 
     function update(){

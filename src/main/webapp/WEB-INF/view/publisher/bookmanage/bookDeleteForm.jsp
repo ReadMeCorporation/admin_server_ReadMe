@@ -93,7 +93,7 @@
             dataType: 'json',
         })
             .done((res) => {
-                populateTable(res);
+                populateTable(res.data);
             })
             .fail((err) => {
                 alert(err.responseJSON.msg);
