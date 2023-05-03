@@ -51,8 +51,14 @@ public class BookUpdateList extends BaseTime {
     @Comment("수정할 책 파일")
     private String epubUrl;
 
+    @Comment("수정할 책 파일사이즈")
+    private Integer epubSize;
+
     @Comment("수정할 책 표지")
     private String coverUrl;
+
+    @Comment("수정할 책 표지사이즈")
+    private Integer coverSize;
 
     @Comment("수정할 대분류 카테고리")
     @OneToOne
@@ -73,7 +79,7 @@ public class BookUpdateList extends BaseTime {
     private BookUpdateListStatus status;
 
     @Builder
-    public BookUpdateList(Integer id, Book book, Publisher publisher, String title, String author, Integer price, String introduction, String epubUrl, String coverUrl, BigCategory bigCategory, SmallCategory smallCategory, String authorInfo, String content, BookUpdateListStatus status) {
+    public BookUpdateList(Integer id, Book book, Publisher publisher, String title, String author, Integer price, String introduction, String epubUrl, Integer epubSize, String coverUrl, Integer coverSize, BigCategory bigCategory, SmallCategory smallCategory, String authorInfo, String content, BookUpdateListStatus status) {
         this.id = id;
         this.book = book;
         this.publisher = publisher;
@@ -82,7 +88,9 @@ public class BookUpdateList extends BaseTime {
         this.price = price;
         this.introduction = introduction;
         this.epubUrl = epubUrl;
+        this.epubSize = epubSize;
         this.coverUrl = coverUrl;
+        this.coverSize = coverSize;
         this.bigCategory = bigCategory;
         this.smallCategory = smallCategory;
         this.authorInfo = authorInfo;

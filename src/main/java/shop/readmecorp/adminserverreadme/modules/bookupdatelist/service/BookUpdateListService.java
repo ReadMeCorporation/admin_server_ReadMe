@@ -64,6 +64,8 @@ public class BookUpdateListService {
 
             String epubUrl = "";
             String coverUrl = "";
+            Integer epubSize = 0;
+            Integer coverSize = 0;
 
             // 파일정보 불러오기
             FileInfo fileInfoEpub = book.getEpub();
@@ -80,19 +82,21 @@ public class BookUpdateListService {
                 epubUrl = file.getFileUrl();
             }
 
-            // 업로드 했을시 epubUrl 수정
+            // 업로드 했을시 epubUrl, size 수정
             if (request.getEpubFile() != null) {
                 try {
                     epubUrl = s3Upload.upload(request.getEpubFile(), "bookepub/");
+                    epubSize = request.getEpubFile().getInputStream().available();
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
                 }
             }
 
-            // 업로드 했을시 coverUrl 수정
+            // 업로드 했을시 coverUrl, size 수정
             if (request.getBookCover() != null) {
                 try {
                     coverUrl = s3Upload.upload(request.getBookCover(), "bookcover/");
+                    coverSize = request.getBookCover().getInputStream().available();
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
                 }
@@ -108,7 +112,9 @@ public class BookUpdateListService {
                     .price(request.getPrice())
                     .introduction(request.getIntroduction())
                     .epubUrl(epubUrl)
+                    .epubSize(epubSize)
                     .coverUrl(coverUrl)
+                    .coverSize(coverSize)
                     .bigCategory(optionalBigCategory.get())
                     .smallCategory(optionalSmallCategory.get())
                     .authorInfo(request.getAuthorInfo())
