@@ -77,7 +77,7 @@
 
     $(document).ready(function() {
         $.ajax({
-            url: `http://localhost:8080/api/books/deleteRequest/` + id,
+            url: `http://localhost:8080/api/books/deleteRequest/` + id +`?page=0&size=200`,
             type: 'GET',
             dataType: 'json',
         })

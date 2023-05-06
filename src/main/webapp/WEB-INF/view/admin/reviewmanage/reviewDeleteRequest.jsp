@@ -30,12 +30,12 @@
 <script>
     $(document).ready(function() {
         $.ajax({
-            url: 'http://localhost:8080/api/reviews?page=0&size=200',
+            url: 'http://localhost:8080/api/reviews/request?page=0&size=200',
             type: 'GET',
             dataType: 'json',
         })
             .done((res) => {
-                populateTable(res.content); // 'content' 속성을 사용하도록 수정
+                populateTable(res.data.content); // 'content' 속성을 사용하도록 수정
             })
             .fail((err) => {
                 alert(err.responseJSON.msg);
@@ -56,14 +56,15 @@
 
             var selectStatus = `
                 <select class="form-select" name="status" id="status-` + review.id + `">
-                    <option value="ACTIVE"` + (review.status === 'ACTIVE' ? ' selected' : '') + `>활성</option>
-                    <option value="DELETE"` + (review.status === 'DELETE' ? ' selected' : '') + `>비활성</option>
+                    <option selected>상태를 선택해주세요</option>
+                    <option value="ACTIVE">승인</option>
+                    <option value="REJECTED">반려</option>
                 </select>
             `;
             tr.append('<td>' + selectStatus + '</td>');
             tr.append(`
                 <td>
-                    <button onclick="changeStatus(` + review.id + `)">변경</button>
+                    <button onclick="changeStatus(` + review.id + `)">등록</button>
                 </td>
             `);
             tbody.append(tr);

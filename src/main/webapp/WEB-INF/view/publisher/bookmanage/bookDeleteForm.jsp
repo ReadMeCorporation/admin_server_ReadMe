@@ -88,7 +88,7 @@
 
     $(document).ready(function() {
         $.ajax({
-            url: `http://localhost:8080/api/books/` + id,
+            url: `http://localhost:8080/api/books/` + id + `?page=0&size=200`,
             type: 'GET',
             dataType: 'json',
         })

@@ -58,10 +58,12 @@ public class Book extends BaseTime {
 
     @Comment("epub 파일 출처")
     @ManyToOne
+    @JoinColumn(name = "epub_id")
     private FileInfo epub;
 
     @Comment("cover 파일 출처")
     @ManyToOne
+    @JoinColumn(name = "cover_id")
     private FileInfo cover;
 
     @Comment("책 활성화 상태")

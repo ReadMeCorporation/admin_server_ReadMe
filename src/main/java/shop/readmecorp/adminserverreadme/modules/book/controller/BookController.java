@@ -132,7 +132,7 @@ public class BookController {
         Book update = bookService.deleteBook(status, id);
         return ResponseEntity.ok(update.toResponse());
     }
-//
+
     // 도서 상태 변경
     @PutMapping("/books/{id}/state")
     public ResponseEntity<BookResponse> updateBookState(

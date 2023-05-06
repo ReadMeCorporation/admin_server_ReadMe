@@ -97,7 +97,10 @@ public class BookService {
 
         for (int i = 0; i < content.size(); i++) {
             File epubFiles = fileRepository.findByFileInfo_Id(page.getContent().get(i).getEpub().getId());
+            System.out.println("테스트1 : " + page.getContent().get(i).getEpub().getId());
+            System.out.println("테스트1 : " + page.getContent().get(i).getTitle());
             File coverFiles = fileRepository.findByFileInfo_Id(page.getContent().get(i).getCover().getId());
+            System.out.println("테스트2 : " + page.getContent().get(i).getCover().getId());
             Double stars = reviewRepository.findAvgStars(content.get(i).getId());
             content.get(i).setEpubFile(epubFiles.toDTO());
             content.get(i).setCoverFile(coverFiles.toDTO());
