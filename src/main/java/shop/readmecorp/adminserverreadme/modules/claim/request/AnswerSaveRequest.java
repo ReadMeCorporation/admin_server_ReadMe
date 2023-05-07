@@ -12,7 +12,7 @@ import shop.readmecorp.adminserverreadme.modules.claim.dto.QuestionDTO;
 @NoArgsConstructor
 public class AnswerSaveRequest {
 
-    private QuestionDTO question;
+    private Integer questionId;
 
     private String content;
 

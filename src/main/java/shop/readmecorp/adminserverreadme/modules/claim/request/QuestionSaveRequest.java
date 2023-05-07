@@ -15,9 +15,7 @@ public class QuestionSaveRequest {
 
     private String role;
 
-    private UserDTO user;
-
-    private PublisherDTO publisher;
+    private Integer publisherId;
 
     private String title;
 

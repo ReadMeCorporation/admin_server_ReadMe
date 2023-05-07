@@ -44,7 +44,6 @@ public class BookDTO {
 
     private Double stars;
 
-    // TODO 좋아요(스크랩)추가
     private Integer hearts;
 
     private String status;

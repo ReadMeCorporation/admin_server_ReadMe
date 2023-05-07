@@ -69,7 +69,6 @@
             </div>
 
             <div class="mb-3 mt-3">
-<%--TODO 업로드 안했을때 기존값 보이게 하고싶음--%>
                 <label for="epubFile" class="form-label">도서 파일 - 업로드 하지않을시 기존파일로 설정됩니다</label>
                 <input type="file" class="form-control" id="epubFile" name="epubFile" accept=".epub">
             </div>
@@ -84,7 +83,7 @@
             </div>
 
             <div class="d-flex justify-content-center">
-                <button onclick="save()" type="button" class="btn btn-primary">수정 요청</button>
+                <button onclick="update()" type="button" class="btn btn-primary">수정 요청</button>
             </div>
         </div>
     </form>
@@ -119,7 +118,7 @@
         $('#coverUrl').attr('src', book.coverUrl);
     }
 
-    function save() {
+    function update() {
         // FormData 객체 생성
         var formData = new FormData();
 

@@ -9,7 +9,6 @@ package shop.readmecorp.adminserverreadme.modules.book.enums;
  * DELETEREQUEST 삭제요청상태
  */
 
-//TODO 수정요청상태, 삭제요청상태 추가
 public enum BookStatus {
     ACTIVE, DELETE, WAIT, REJECTED, UPDATEREQUEST, DELETEREQUEST
 }

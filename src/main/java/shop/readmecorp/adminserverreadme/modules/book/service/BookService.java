@@ -109,7 +109,6 @@ public class BookService {
             } else {
                 content.get(i).setStars(0.0);
             }
-            //TODO 코드 추가
             Integer bookId = content.get(i).getId();
             Long heartCount = heartRepository.countByBookIdAndStatus(bookId, HeartStatus.ACTIVE);
             content.get(i).setHearts(heartCount.intValue());

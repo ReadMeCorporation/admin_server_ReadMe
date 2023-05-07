@@ -22,7 +22,6 @@ public class UserResponse {
 
     private Boolean isAutoPayment;
 
-    //TODO 이거 써도되나?
     private String joinTime;
 
     private FileInfoDTO fileInfo;

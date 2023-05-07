@@ -586,4 +586,11 @@ insert into BOOK_UPDATE_LIST_TB(book_id, publisher_id, title, author, price, int
 
 insert into BOOK_DELETE_LIST_TB(book_id, cover_url, content, status) values (2, 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bookcover/e7c6f9c3-fefe-4384-8553-ddbe2929aed3-book2.png', '그냥 삭제하고싶어서', 'ACTIVE');
 
+insert into QUESTION_TB(role, user_id, publisher_id, title, content, write_time, status) values ('PUBLISHER', null, 1, '출판사의 첫번째 문의 입니다', '출판사의 첫번째 문의내용 입니다','2023-05-06 00:02:01', 'ACCEPT');
+insert into QUESTION_TB(role, user_id, publisher_id, title, content, write_time, status) values ('PUBLISHER', null, 2, '출판사의 두번째 문의 입니다', '출판사의 두번째 문의내용 입니다','2023-05-06 00:02:01', 'WAIT');
+insert into QUESTION_TB(role, user_id, publisher_id, title, content, write_time, status) values ('PUBLISHER', null, 3, '출판사의 세번째 문의 입니다', '출판사의 세번째 문의내용 입니다','2023-05-06 00:02:01', 'WAIT');
+insert into QUESTION_TB(role, user_id, publisher_id, title, content, write_time, status) values ('USER', 1, null, '유저의 첫번재 문의 입니다', '유저의 첫번재 문의내용 입니다','2023-05-06 00:02:01', 'WAIT');
+
+insert into ANSWER_TB(question_id, content, write_time,status) values (1, '첫번째 답변내용 입니다', '2023-05-06 00:04:01','ACTIVE');
+
 commit;
