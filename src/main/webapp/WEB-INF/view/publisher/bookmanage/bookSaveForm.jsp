@@ -118,7 +118,7 @@
             url: '/books',
             data: formData,
             contentType: false,
-            processData: false, // 필수: contentType을 false로 줬을 때 QueryString 자동 설정됨. 해제
+            processData: false,
             dataType: "json"
         }).done((res) => { // 20X 일때
             alert(res.msg);

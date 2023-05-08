@@ -1,15 +1,7 @@
-<%@ page import="shop.readmecorp.adminserverreadme.modules.publisher.entity.Publisher" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="../../layout/header.jsp" %>
 <%@ include file="../../layout/headerBook.jsp" %>
 
-<%
-    Publisher publisher = (Publisher) session.getAttribute("principal");
-    String businessName = "";
-    if (publisher != null) {
-        businessName = publisher.getBusinessName();
-    }
-%>
 
 <div class="p-3" style="border: 1px solid #00539C" >
 
@@ -59,24 +51,21 @@
 
             <div class="mb-3 mt-3" >
                 <label for="introduction" class="form-label">책소개</label>
-                <textarea class="form-control" id="introduction" rows="5" readonly>
-
-            </textarea>
+                <textarea class="form-control" id="introduction" rows="5" readonly></textarea>
             </div>
+
             <div class="mb-3 mt-3" >
                 <label for="authorInfo" class="form-label">저자소개</label>
-                <textarea class="form-control" id="authorInfo" rows="5" readonly>
-
-            </textarea>
+                <textarea class="form-control" id="authorInfo" rows="5" readonly></textarea>
             </div>
 
             <div class="mb-3 mt-3" >
-                <label for="detail" class="form-label">삭제 사유</label>
-                <textarea class="form-control" id="detail" rows="5"></textarea>
+                <label for="content" class="form-label">삭제 사유</label>
+                <textarea class="form-control" id="content" rows="5" readonly></textarea>
             </div>
 
             <div class="d-flex justify-content-center">
-                <button onclick="save()" type="button" class="btn btn-primary">삭제 요청</button>
+                <button onclick="changeStatus()" type="button" class="btn btn-primary">삭제 승인</button>
             </div>
         </div>
     </form>
@@ -84,23 +73,25 @@
 </div>
 
 <script>
-    const id = ${id}
+    const id = ${id};
 
     $(document).ready(function() {
         $.ajax({
-            url: `http://localhost:8080/api/books/` + id,
+            url: `http://localhost:8080/api/books/deleteRequest/` + id,
             type: 'GET',
             dataType: 'json',
         })
             .done((res) => {
-                populateTable(res.data);
+                populateTable(res);
             })
             .fail((err) => {
                 alert(err.responseJSON.msg);
             })
     });
 
-    function populateTable(book) {
+    function populateTable(res) {
+        let book = res.book;
+        $('#coverUrl').attr('src', res.coverUrl);
         $('#title').val(book.title);
         $('#author').val(book.author);
         $('#publisher').val(book.publisher.businessName);
@@ -109,26 +100,31 @@
         $('#SmallCategory').val(book.smallCategory.smallCategory);
         $('#introduction').text(book.introduction);
         $('#authorInfo').text(book.authorInfo);
-        $('#coverUrl').attr('src', book.coverUrl);
+        $('#content').text(res.content);
     }
 
-    function save() {
-        content = $('#detail').val();
-
+    // 변경된 상태를 서버에 전송하는 코드
+    function changeStatus() {
         $.ajax({
-            type: 'post',
-            url: '/bookDeleteList/'+id,
-            data: JSON.stringify({ content: content }),
+            url: 'http://localhost:8080/books/' + id +'/delete',
+            type: 'PUT',
+            dataType: 'json',
             contentType: 'application/json',
-            processData: false,
-            dataType: "json"
-        }).done((res) => { // 20X 일때
-            alert(res.msg);
-            location.href = "/publishers/books";
-        }).fail((err) => { // 40X, 50X 일때
-            alert(err.responseJSON.msg);
-        });
+            data: JSON.stringify({
+                status: 'DELETE'
+            })
+        })
+            .done((res) => {
+                // 성공 시 처리할 내용 (예: 알림 표시, 테이블 업데이트 등)
+                alert("비활성화 되었습니다.");
+                location.href = "/admins/books/bookUpdateAndDeleteList"
+            })
+            .fail((err) => {
+                // 실패 시 처리할 내용 (예: 오류 메시지 표시 등)
+                alert("비활성화에 실패했습니다. 오류: " + err.responseJSON.msg);
+            });
     }
+
 
 </script>
 

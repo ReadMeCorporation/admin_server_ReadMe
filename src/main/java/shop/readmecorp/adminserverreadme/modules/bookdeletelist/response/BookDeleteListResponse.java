@@ -16,6 +16,8 @@ public class BookDeleteListResponse {
 
     private BookDTO book;
 
+    private String coverUrl;
+
     private String content;
 
     private String status;
