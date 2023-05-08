@@ -2,25 +2,30 @@
 <%@ include file="../../layout/header.jsp" %>
 <%@ include file="../../layout/headerClaim.jsp" %>
 
-<h1>
-    문의내용
-</h1>
-    <div class="" style="border: 1px solid gray" >
+<div class="mx-auto" style="width: 1000px">
+    <h1>
+        문의내용
+    </h1>
 
-        <div>
-            <div class="form-group pb-1">
+    <div>
+        <div class="form-group pb-1">
+            <div class="input-group mb-3">
+                <span class="input-group-text">문의 제목</span>
                 <input type="text" class="form-control form-control" name="title" id="title" readonly>
-                <input type="text" class="form-control" id="username" readonly>
-            </div>
-            <div class="mb-3 mt-3" >
-                <textarea class="form-control" id="question" rows="5" readonly>
 
-                </textarea>
+                <span class="input-group-text">닉네임</span>
+                <input type="text" class="form-control form-control" name="username" id="username" readonly >
+<%--                <input type="text" class="form-control" id="username" readonly>--%>
             </div>
+        </div>
+        <div class="mb-3 mt-3" >
+            <textarea class="form-control" id="question" rows="5" readonly>
 
+            </textarea>
         </div>
 
-    </div>
+
+</div>
 <h1>
     답변내용
 </h1>
@@ -34,6 +39,7 @@
         </div>
     </div>
 
+</div>
 </div>
 
 <script>

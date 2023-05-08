@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="form-group pb-1 mb-3">
-                        <input type="text" class="form-control form-control" placeholder="사업자 명을 입력해주세요" name="businessName" id="businessName" value="그린컴퓨터">
+                        <input type="text" class="form-control form-control" placeholder="사업자 명(출판사 명)을 입력해주세요" name="businessName" id="businessName" value="그린컴퓨터">
                     </div>
 
                     <div class="d-grid gap-2 mb-5">

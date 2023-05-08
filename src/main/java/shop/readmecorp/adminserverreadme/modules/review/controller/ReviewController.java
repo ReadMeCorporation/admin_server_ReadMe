@@ -6,15 +6,16 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import shop.readmecorp.adminserverreadme.common.exception.CustomException;
 import shop.readmecorp.adminserverreadme.common.exception.Exception400;
 import shop.readmecorp.adminserverreadme.modules.ResponseDTO;
 import shop.readmecorp.adminserverreadme.modules.review.ReviewConst;
 import shop.readmecorp.adminserverreadme.modules.review.entity.Review;
 import shop.readmecorp.adminserverreadme.modules.review.response.ReviewResponse;
 import shop.readmecorp.adminserverreadme.modules.review.dto.ReviewDTO;
-import shop.readmecorp.adminserverreadme.modules.review.entity.Review;
 import shop.readmecorp.adminserverreadme.modules.review.service.ReviewService;
 
+import javax.servlet.http.HttpSession;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -22,9 +23,11 @@ import java.util.stream.Collectors;
 public class ReviewController {
 
     private final ReviewService reviewService;
+    private final HttpSession session;
 
-    public ReviewController(ReviewService reviewService) {
+    public ReviewController(ReviewService reviewService, HttpSession session) {
         this.reviewService = reviewService;
+        this.session = session;
     }
 
     // 전체 리뷰 조회
@@ -84,16 +87,43 @@ public class ReviewController {
     
     @GetMapping("/publishers/reviews")
     public String publisherReviews(){
+        Object principal = session.getAttribute("principal");
+        String userRole = (String) session.getAttribute("userRole");
+        if (principal == null) {
+            throw new CustomException("로그인을 해주세요");
+        }
+        if (!"publisher".equals(userRole)) {
+            throw new CustomException("출판사 계정이 아닙니다");
+        }
+
         return"/publisher/reviewmanage/reviewList";
     }
 
     @GetMapping("/admins/reviews/request")
     public String adminReviewsDeleteRequest(){
+        Object principal = session.getAttribute("principal");
+        String userRole = (String) session.getAttribute("userRole");
+        if (principal == null) {
+            throw new CustomException("로그인을 해주세요");
+        }
+        if (!"admin".equals(userRole)) {
+            throw new CustomException("관리자 권한이 필요합니다");
+        }
+
         return"/admin/reviewmanage/reviewDeleteRequest";
     }
 
     @GetMapping("/admins/reviews")
     public String adminReviews(){
+        Object principal = session.getAttribute("principal");
+        String userRole = (String) session.getAttribute("userRole");
+        if (principal == null) {
+            throw new CustomException("로그인을 해주세요");
+        }
+        if (!"admin".equals(userRole)) {
+            throw new CustomException("관리자 권한이 필요합니다");
+        }
+
         return"/admin/reviewmanage/reviewList";
     }
 }

@@ -4,9 +4,9 @@
 <%@ include file="../../layout/headerClaim.jsp" %>
 
 <h1>
-    문의내역
+    문의하기
 </h1>
-    <div class="" style="border: 1px solid gray" >
+<div class="p-3 mx-auto" style="border: 1px solid #00539C; width: 1000px" >
 
         <div class="form-group pb-1">
             <input type="text" class="form-control form-control" placeholder="제목을 입력해주세요" name="title" id="title" value="문의제목 테스트">

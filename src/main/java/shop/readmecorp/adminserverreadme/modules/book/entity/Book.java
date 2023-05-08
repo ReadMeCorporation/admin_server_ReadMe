@@ -97,6 +97,8 @@ public class Book extends BaseTime {
                 .bigCategory(bigCategory.toDTO())
                 .smallCategory(smallCategory.toDTO())
                 .authorInfo(authorInfo)
+                //TODO h2에서는 안됨
+//                .createdDate(getCreatedDate().toString())
                 .status(status.name())
                 .build();
     }

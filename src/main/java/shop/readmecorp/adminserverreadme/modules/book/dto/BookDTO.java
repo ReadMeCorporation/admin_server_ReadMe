@@ -46,11 +46,14 @@ public class BookDTO {
 
     private Integer hearts;
 
+    //TODO h2에서는 안됨
+//    private String createdDate;
+
     private String status;
 
     @Builder
 
-    public BookDTO(Integer id, PublisherDTO publisher, String title, String author, Integer price, String introduction, BigCategoryDTO bigCategory, SmallCategoryDTO smallCategory, String authorInfo, Boolean isHeart, FileDTO epubFile, FileDTO coverFile, Double stars, Integer hearts, String status) {
+    public BookDTO(Integer id, PublisherDTO publisher, String title, String author, Integer price, String introduction, BigCategoryDTO bigCategory, SmallCategoryDTO smallCategory, String authorInfo, Boolean isHeart, FileDTO epubFile, FileDTO coverFile, Double stars, Integer hearts,String createdDate, String status) {
         this.id = id;
         this.publisher = publisher;
         this.title = title;
@@ -65,6 +68,8 @@ public class BookDTO {
         this.coverFile = coverFile;
         this.stars = stars;
         this.hearts = hearts;
+        //TODO h2에서는 안됨
+//        this.createdDate = createdDate;
         this.status = status;
     }
 }

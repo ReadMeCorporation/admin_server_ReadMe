@@ -3,19 +3,16 @@
 <%@ include file="../../layout/header.jsp" %>
 <%@ include file="../../layout/headerBook.jsp" %>
 
-<div class="p-3" style="border: 1px solid #00539C" >
+<div class="p-3 mx-auto" style="border: 1px solid #00539C; width: 1000px" >
 
     <h2>도서 수정 요청</h2>
     <hr>
 
-
-    <form>
-
-        <div class="px-3" style="border: 1px solid olive">
-            <div class="d-flex justify-content" style="border: 1px solid palegreen">
+        <div class="px-3" >
+            <div class="d-flex justify-content-center" >
                 <div>
                     <h5><b>표지</b></h5>
-                    <img src="" style="height: 170px; width: 140px" id="coverUrl">
+                    <img src="" style="height: 200px; width: 160px; margin-right: 70px" id="coverUrl">
                 </div>
                 <div>
                     도서명
@@ -86,7 +83,6 @@
                 <button onclick="update()" type="button" class="btn btn-primary">수정 요청</button>
             </div>
         </div>
-    </form>
 </div>
 
 <script>

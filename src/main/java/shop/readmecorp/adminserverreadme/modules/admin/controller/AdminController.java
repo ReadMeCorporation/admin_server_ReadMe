@@ -56,16 +56,43 @@ public class AdminController {
 
     @GetMapping("/userManage")
     public String userManage(){
+        Object principal = session.getAttribute("principal");
+        String userRole = (String) session.getAttribute("userRole");
+        if (principal == null) {
+            throw new CustomException("로그인을 해주세요");
+        }
+        if (!"admin".equals(userRole)) {
+            throw new CustomException("관리자 권한이 필요합니다");
+        }
+
         return "/admin/usermanage/userManage";
     }
 
     @GetMapping("/publisherList")
     public String publisherList(){
+        Object principal = session.getAttribute("principal");
+        String userRole = (String) session.getAttribute("userRole");
+        if (principal == null) {
+            throw new CustomException("로그인을 해주세요");
+        }
+        if (!"admin".equals(userRole)) {
+            throw new CustomException("관리자 권한이 필요합니다");
+        }
+
         return "/admin/publishermanage/publisherList";
     }
 
     @GetMapping("/publisherManage")
     public String publisherManage(){
+        Object principal = session.getAttribute("principal");
+        String userRole = (String) session.getAttribute("userRole");
+        if (principal == null) {
+            throw new CustomException("로그인을 해주세요");
+        }
+        if (!"admin".equals(userRole)) {
+            throw new CustomException("관리자 권한이 필요합니다");
+        }
+
         return "/admin/publishermanage/publisherManage";
     }
 }

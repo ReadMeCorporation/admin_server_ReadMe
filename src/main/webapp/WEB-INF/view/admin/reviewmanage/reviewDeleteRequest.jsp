@@ -9,7 +9,7 @@
     <div class="" style="border: 1px solid gray" >
 
         <table class="table">
-            <thead>
+            <thead class="table-secondary">
             <tr>
                 <th scope="col">NO</th>
                 <th scope="col">내용</th>
@@ -57,8 +57,8 @@
             var selectStatus = `
                 <select class="form-select" name="status" id="status-` + review.id + `">
                     <option selected>상태를 선택해주세요</option>
-                    <option value="ACTIVE">승인</option>
-                    <option value="REJECTED">반려</option>
+                    <option value="DELETE">승인</option>
+                    <option value="ACTIVE">반려</option>
                 </select>
             `;
             tr.append('<td>' + selectStatus + '</td>');

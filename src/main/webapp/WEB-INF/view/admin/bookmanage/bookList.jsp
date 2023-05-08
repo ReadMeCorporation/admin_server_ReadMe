@@ -7,7 +7,7 @@
     <div class="" style="border: 1px solid gray" >
 
         <table class="table">
-            <thead>
+            <thead class="table-secondary">
             <tr>
                 <th scope="col">NO</th>
                 <th scope="col">표지</th>
@@ -49,7 +49,8 @@
             var tr = $('<tr>');
             tr.append('<th>' + (i+1) + '</th>');
             tr.append('<td><img src="' + book.coverFile.fileUrl + '" style="width: 75px;height: 100px"></td>');
-            tr.append('<td>' + book.title + '</td>');
+            tr.append('<td><a href="/admins/books/detail/' + book.id + '">' + book.title + '</a></td>');
+            // tr.append('<td>' + book.title + '</td>');
             tr.append('<td>' + book.author + '</td>');
             tr.append('<td>' + book.publisher.businessName + '</td>');
             tr.append('<td>' + book.createDate + '</td>');

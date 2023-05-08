@@ -9,7 +9,7 @@
     <div class="" style="border: 1px solid gray" >
 
         <table class="table">
-            <thead>
+            <thead class="table-secondary">
             <tr>
                 <th scope="col">NO</th>
                 <th scope="col">내용</th>
