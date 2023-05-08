@@ -3,6 +3,7 @@
 <%@ include file="../../layout/headerBook.jsp" %>
 
 <div class="p-3 mx-auto" style="border: 1px solid #00539C; width: 1000px" >
+
     <h2>도서 상세 보기</h2>
     <hr>
 

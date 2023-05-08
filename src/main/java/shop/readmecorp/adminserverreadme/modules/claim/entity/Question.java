@@ -65,10 +65,24 @@ public class Question extends BaseTime {
     }
 
     public QuestionDTO toDTO() {
-        return new QuestionDTO(id, role.name(), user.toDTO(), publisher.toDTO(), title, content, writeTime.toString(), status.name() );
+        return new QuestionDTO(id,
+                role != null ? role.name() : "UNKNOWN",
+                user != null ? user.toDTO() : null,
+                publisher != null ? publisher.toDTO() : null,
+                title,
+                content,
+                writeTime != null ? writeTime.toString() : null,
+                status != null ? status.name() : "UNKNOWN");
     }
 
     public QuestionResponse toResponse() {
-        return new QuestionResponse(id, role.name(), user.toDTO(), publisher.toDTO(), title, content, writeTime.toString(), status.name());
+        return new QuestionResponse(id,
+                role != null ? role.name() : "UNKNOWN",
+                user != null ? user.toDTO() : null,
+                publisher != null ? publisher.toDTO() : null,
+                title,
+                content,
+                writeTime != null ? writeTime.toString() : null,
+                status != null ? status.name() : "UNKNOWN");
     }
 }

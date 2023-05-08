@@ -4,7 +4,7 @@ package shop.readmecorp.adminserverreadme.modules.claim.enums;
  * ACTIVE 활성
  * DELETE 삭제
  * WAIT 대기
- * ACCEPT 수락
+ * ACCEPT 답변완료
  * REFUSE 거부
  */
 

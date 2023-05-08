@@ -7,5 +7,5 @@ package shop.readmecorp.adminserverreadme.common.jpa;
  */
 
 public enum RoleType {
-    USER, PUBLISHER, ADMIN
+    USER, PUBLISHER, ADMIN, UNKNOWN
 }

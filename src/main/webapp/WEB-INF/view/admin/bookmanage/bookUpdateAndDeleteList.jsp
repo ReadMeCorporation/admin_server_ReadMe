@@ -7,7 +7,7 @@
 <div class="" style="border: 1px solid gray" >
 
     <table class="table">
-        <thead>
+        <thead class="table-secondary">
         <tr>
             <th scope="col">NO</th>
             <th scope="col">표지</th>
@@ -32,7 +32,7 @@
 
     $(document).ready(function() {
         $.ajax({
-            url: 'http://localhost:8080/api/books/updateListAndDeleteList',
+            url: 'http://localhost:8080/api/books/updateListAndDeleteList?page=0&size=200',
             type: 'GET',
             dataType: 'json',
         })

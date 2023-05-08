@@ -12,21 +12,16 @@
     }
 %>
 
-
-
-<div class="p-3" style="border: 1px solid #00539C" >
+<div class="p-3 mx-auto" style="border: 1px solid #00539C; width: 1000px" >
 
     <h2>도서 등록 요청</h2>
     <hr>
 
-
-    <form>
-
-        <div class="px-3" style="border: 1px solid olive">
-            <div class="d-flex justify-content" style="border: 1px solid palegreen">
-                <div>
+        <div class="px-3" >
+            <div class="d-flex justify-content-center" >
+                <div >
                     <h5><b>표지</b></h5>
-                    <img src="/images/gray.png" style="height: 170px; width: 140px">
+                    <img src="/images/gray.png" style="height: 200px; width: 160px; margin-right: 70px">
                 </div>
                 <div>
                     도서명
@@ -91,7 +86,6 @@
                 <button onclick="save()" type="button" class="btn btn-primary">등록 요청</button>
             </div>
         </div>
-    </form>
 </div>
 
 <script>

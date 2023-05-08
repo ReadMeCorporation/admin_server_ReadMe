@@ -25,7 +25,6 @@ public class PublisherDTO {
 
     private String businessName;
 
-    //TODO 이거 써도되나?
     private String joinTime;
 
     private String status;

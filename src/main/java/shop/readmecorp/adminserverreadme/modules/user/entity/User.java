@@ -42,7 +42,6 @@ public class User extends BaseTime {
     @Comment("자동 결제 여부")
     private Boolean isAutoPayment;
 
-    //TODO 이거 써도되나?
     @Comment("유저 가입 시간")
     private LocalDateTime joinTime;
 

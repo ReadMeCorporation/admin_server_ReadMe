@@ -1,37 +1,37 @@
 package shop.readmecorp.adminserverreadme.modules.book.controller;
 
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import shop.readmecorp.adminserverreadme.common.exception.CustomException;
 import shop.readmecorp.adminserverreadme.common.exception.Exception400;
 import shop.readmecorp.adminserverreadme.modules.ResponseDTO;
 import shop.readmecorp.adminserverreadme.modules.book.BookConst;
-import shop.readmecorp.adminserverreadme.modules.book.dto.AdminsBookUpdateAndDeleteListDTO;
-import shop.readmecorp.adminserverreadme.modules.book.dto.BookDTO;
-//import shop.readmecorp.adminserverreadme.modules.book.dto.PublishersBookListDTO;
 import shop.readmecorp.adminserverreadme.modules.book.entity.Book;
 import shop.readmecorp.adminserverreadme.modules.book.request.BookSaveRequest;
 import shop.readmecorp.adminserverreadme.modules.book.response.BookResponse;
 import shop.readmecorp.adminserverreadme.modules.book.service.BookService;
 import shop.readmecorp.adminserverreadme.modules.bookdeletelist.response.BookDeleteListResponse;
 import shop.readmecorp.adminserverreadme.modules.bookupdatelist.response.BookUpdateListResponse;
+import shop.readmecorp.adminserverreadme.modules.publisher.entity.Publisher;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.List;
 import java.util.Optional;
 
 @Controller
 public class BookController {
 
     private final BookService bookService;
+    private final HttpSession session;
 
 
-    public BookController(BookService bookService) {
+    public BookController(BookService bookService, HttpSession session) {
         this.bookService = bookService;
+        this.session = session;
     }
 
     // 전체 도서 리스트 조회 (ACTIVE)
@@ -132,7 +132,7 @@ public class BookController {
         Book update = bookService.deleteBook(status, id);
         return ResponseEntity.ok(update.toResponse());
     }
-//
+
     // 도서 상태 변경
     @PutMapping("/books/{id}/state")
     public ResponseEntity<BookResponse> updateBookState(
@@ -149,59 +149,169 @@ public class BookController {
 
     @GetMapping("/admins/books")
     public String adminsBookList(){
+        Object principal = session.getAttribute("principal");
+        String userRole = (String) session.getAttribute("userRole");
+        if (principal == null) {
+            throw new CustomException("로그인을 해주세요");
+        }
+        if (!"admin".equals(userRole)) {
+            throw new CustomException("관리자 권한이 필요합니다");
+        }
+
         return "/admin/bookmanage/bookList";
     }
 
     @GetMapping("/admins/books/saveList")
     public String adminsBookSaveList(){
+        Object principal = session.getAttribute("principal");
+        String userRole = (String) session.getAttribute("userRole");
+        if (principal == null) {
+            throw new CustomException("로그인을 해주세요");
+        }
+        if (!"admin".equals(userRole)) {
+            throw new CustomException("관리자 권한이 필요합니다");
+        }
+        
         return "/admin/bookmanage/bookSaveList";
     }
 
     @GetMapping("/admins/books/bookUpdateAndDeleteList")
     public String adminsBookUpdateAndDeleteList(){
+        Object principal = session.getAttribute("principal");
+        String userRole = (String) session.getAttribute("userRole");
+        if (principal == null) {
+            throw new CustomException("로그인을 해주세요");
+        }
+        if (!"admin".equals(userRole)) {
+            throw new CustomException("관리자 권한이 필요합니다");
+        }
+        
         return "/admin/bookmanage/bookUpdateAndDeleteList";
     }
 
     @GetMapping("/admins/books/bookUpdateRequest/{id}")
     public String adminsBookUpdateList(@PathVariable Integer id){
+        Object principal = session.getAttribute("principal");
+        String userRole = (String) session.getAttribute("userRole");
+        if (principal == null) {
+            throw new CustomException("로그인을 해주세요");
+        }
+        if (!"admin".equals(userRole)) {
+            throw new CustomException("관리자 권한이 필요합니다");
+        }
+        
         return "/admin/bookmanage/bookUpdateRequest";
     }
 
     @GetMapping("/admins/books/bookDeleteRequest/{id}")
     public String adminsBookDeleteList(@PathVariable Integer id){
+        Object principal = session.getAttribute("principal");
+        String userRole = (String) session.getAttribute("userRole");
+        if (principal == null) {
+            throw new CustomException("로그인을 해주세요");
+        }
+        if (!"admin".equals(userRole)) {
+            throw new CustomException("관리자 권한이 필요합니다");
+        }
+        
         return "/admin/bookmanage/bookDeleteRequest";
     }
 
     @GetMapping("/admins/books/detail/{id}")
-    public String adminsBookDetail(@PathVariable Integer id){ return "/admin/bookmanage/bookDetail"; }
+    public String adminsBookDetail(@PathVariable Integer id){
+        Object principal = session.getAttribute("principal");
+        String userRole = (String) session.getAttribute("userRole");
+        if (principal == null) {
+            throw new CustomException("로그인을 해주세요");
+        }
+        if (!"admin".equals(userRole)) {
+            throw new CustomException("관리자 권한이 필요합니다");
+        }
+        
+        return "/admin/bookmanage/bookDetail"; 
+    }
 
     @GetMapping("/publishers/books")
     public String publishersBookList(){
+        Object principal = session.getAttribute("principal");
+        String userRole = (String) session.getAttribute("userRole");
+        if (principal == null) {
+            throw new CustomException("로그인을 해주세요");
+        }
+        if (!"publisher".equals(userRole)) {
+            throw new CustomException("출판사 계정이 아닙니다");
+        }
+        
         return "/publisher/bookmanage/bookList";
     }
 
     @GetMapping("/publishers/books/detail/{id}")
     public String publishersBookDetail(@PathVariable Integer id){
+        Object principal = session.getAttribute("principal");
+        String userRole = (String) session.getAttribute("userRole");
+        if (principal == null) {
+            throw new CustomException("로그인을 해주세요");
+        }
+        if (!"publisher".equals(userRole)) {
+            throw new CustomException("출판사 계정이 아닙니다");
+        }
+        
         return "/publisher/bookmanage/bookDetail";
     }
 
     @GetMapping("/publishers/books/saveForm")
     public String publishersSaveForm(){
+        Object principal = session.getAttribute("principal");
+        String userRole = (String) session.getAttribute("userRole");
+        if (principal == null) {
+            throw new CustomException("로그인을 해주세요");
+        }
+        if (!"publisher".equals(userRole)) {
+            throw new CustomException("출판사 계정이 아닙니다");
+        }
+
         return "/publisher/bookmanage/bookSaveForm";
     }
 
     @GetMapping("/publishers/books/stay")
     public String publishersBookStay(){
+        Object principal = session.getAttribute("principal");
+        String userRole = (String) session.getAttribute("userRole");
+        if (principal == null) {
+            throw new CustomException("로그인을 해주세요");
+        }
+        if (!"publisher".equals(userRole)) {
+            throw new CustomException("출판사 계정이 아닙니다");
+        }
+
         return "/publisher/bookmanage/bookStay";
     }
 
     @GetMapping("/publishers/books/updateForm/{id}")
     public String publishersBookUpdateForm(@PathVariable Integer id){
+        Object principal = session.getAttribute("principal");
+        String userRole = (String) session.getAttribute("userRole");
+        if (principal == null) {
+            throw new CustomException("로그인을 해주세요");
+        }
+        if (!"publisher".equals(userRole)) {
+            throw new CustomException("출판사 계정이 아닙니다");
+        }
+
         return "/publisher/bookmanage/bookUpdateForm";
     }
 
     @GetMapping("/publishers/books/deleteForm/{id}")
     public String publisherBookDeleteForm(@PathVariable Integer id){
+        Object principal = session.getAttribute("principal");
+        String userRole = (String) session.getAttribute("userRole");
+        if (principal == null) {
+            throw new CustomException("로그인을 해주세요");
+        }
+        if (!"publisher".equals(userRole)) {
+            throw new CustomException("출판사 계정이 아닙니다");
+        }
+
         return "/publisher/bookmanage/bookDeleteForm";
     }
 }

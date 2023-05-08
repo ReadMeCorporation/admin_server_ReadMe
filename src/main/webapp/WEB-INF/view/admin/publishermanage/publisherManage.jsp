@@ -9,7 +9,7 @@
 <div class="" style="border: 1px solid gray" >
 
     <table class="table">
-        <thead>
+        <thead class="table-secondary">
         <tr>
             <th scope="col">NO</th>
             <th scope="col">출판사 이메일</th>
@@ -78,7 +78,7 @@
     // 변경된 상태를 서버에 전송하는 코드
     function changeStatus(id) {
         var status = $('#status-' + id).val();
-        if (status == 'ACTIVE'){
+        // if (status == 'ACTIVE'){
             $.ajax({
                 url: 'http://localhost:8080/publishers/' + id,
                 type: 'PUT',
@@ -98,21 +98,22 @@
                     alert("상태 변경에 실패했습니다. 오류: " + err.responseJSON.msg);
                 });
 
-        } else if(status == 'DELETE'){
-            $.ajax({
-                url: 'http://localhost:8080/publishers/' + id,
-                type: 'DELETE',
-            })
-                .done((res) => {
-                    // 성공 시 처리할 내용 (예: 알림 표시, 테이블 업데이트 등)
-                    alert("상태가 변경되었습니다.");
-                    location.reload();
-                })
-                .fail((err) => {
-                    // 실패 시 처리할 내용 (예: 오류 메시지 표시 등)
-                    alert("상태 변경에 실패했습니다. 오류: " + err.responseJSON.msg);
-                });
-        }
+            //TODO 삭제하려니까 book_tb가 publihser_id를 참조한다고 삭제가안됨. 비활성상태로 변경하는것으로 수정
+        // } else if(status == 'DELETE'){
+        //     $.ajax({
+        //         url: 'http://localhost:8080/publishers/' + id,
+        //         type: 'DELETE',
+        //     })
+        //         .done((res) => {
+        //             // 성공 시 처리할 내용 (예: 알림 표시, 테이블 업데이트 등)
+        //             alert("상태가 변경되었습니다.");
+        //             location.reload();
+        //         })
+        //         .fail((err) => {
+        //             // 실패 시 처리할 내용 (예: 오류 메시지 표시 등)
+        //             alert("상태 변경에 실패했습니다. 오류: " + err.responseJSON.msg);
+        //         });
+        // }
     }
 
 
