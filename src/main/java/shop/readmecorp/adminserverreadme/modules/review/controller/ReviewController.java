@@ -5,15 +5,18 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-import shop.readmecorp.adminserverreadme.common.exception.CustomException;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import shop.readmecorp.adminserverreadme.common.exception.Exception400;
 import shop.readmecorp.adminserverreadme.modules.ResponseDTO;
 import shop.readmecorp.adminserverreadme.modules.review.ReviewConst;
+import shop.readmecorp.adminserverreadme.modules.review.dto.ReviewDTO;
 import shop.readmecorp.adminserverreadme.modules.review.entity.Review;
 import shop.readmecorp.adminserverreadme.modules.review.response.ReviewResponse;
-import shop.readmecorp.adminserverreadme.modules.review.dto.ReviewDTO;
 import shop.readmecorp.adminserverreadme.modules.review.service.ReviewService;
+import shop.readmecorp.adminserverreadme.util.AccountRoleValidator;
 
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
@@ -24,10 +27,12 @@ public class ReviewController {
 
     private final ReviewService reviewService;
     private final HttpSession session;
+    private final AccountRoleValidator roleValidator;
 
-    public ReviewController(ReviewService reviewService, HttpSession session) {
+    public ReviewController(ReviewService reviewService, HttpSession session, AccountRoleValidator roleValidator) {
         this.reviewService = reviewService;
         this.session = session;
+        this.roleValidator = roleValidator;
     }
 
     // 전체 리뷰 조회
@@ -87,42 +92,24 @@ public class ReviewController {
     
     @GetMapping("/publishers/reviews")
     public String publisherReviews(){
-        Object principal = session.getAttribute("principal");
-        String userRole = (String) session.getAttribute("userRole");
-        if (principal == null) {
-            throw new CustomException("로그인을 해주세요");
-        }
-        if (!"publisher".equals(userRole)) {
-            throw new CustomException("출판사 계정이 아닙니다");
-        }
+        // 권한체크 (출판사계정인지)
+        roleValidator.validatePublisherRole();
 
         return"/publisher/reviewmanage/reviewList";
     }
 
     @GetMapping("/admins/reviews/request")
     public String adminReviewsDeleteRequest(){
-        Object principal = session.getAttribute("principal");
-        String userRole = (String) session.getAttribute("userRole");
-        if (principal == null) {
-            throw new CustomException("로그인을 해주세요");
-        }
-        if (!"admin".equals(userRole)) {
-            throw new CustomException("관리자 권한이 필요합니다");
-        }
+        // 권한체크 (어드민계정인지)
+        roleValidator.validateAdminRole();
 
         return"/admin/reviewmanage/reviewDeleteRequest";
     }
 
     @GetMapping("/admins/reviews")
     public String adminReviews(){
-        Object principal = session.getAttribute("principal");
-        String userRole = (String) session.getAttribute("userRole");
-        if (principal == null) {
-            throw new CustomException("로그인을 해주세요");
-        }
-        if (!"admin".equals(userRole)) {
-            throw new CustomException("관리자 권한이 필요합니다");
-        }
+        // 권한체크 (어드민계정인지)
+        roleValidator.validateAdminRole();
 
         return"/admin/reviewmanage/reviewList";
     }

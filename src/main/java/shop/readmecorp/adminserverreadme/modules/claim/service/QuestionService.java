@@ -3,7 +3,6 @@ package shop.readmecorp.adminserverreadme.modules.claim.service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import shop.readmecorp.adminserverreadme.common.exception.Exception400;
@@ -18,7 +17,6 @@ import shop.readmecorp.adminserverreadme.modules.claim.response.QuestionResponse
 import shop.readmecorp.adminserverreadme.modules.publisher.entity.Publisher;
 import shop.readmecorp.adminserverreadme.modules.publisher.repository.PublisherRepository;
 
-import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -66,16 +64,12 @@ public class QuestionService {
 
         Optional<Publisher> optionalPublisher = publisherRepository.findById(request.getPublisherId());
 
-        // 초 미만값 제외
-        LocalDateTime date = LocalDateTime.now().withNano(0);
-
         Question question = Question.builder()
                 .role(RoleType.PUBLISHER)
                 .user(null)
                 .publisher(optionalPublisher.get())
                 .title(request.getTitle())
                 .content(request.getContent())
-                .writeTime(date)
                 .status(ClaimStatus.WAIT)
                 .build();
 

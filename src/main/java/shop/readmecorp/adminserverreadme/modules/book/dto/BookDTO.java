@@ -4,8 +4,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import shop.readmecorp.adminserverreadme.modules.book.entity.Book;
-import shop.readmecorp.adminserverreadme.modules.book.enums.BookStatus;
 import shop.readmecorp.adminserverreadme.modules.category.dto.BigCategoryDTO;
 import shop.readmecorp.adminserverreadme.modules.category.dto.SmallCategoryDTO;
 import shop.readmecorp.adminserverreadme.modules.file.dto.FileDTO;
@@ -46,14 +44,14 @@ public class BookDTO {
 
     private Integer hearts;
 
-    //TODO h2에서는 안됨
-//    private String createdDate;
+    private String createdDate;
+
+    private String modifiedDate;
 
     private String status;
 
     @Builder
-
-    public BookDTO(Integer id, PublisherDTO publisher, String title, String author, Integer price, String introduction, BigCategoryDTO bigCategory, SmallCategoryDTO smallCategory, String authorInfo, Boolean isHeart, FileDTO epubFile, FileDTO coverFile, Double stars, Integer hearts,String createdDate, String status) {
+    public BookDTO(Integer id, PublisherDTO publisher, String title, String author, Integer price, String introduction, BigCategoryDTO bigCategory, SmallCategoryDTO smallCategory, String authorInfo, Boolean isHeart, FileDTO epubFile, FileDTO coverFile, Double stars, Integer hearts,String createdDate, String modifiedDate, String status) {
         this.id = id;
         this.publisher = publisher;
         this.title = title;
@@ -68,8 +66,8 @@ public class BookDTO {
         this.coverFile = coverFile;
         this.stars = stars;
         this.hearts = hearts;
-        //TODO h2에서는 안됨
-//        this.createdDate = createdDate;
+        this.createdDate = createdDate;
+        this.modifiedDate = modifiedDate;
         this.status = status;
     }
 }

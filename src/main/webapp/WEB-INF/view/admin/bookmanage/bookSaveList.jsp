@@ -55,7 +55,7 @@
             tr.append('<td>' + book.title + '</td>');
             tr.append('<td>' + book.author + '</td>');
             tr.append('<td>' + book.publisher.businessName + '</td>');
-            tr.append('<td>' + book.createDate + '</td>');
+            tr.append('<td>' + book.createdDate + '</td>');
 
             var selectStatus = `
                 <select class="form-select" name="status" id="status-` + book.id + `">

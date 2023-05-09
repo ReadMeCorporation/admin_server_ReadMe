@@ -42,6 +42,8 @@
             <a href="/admins/books" class="btn btn-outline-primary">도서관리</a>
             <a href="/admins/reviews" class="btn btn-outline-primary">리뷰관리</a>
             <a href="/admins/claims" class="btn btn-outline-primary">문의내역</a>
+            <a href="/admins/notices" class="btn btn-outline-primary">공지사항관리</a>
+            <a href="/admins/banners" class="btn btn-outline-primary">배너관리</a>
         </div>
     </c:when>
 </c:choose>

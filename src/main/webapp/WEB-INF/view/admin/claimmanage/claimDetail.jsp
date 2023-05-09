@@ -2,7 +2,7 @@
 <%@ include file="../../layout/header.jsp" %>
 <%@ include file="../../layout/headerClaim.jsp" %>
 
-<div class="" style="border: 1px solid gray" >
+<div class="p-3 mx-auto" style="border: 1px solid #00539C; width: 1000px" >
 
 <h1>문의내용</h1>
     <div>
@@ -41,7 +41,6 @@
         for (var i = 0; i < answers.length; i++) {
             var answer = answers[i];
             if (answer.question.id == ${id}){
-                console.log('id = ${id}')
                 $('#question').val(answer.question.content);
                 $('#answer').val(answer.content);
             }

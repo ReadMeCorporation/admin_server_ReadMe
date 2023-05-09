@@ -1,16 +1,12 @@
 package shop.readmecorp.adminserverreadme.modules.claim.controller;
 
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import shop.readmecorp.adminserverreadme.modules.ResponseDTO;
-import shop.readmecorp.adminserverreadme.modules.claim.entity.Question;
 import shop.readmecorp.adminserverreadme.modules.claim.request.QuestionSaveRequest;
 import shop.readmecorp.adminserverreadme.modules.claim.service.QuestionService;
-
-import java.util.stream.Collectors;
 
 @RestController
 public class QuestionController {

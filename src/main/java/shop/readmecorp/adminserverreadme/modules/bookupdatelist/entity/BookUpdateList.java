@@ -99,12 +99,12 @@ public class BookUpdateList extends BaseTime {
     }
 
     public BookUpdateListDTO toDTO() {
-        return new BookUpdateListDTO(id, book.toDTO(), content, status.name()  );
+        return new BookUpdateListDTO(id, book.toDTO(), content, getCreatedDate().toString(),status.name()  );
     }
 
     public BookUpdateListResponse toResponse() {
         BookDTO bookDTO = book.toDTO();
-        return new BookUpdateListResponse(id, bookDTO, title,author,price,introduction,epubUrl,coverUrl,bigCategory.toDTO(),smallCategory.toDTO(),authorInfo, content, status.name());
+        return new BookUpdateListResponse(id, bookDTO, title,author,price,introduction,epubUrl,coverUrl,bigCategory.toDTO(),smallCategory.toDTO(),authorInfo, content, getCreatedDate().toString(),status.name());
     }
 
 }

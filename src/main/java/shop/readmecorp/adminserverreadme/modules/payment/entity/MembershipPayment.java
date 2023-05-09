@@ -44,10 +44,6 @@ public class MembershipPayment extends BaseTime {
     @Comment("멤버십 가격")
     private Integer price;
 
-    @Comment("결제한 카드")
-    @ManyToOne
-    private Card card;
-
     @Comment("구매한 시간")
     private LocalDateTime paymentTime;
 
@@ -63,17 +59,16 @@ public class MembershipPayment extends BaseTime {
         this.membershipStartTime = membershipStartTime;
         this.membershipEndTime = membershipEndTime;
         this.price = price;
-        this.card = card;
         this.paymentTime = paymentTime;
         this.status = status;
     }
 
     public MembershipPaymentDTO toDTO() {
-        return new MembershipPaymentDTO(id, user.toDTO(), membership.toDTO(), membershipStartTime, membershipEndTime, price, card.toDTO(),paymentTime.toString(), status.name());
+        return new MembershipPaymentDTO(id, user.toDTO(), membership.toDTO(), membershipStartTime, membershipEndTime, price,paymentTime.toString(), status.name());
     }
 
     public MembershipPaymentResponse toResponse() {
-        return new MembershipPaymentResponse(id, user.toDTO(), membership.toDTO(), membershipStartTime, membershipEndTime, price, card.toDTO(),paymentTime.toString(), status.name());
+        return new MembershipPaymentResponse(id, user.toDTO(), membership.toDTO(), membershipStartTime, membershipEndTime, price,paymentTime.toString(), status.name());
     }
 }
 

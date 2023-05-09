@@ -10,6 +10,7 @@ import shop.readmecorp.adminserverreadme.common.exception.CustomException;
 import shop.readmecorp.adminserverreadme.modules.admin.entity.Admin;
 import shop.readmecorp.adminserverreadme.modules.admin.request.AdminLoginRequest;
 import shop.readmecorp.adminserverreadme.modules.admin.service.AdminService;
+import shop.readmecorp.adminserverreadme.util.AccountRoleValidator;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -20,10 +21,12 @@ public class AdminController {
 
     private final AdminService adminService;
     private final HttpSession session;
+    private final AccountRoleValidator roleValidator;
 
-    public AdminController(AdminService adminService, HttpSession session) {
+    public AdminController(AdminService adminService, HttpSession session, AccountRoleValidator roleValidator) {
         this.adminService = adminService;
         this.session = session;
+        this.roleValidator = roleValidator;
     }
 
 
@@ -56,42 +59,24 @@ public class AdminController {
 
     @GetMapping("/userManage")
     public String userManage(){
-        Object principal = session.getAttribute("principal");
-        String userRole = (String) session.getAttribute("userRole");
-        if (principal == null) {
-            throw new CustomException("로그인을 해주세요");
-        }
-        if (!"admin".equals(userRole)) {
-            throw new CustomException("관리자 권한이 필요합니다");
-        }
+        // 권한체크 (어드민계정인지)
+        roleValidator.validateAdminRole();
 
         return "/admin/usermanage/userManage";
     }
 
     @GetMapping("/publisherList")
     public String publisherList(){
-        Object principal = session.getAttribute("principal");
-        String userRole = (String) session.getAttribute("userRole");
-        if (principal == null) {
-            throw new CustomException("로그인을 해주세요");
-        }
-        if (!"admin".equals(userRole)) {
-            throw new CustomException("관리자 권한이 필요합니다");
-        }
+        // 권한체크 (어드민계정인지)
+        roleValidator.validateAdminRole();
 
         return "/admin/publishermanage/publisherList";
     }
 
     @GetMapping("/publisherManage")
     public String publisherManage(){
-        Object principal = session.getAttribute("principal");
-        String userRole = (String) session.getAttribute("userRole");
-        if (principal == null) {
-            throw new CustomException("로그인을 해주세요");
-        }
-        if (!"admin".equals(userRole)) {
-            throw new CustomException("관리자 권한이 필요합니다");
-        }
+        // 권한체크 (어드민계정인지)
+        roleValidator.validateAdminRole();
 
         return "/admin/publishermanage/publisherManage";
     }

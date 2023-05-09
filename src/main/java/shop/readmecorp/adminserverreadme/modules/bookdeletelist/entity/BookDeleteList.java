@@ -42,16 +42,16 @@ public class BookDeleteList extends BaseTime {
     public BookDeleteList(Integer id, Book book, String coverUrl,String content, BookDeleteListStatus status) {
         this.id = id;
         this.book = book;
-        this.coverUrl =coverUrl;
+        this.coverUrl = coverUrl;
         this.content = content;
         this.status = status;
     }
 
     public BookDeleteListDTO toDTO() {
-        return new BookDeleteListDTO(id, book.toDTO(), content, status.name()  );
+        return new BookDeleteListDTO(id, book.toDTO(), coverUrl, content, getCreatedDate().toString(),getModifiedDate().toString(),status.name()  );
     }
 
     public BookDeleteListResponse toResponse() {
-        return new BookDeleteListResponse(id, book.toDTO(), coverUrl, content, status.name());
+        return new BookDeleteListResponse(id, book.toDTO(), coverUrl, content,getCreatedDate().toString(),getModifiedDate().toString(), status.name());
     }
 }

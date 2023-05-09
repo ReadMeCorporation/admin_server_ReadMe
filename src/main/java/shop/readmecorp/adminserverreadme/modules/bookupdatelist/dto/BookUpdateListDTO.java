@@ -19,5 +19,7 @@ public class BookUpdateListDTO {
 
     private String content;
 
+    private String createdDate;
+
     private String staus;
 }

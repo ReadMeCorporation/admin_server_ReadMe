@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import shop.readmecorp.adminserverreadme.modules.file.dto.FileInfoDTO;
 
 @Getter
 @Setter
@@ -22,9 +21,7 @@ public class UserDTO {
 
     private Boolean isAutoPayment;
 
-    private String joinTime;
-
-    private FileInfoDTO fileInfo;
+    private String createdDate;
 
     private String status;
 

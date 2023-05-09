@@ -25,7 +25,7 @@ public class QuestionResponse {
 
     private String content;
 
-    private String writeTime;
+    private String createdDate;
 
     private String status;
 

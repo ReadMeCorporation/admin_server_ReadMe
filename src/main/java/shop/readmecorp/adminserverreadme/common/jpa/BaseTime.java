@@ -19,7 +19,7 @@ public abstract class BaseTime {
     private LocalDateTime modifiedDate;
 
     public LocalDateTime getCreatedDate() {
-        return createdDate;
+        return createdDate.withNano(0);
     }
 
     public void changeCreatedDate(LocalDateTime now) {
@@ -27,6 +27,6 @@ public abstract class BaseTime {
     }
 
     public LocalDateTime getModifiedDate() {
-        return modifiedDate;
+        return modifiedDate.withNano(0);
     }
 }

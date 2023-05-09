@@ -45,9 +45,6 @@ public class Question extends BaseTime {
     @Comment("문의 내용")
     private String content;
 
-    @Comment("문의 작성 시간")
-    private LocalDateTime writeTime;
-
     @Comment("문의 활성화 상태")
     @Enumerated(EnumType.STRING)
     private ClaimStatus status;
@@ -60,7 +57,6 @@ public class Question extends BaseTime {
         this.publisher = publisher;
         this.title = title;
         this.content = content;
-        this.writeTime = writeTime;
         this.status = status;
     }
 
@@ -71,7 +67,7 @@ public class Question extends BaseTime {
                 publisher != null ? publisher.toDTO() : null,
                 title,
                 content,
-                writeTime != null ? writeTime.toString() : null,
+                getCreatedDate() != null ? getCreatedDate().toString() : null,
                 status != null ? status.name() : "UNKNOWN");
     }
 
@@ -82,7 +78,7 @@ public class Question extends BaseTime {
                 publisher != null ? publisher.toDTO() : null,
                 title,
                 content,
-                writeTime != null ? writeTime.toString() : null,
+                getCreatedDate() != null ? getCreatedDate().toString() : null,
                 status != null ? status.name() : "UNKNOWN");
     }
 }

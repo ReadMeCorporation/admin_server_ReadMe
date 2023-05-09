@@ -35,10 +35,14 @@ public class BookResponse {
 
     private String authorInfo;
 
+    private String createdDate;
+
+    private String modifiedDate;
+
     private String status;
 
     @Builder
-    public BookResponse(Integer id, PublisherDTO publisher, String title, String author, Integer price, String introduction, String epubUrl, String coverUrl, BigCategoryDTO bigCategory, SmallCategoryDTO smallCategory, String authorInfo, String status) {
+    public BookResponse(Integer id, PublisherDTO publisher, String title, String author, Integer price, String introduction, String epubUrl, String coverUrl, BigCategoryDTO bigCategory, SmallCategoryDTO smallCategory, String authorInfo, String createdDate,String modifiedDate, String status) {
         this.id = id;
         this.publisher = publisher;
         this.title = title;
@@ -50,6 +54,8 @@ public class BookResponse {
         this.bigCategory = bigCategory;
         this.smallCategory = smallCategory;
         this.authorInfo = authorInfo;
+        this.createdDate = createdDate;
+        this.modifiedDate = modifiedDate;
         this.status = status;
     }
 }

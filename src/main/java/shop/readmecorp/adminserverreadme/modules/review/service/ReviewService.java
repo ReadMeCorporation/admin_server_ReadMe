@@ -7,7 +7,6 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import shop.readmecorp.adminserverreadme.modules.book.enums.BookStatus;
 import shop.readmecorp.adminserverreadme.modules.review.dto.ReviewDTO;
 import shop.readmecorp.adminserverreadme.modules.review.entity.Review;
 import shop.readmecorp.adminserverreadme.modules.review.enums.ReviewStatus;

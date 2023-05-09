@@ -8,10 +8,10 @@
 
     <div class="px-3" >
 
-        <div class="d-flex justify-content" >
+        <div class="d-flex" >
             <div>
                 <h5><b>표지</b></h5>
-                <img src="" style="height: 170px; width: 140px" id="coverUrl">
+                <img src="" style="height: 200px; width: 160px; margin-right: 70px" id="coverUrl">
             </div>
             <div>
                 도서명
