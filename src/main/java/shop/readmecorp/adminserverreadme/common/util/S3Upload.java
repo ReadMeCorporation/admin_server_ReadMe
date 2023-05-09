@@ -22,11 +22,12 @@ public class S3Upload {
     }
 
     public String upload(MultipartFile multipartFile, String dir) throws IOException {
-        String s3FileName = UUID.randomUUID() + "-" + multipartFile.getOriginalFilename();
+        String s3FileName = dir;
+        s3FileName += UUID.randomUUID() + "-" + multipartFile.getOriginalFilename();
 
         ObjectMetadata objMeta = new ObjectMetadata();
         objMeta.setContentLength(multipartFile.getInputStream().available());
-        amazonS3.putObject(bucket, dir + s3FileName, multipartFile.getInputStream(), objMeta);
+        amazonS3.putObject(bucket, s3FileName, multipartFile.getInputStream(), objMeta);
 
         return amazonS3.getUrl(bucket, s3FileName).toString();
     }
