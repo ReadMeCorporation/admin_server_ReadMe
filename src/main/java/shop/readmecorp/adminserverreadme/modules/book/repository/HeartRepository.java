@@ -6,8 +6,6 @@ import org.springframework.data.repository.query.Param;
 import shop.readmecorp.adminserverreadme.modules.book.entity.Heart;
 import shop.readmecorp.adminserverreadme.modules.book.enums.HeartStatus;
 
-import java.util.List;
-
 public interface HeartRepository extends JpaRepository<Heart, Integer> {
 
     // 지정된 bookId와 status를 가진 Heart 엔티티의 개수를 세는 메서드

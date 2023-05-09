@@ -62,7 +62,7 @@
                 tr.append('<td>' + question.title + '</td>');
             }
 
-            tr.append('<td>' + question.writeTime + '</td>');
+            tr.append('<td>' + question.createdDate + '</td>');
             tr.append('<td>' + getStatusInKorean(question.status) + '</td>');
 
             tbody.append(tr);
@@ -72,8 +72,10 @@
     // 상태값을 한글로 치환
     function getStatusInKorean(status) {
         switch (status) {
+            case 'ACTIVE':
+                return '대기중';
             case 'WAIT':
-                return '답변미완료';
+                return '대기중';
             case 'ACCEPT':
                 return '답변완료';
             default:

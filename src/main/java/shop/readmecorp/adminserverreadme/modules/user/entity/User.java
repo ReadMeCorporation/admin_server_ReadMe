@@ -42,13 +42,6 @@ public class User extends BaseTime {
     @Comment("자동 결제 여부")
     private Boolean isAutoPayment;
 
-    @Comment("유저 가입 시간")
-    private LocalDateTime joinTime;
-
-    @Comment("프로필 사진")
-    @ManyToOne
-    private FileInfo fileInfo;
-
     @Comment("유저 활성화 상태")
     @Enumerated(EnumType.STRING)
     private UserStatus status;
@@ -61,16 +54,14 @@ public class User extends BaseTime {
         this.role = role;
         this.isMembership = isMembership;
         this.isAutoPayment = isAutoPayment;
-        this.joinTime = joinTime;
-        this.fileInfo = fileInfo;
         this.status = status;
     }
 
     public UserDTO toDTO() {
-        return new UserDTO(id, username, role.name(), isMembership,isAutoPayment,joinTime.toString(),fileInfo.toDTO(), status.name()  );
+        return new UserDTO(id, username, role.name(), isMembership,isAutoPayment,getCreatedDate().toString(),status.name()  );
     }
 
     public UserResponse toResponse() {
-        return new UserResponse(id, username, role.name(), isMembership,isAutoPayment,joinTime.toString(),fileInfo.toDTO(), status.name());
+        return new UserResponse(id, username, role.name(), isMembership,isAutoPayment,getCreatedDate().toString(),status.name());
     }
 }

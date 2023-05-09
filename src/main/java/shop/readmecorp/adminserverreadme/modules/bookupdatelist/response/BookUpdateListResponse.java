@@ -38,6 +38,8 @@ public class BookUpdateListResponse {
 
     private String content;
 
+    private String createdDate;
+
     private String staus;
 
 }

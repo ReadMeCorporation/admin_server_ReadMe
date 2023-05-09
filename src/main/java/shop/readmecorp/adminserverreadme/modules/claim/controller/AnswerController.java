@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import shop.readmecorp.adminserverreadme.modules.ResponseDTO;
 import shop.readmecorp.adminserverreadme.modules.claim.request.AnswerSaveRequest;
-import shop.readmecorp.adminserverreadme.modules.claim.request.QuestionSaveRequest;
 import shop.readmecorp.adminserverreadme.modules.claim.service.AnswerService;
 
 @RestController

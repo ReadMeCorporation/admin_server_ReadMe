@@ -7,8 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import shop.readmecorp.adminserverreadme.modules.review.entity.Review;
 
-import java.util.List;
-
 public interface ReviewRepository extends JpaRepository<Review, Integer> {
 
     @Query("SELECT AVG(r.stars) FROM Review r WHERE r.book.id = :bookId")

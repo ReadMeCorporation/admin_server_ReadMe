@@ -41,7 +41,6 @@
         for (var i = 0; i < answers.length; i++) {
             var answer = answers[i];
             if (answer.question.id == ${id}){
-                console.log('id = ${id}')
                 $('#question').val(answer.question.content);
                 $('#answer').val(answer.content);
             }

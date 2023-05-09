@@ -48,10 +48,10 @@ public class Answer extends BaseTime {
     }
 
     public AnswerDTO toDTO() {
-        return new AnswerDTO(id, question.toDTO(), content, writeTime.toString(), status.name());
+        return new AnswerDTO(id, question.toDTO(), content, getCreatedDate().toString(), status.name());
     }
 
     public AnswerResponse toResponse() {
-        return new AnswerResponse(id, question.toDTO(), content, writeTime.toString(), status.name());
+        return new AnswerResponse(id, question.toDTO(), content, getCreatedDate().toString(), status.name());
     }
 }

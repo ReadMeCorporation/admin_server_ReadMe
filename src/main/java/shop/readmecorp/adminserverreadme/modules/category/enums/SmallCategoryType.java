@@ -1,6 +1,5 @@
 package shop.readmecorp.adminserverreadme.modules.category.enums;
 
-//TODO 수정필요
 public enum SmallCategoryType {
 
     // 자기계발

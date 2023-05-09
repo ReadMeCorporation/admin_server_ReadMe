@@ -14,9 +14,7 @@ import shop.readmecorp.adminserverreadme.common.util.S3Upload;
 import shop.readmecorp.adminserverreadme.modules.book.BookConst;
 import shop.readmecorp.adminserverreadme.modules.book.dto.AdminsBookUpdateAndDeleteListDTO;
 import shop.readmecorp.adminserverreadme.modules.book.dto.BookDTO;
-//import shop.readmecorp.adminserverreadme.modules.book.dto.PublishersBookListDTO;
 import shop.readmecorp.adminserverreadme.modules.book.entity.Book;
-import shop.readmecorp.adminserverreadme.modules.book.entity.Heart;
 import shop.readmecorp.adminserverreadme.modules.book.enums.BookStatus;
 import shop.readmecorp.adminserverreadme.modules.book.enums.HeartStatus;
 import shop.readmecorp.adminserverreadme.modules.book.repository.BookRepository;
@@ -24,12 +22,10 @@ import shop.readmecorp.adminserverreadme.modules.book.repository.HeartRepository
 import shop.readmecorp.adminserverreadme.modules.book.request.BookSaveRequest;
 import shop.readmecorp.adminserverreadme.modules.book.response.BookResponse;
 import shop.readmecorp.adminserverreadme.modules.bookdeletelist.BookUpdateListConst;
-import shop.readmecorp.adminserverreadme.modules.bookdeletelist.dto.BookDeleteListDTO;
 import shop.readmecorp.adminserverreadme.modules.bookdeletelist.entity.BookDeleteList;
 import shop.readmecorp.adminserverreadme.modules.bookdeletelist.enums.BookDeleteListStatus;
 import shop.readmecorp.adminserverreadme.modules.bookdeletelist.repository.BookDeleteListRepository;
 import shop.readmecorp.adminserverreadme.modules.bookdeletelist.response.BookDeleteListResponse;
-import shop.readmecorp.adminserverreadme.modules.bookupdatelist.dto.BookUpdateListDTO;
 import shop.readmecorp.adminserverreadme.modules.bookupdatelist.entity.BookUpdateList;
 import shop.readmecorp.adminserverreadme.modules.bookupdatelist.enums.BookUpdateListStatus;
 import shop.readmecorp.adminserverreadme.modules.bookupdatelist.repository.BookUpdateListRepository;
@@ -38,21 +34,22 @@ import shop.readmecorp.adminserverreadme.modules.category.entity.BigCategory;
 import shop.readmecorp.adminserverreadme.modules.category.entity.SmallCategory;
 import shop.readmecorp.adminserverreadme.modules.category.repository.BigCategoryRepository;
 import shop.readmecorp.adminserverreadme.modules.category.repository.SmallCategoryRepository;
+import shop.readmecorp.adminserverreadme.modules.category.service.CategoryService;
 import shop.readmecorp.adminserverreadme.modules.file.entity.File;
 import shop.readmecorp.adminserverreadme.modules.file.entity.FileInfo;
 import shop.readmecorp.adminserverreadme.modules.file.enums.FileStatus;
 import shop.readmecorp.adminserverreadme.modules.file.enums.FileType;
 import shop.readmecorp.adminserverreadme.modules.file.repository.FileInfoRepository;
 import shop.readmecorp.adminserverreadme.modules.file.repository.FileRepository;
-import shop.readmecorp.adminserverreadme.modules.publisher.PublisherConst;
 import shop.readmecorp.adminserverreadme.modules.publisher.entity.Publisher;
 import shop.readmecorp.adminserverreadme.modules.publisher.repository.PublisherRepository;
-import shop.readmecorp.adminserverreadme.modules.review.entity.Review;
-import shop.readmecorp.adminserverreadme.modules.review.enums.ReviewStatus;
 import shop.readmecorp.adminserverreadme.modules.review.repository.ReviewRepository;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -70,8 +67,9 @@ public class BookService {
     private final BookDeleteListRepository bookDeleteListRepository;
     private final ObjectMapper objectMapper;
     private final S3Upload s3Upload;
+    private final CategoryService categoryService;
 
-    public BookService(BookRepository bookRepository, ReviewRepository reviewRepository, PublisherRepository publisherRepository, FileInfoRepository fileInfoRepository, FileRepository fileRepository, HeartRepository heartRepository, BigCategoryRepository bigCategoryRepository, SmallCategoryRepository smallCategoryRepository, BookUpdateListRepository bookUpdateListRepository, BookDeleteListRepository bookDeleteListRepository, ObjectMapper objectMapper, S3Upload s3Upload) {
+    public BookService(BookRepository bookRepository, ReviewRepository reviewRepository, PublisherRepository publisherRepository, FileInfoRepository fileInfoRepository, FileRepository fileRepository, HeartRepository heartRepository, BigCategoryRepository bigCategoryRepository, SmallCategoryRepository smallCategoryRepository, BookUpdateListRepository bookUpdateListRepository, BookDeleteListRepository bookDeleteListRepository, ObjectMapper objectMapper, S3Upload s3Upload, CategoryService categoryService) {
         this.bookRepository = bookRepository;
         this.reviewRepository = reviewRepository;
         this.publisherRepository = publisherRepository;
@@ -84,6 +82,7 @@ public class BookService {
         this.bookDeleteListRepository = bookDeleteListRepository;
         this.objectMapper = objectMapper;
         this.s3Upload = s3Upload;
+        this.categoryService = categoryService;
     }
 
     public PageImpl<?> getBookListActive(Pageable pageable) {
@@ -97,10 +96,7 @@ public class BookService {
 
         for (int i = 0; i < content.size(); i++) {
             File epubFiles = fileRepository.findByFileInfo_Id(page.getContent().get(i).getEpub().getId());
-            System.out.println("테스트1 : " + page.getContent().get(i).getEpub().getId());
-            System.out.println("테스트1 : " + page.getContent().get(i).getTitle());
             File coverFiles = fileRepository.findByFileInfo_Id(page.getContent().get(i).getCover().getId());
-            System.out.println("테스트2 : " + page.getContent().get(i).getCover().getId());
             Double stars = reviewRepository.findAvgStars(content.get(i).getId());
             content.get(i).setEpubFile(epubFiles.toDTO());
             content.get(i).setCoverFile(coverFiles.toDTO());
@@ -264,7 +260,7 @@ public class BookService {
                     .title(updateList.getBook().getTitle())
                     .author(updateList.getBook().getAuthor())
                     .publisher(updateList.getPublisher().getBusinessName())
-//                    .createdDate(updateList.getCreatedDate().toString())
+                    .createdDate(updateList.getCreatedDate().toString())
                     .requestType("UPDATE")
                     .status(updateList.getStatus().toString())
                     .build();
@@ -278,8 +274,7 @@ public class BookService {
                     .title(deleteList.getBook().getTitle())
                     .author(deleteList.getBook().getAuthor())
                     .publisher(deleteList.getBook().getPublisher().getBusinessName())
-                    //TODO 시간
-//                    .createdDate(deleteList.getCreatedDate().toString())
+                    .createdDate(deleteList.getCreatedDate().toString())
                     .requestType("DELETE")
                     .status(deleteList.getStatus().toString())
                     .build();
@@ -321,7 +316,6 @@ public class BookService {
             epubUrl = file.getFileUrl();
         }
 
-        //TODO 수정하기전 사진 넣기 안됨
         BookUpdateListResponse bookUpdateListResponse = bookUpdateList.toResponse();
 
         return bookUpdateListResponse;
@@ -396,7 +390,6 @@ public class BookService {
                 .author(request.getAuthor())
                 .price(request.getPrice())
                 .introduction(request.getIntroduction())
-                .bigCategory(optionalBigCategory.get())
                 .smallCategory(optionalSmallCategory.get())
                 .authorInfo(request.getAuthorInfo())
                 .epub(epubFileInfo)
@@ -448,7 +441,6 @@ public class BookService {
         book.setAuthor(bookUpdateList.getAuthor());
         book.setPrice(bookUpdateList.getPrice());
         book.setIntroduction(bookUpdateList.getIntroduction());
-        book.setBigCategory(bookUpdateList.getBigCategory());
         book.setSmallCategory(bookUpdateList.getSmallCategory());
         book.setAuthorInfo(bookUpdateList.getAuthorInfo());
 

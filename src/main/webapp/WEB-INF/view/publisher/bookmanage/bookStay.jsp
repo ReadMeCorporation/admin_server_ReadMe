@@ -57,7 +57,7 @@
             tr.append('<td><img src="' + book.coverFile.fileUrl + '" style="width: 75px;height: 100px"></td>');
             tr.append('<td><a href="detail/' + book.id + '">' + book.title + '</a></td>');
             tr.append('<td>' + book.author + '</td>');
-            tr.append('<td>' + book.createdDate + '</td>');
+            tr.append('<td>' + book.modifiedDate + '</td>');
             tr.append('<td>' + getStatusInKorean(book.status) + '</td>');
             tbody.append(tr);
         }

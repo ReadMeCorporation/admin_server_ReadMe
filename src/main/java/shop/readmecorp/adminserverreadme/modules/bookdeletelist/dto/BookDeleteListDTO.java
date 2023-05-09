@@ -16,7 +16,13 @@ public class BookDeleteListDTO {
 
     private BookDTO book;
 
+    private String coverUrl;
+
     private String content;
+
+    private String createdDate;
+
+    private String modifiedDate;
 
     private String status;
 

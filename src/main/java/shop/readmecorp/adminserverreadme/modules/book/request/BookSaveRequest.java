@@ -45,35 +45,4 @@ public class BookSaveRequest {
     @NotNull(message = "표지를 업로드해주세요.")
     private MultipartFile bookCover;
 
-//    @Builder
-//    public BookSaveRequest(PublisherDTO publisher, String title, String author, Integer price, String introduction, MultipartFile epubFile, BigCategoryDTO bigCategory, SmallCategoryDTO smallCategory, String authorInfo, MultipartFile file) {
-//        this.publisher = publisher;
-//        this.title = title;
-//        this.author = author;
-//        this.price = price;
-//        this.introduction = introduction;
-//        this.epubFile = epubFile;
-//        this.bigCategory = bigCategory;
-//        this.smallCategory = smallCategory;
-//        this.authorInfo = authorInfo;
-//        this.files = file;
-//    }
-//
-//    public Book toEntity() {
-//        return Book.builder()
-//                .id(null)
-//                .publisher(publisher.toEntity())
-//                .title(title)
-//                .author(author)
-//                .price(price)
-//                .introduction(introduction)
-//                .filePath(null)
-//                .bigCategory(bigCategory.toEntity())
-//                .smallCategory(smallCategory.toEntity())
-//                .authorInfo(authorInfo)
-//                .fileInfo(null)
-//                .status(BookStatus.WAIT)
-//                .build();
-//    }
-
 }

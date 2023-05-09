@@ -54,10 +54,10 @@ public class Review extends BaseTime {
     }
 
     public ReviewDTO toDTO() {
-        return new ReviewDTO(id, user.toDTO(), book.toDTO(), stars, content, status.name());
+        return new ReviewDTO(id, user.toDTO(), book.toDTO(), stars, content,getCreatedDate().toString(), status.name());
     }
 
     public ReviewResponse toResponse() {
-        return new ReviewResponse(id, user.toDTO(), book.toDTO(), stars, content, status.name());
+        return new ReviewResponse(id, user.toDTO(), book.toDTO(), stars, content,getCreatedDate().toString(), status.name());
     }
 }

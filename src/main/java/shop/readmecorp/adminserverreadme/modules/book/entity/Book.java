@@ -9,7 +9,6 @@ import shop.readmecorp.adminserverreadme.common.jpa.BaseTime;
 import shop.readmecorp.adminserverreadme.modules.book.dto.BookDTO;
 import shop.readmecorp.adminserverreadme.modules.book.enums.BookStatus;
 import shop.readmecorp.adminserverreadme.modules.book.response.BookResponse;
-import shop.readmecorp.adminserverreadme.modules.category.entity.BigCategory;
 import shop.readmecorp.adminserverreadme.modules.category.entity.SmallCategory;
 import shop.readmecorp.adminserverreadme.modules.file.entity.FileInfo;
 import shop.readmecorp.adminserverreadme.modules.publisher.entity.Publisher;
@@ -43,11 +42,6 @@ public class Book extends BaseTime {
     @Comment("책 소개")
     private String introduction;
 
-    @Comment("대분류 카테고리")
-    @OneToOne
-    @JoinColumn(name = "big_category_id")
-    private BigCategory bigCategory;
-
     @Comment("소분류 카테고리")
     @OneToOne
     @JoinColumn(name = "small_category_id")
@@ -71,14 +65,13 @@ public class Book extends BaseTime {
     private BookStatus status;
 
     @Builder
-    public Book(Integer id, Publisher publisher, String title, String author, Integer price, String introduction, String filePath, BigCategory bigCategory, SmallCategory smallCategory, String authorInfo, FileInfo epub, FileInfo cover, BookStatus status) {
+    public Book(Integer id, Publisher publisher, String title, String author, Integer price, String introduction, String filePath, SmallCategory smallCategory, String authorInfo, FileInfo epub, FileInfo cover, BookStatus status) {
         this.id = id;
         this.publisher = publisher;
         this.title = title;
         this.author = author;
         this.price = price;
         this.introduction = introduction;
-        this.bigCategory = bigCategory;
         this.smallCategory = smallCategory;
         this.authorInfo = authorInfo;
         this.epub = epub;
@@ -94,16 +87,16 @@ public class Book extends BaseTime {
                 .author(author)
                 .price(price)
                 .introduction(introduction)
-                .bigCategory(bigCategory.toDTO())
                 .smallCategory(smallCategory.toDTO())
                 .authorInfo(authorInfo)
-                //TODO h2에서는 안됨
-//                .createdDate(getCreatedDate().toString())
+                .createdDate(getCreatedDate().toString())
+                .modifiedDate(getModifiedDate().toString())
                 .status(status.name())
                 .build();
     }
 
     public BookResponse toResponse() {
+
         return BookResponse.builder()
                 .id(id)
                 .publisher(publisher.toDTO())
@@ -111,9 +104,10 @@ public class Book extends BaseTime {
                 .author(author)
                 .price(price)
                 .introduction(introduction)
-                .bigCategory(bigCategory.toDTO())
                 .smallCategory(smallCategory.toDTO())
                 .authorInfo(authorInfo)
+                .createdDate(getCreatedDate().toString())
+                .modifiedDate(getModifiedDate().toString())
                 .status(status.name())
                 .build();
     }

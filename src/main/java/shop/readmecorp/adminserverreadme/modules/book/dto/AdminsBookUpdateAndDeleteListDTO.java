@@ -25,12 +25,10 @@ public class AdminsBookUpdateAndDeleteListDTO {
 
     private String requestType;
 
-    private String writeTime;
-
     private String status;
 
     @Builder
-    public AdminsBookUpdateAndDeleteListDTO(Integer id, String coverUrl, String title, String author, String publisher, String createdDate, String requestType,String writeTime, String status) {
+    public AdminsBookUpdateAndDeleteListDTO(Integer id, String coverUrl, String title, String author, String publisher, String createdDate, String requestType, String status) {
         this.id = id;
         this.coverUrl = coverUrl;
         this.title = title;
@@ -38,7 +36,6 @@ public class AdminsBookUpdateAndDeleteListDTO {
         this.publisher = publisher;
         this.createdDate = createdDate;
         this.requestType = requestType;
-        this.writeTime = writeTime;
         this.status = status;
     }
 }

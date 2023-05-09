@@ -17,6 +17,7 @@
                 <th scope="col">자동결제</th>
                 <th scope="col">가입일</th>
                 <th scope="col">상태</th>
+                <th scope="col"> </th>
             </tr>
             </thead>
             <tbody id="userManageTbody">
@@ -54,7 +55,7 @@
             tr.append('<td>' + user.username + '</td>');
             tr.append('<td>' + user.isMembership + '</td>');
             tr.append('<td>' + user.isAutoPayment + '</td>');
-            tr.append('<td>' + user.joinTime + '</td>');
+            tr.append('<td>' + user.createdDate + '</td>');
 
             var selectStatus = `
                 <select class="form-select" name="status" id="status-` + user.id + `">

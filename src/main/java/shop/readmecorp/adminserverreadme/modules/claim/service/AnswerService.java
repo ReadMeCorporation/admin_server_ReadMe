@@ -14,7 +14,6 @@ import shop.readmecorp.adminserverreadme.modules.claim.repository.AnswerReposito
 import shop.readmecorp.adminserverreadme.modules.claim.repository.QuestionRepository;
 import shop.readmecorp.adminserverreadme.modules.claim.request.AnswerSaveRequest;
 import shop.readmecorp.adminserverreadme.modules.claim.response.AnswerResponse;
-import shop.readmecorp.adminserverreadme.modules.claim.response.QuestionResponse;
 
 import java.time.LocalDateTime;
 import java.util.Optional;

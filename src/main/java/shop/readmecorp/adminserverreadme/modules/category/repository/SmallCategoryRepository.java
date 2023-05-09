@@ -12,4 +12,5 @@ public interface SmallCategoryRepository extends JpaRepository<SmallCategory, In
 
     @Query("select s from SmallCategory s where s.smallCategory = :small_category")
     Optional<SmallCategory> findBySmallCategory(@Param("small_category") SmallCategoryType smallCategory);
+
 }
