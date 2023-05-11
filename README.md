@@ -83,10 +83,10 @@ https://github.com/ReadMeCorporation/app_ReadMe/blob/dev/3%EC%A1%B0%20%ED%8C%8C%
 
 ## 기술 블로그
 - 권경렬(http://blog.naver.com/dereklabs)
-- 장희선(업로드 예정)
-- 임지상(업로드 예정)
+- 장희선(https://blue-run-083.notion.site/e8cc4fcc0d6f435b8fe7d56d15e6a876)
+- 임지상((https://fishy-lychee-822.notion.site/6be2adcff0254e499b109fbe4a8dbb0b))
 - 안정훈(업로드 예정)
-- 김유현(업로드 예정)
+- 김유현((https://quiver-ease-2cb.notion.site/3-7ff8c3a923df429f8b33100d2a09ea13))
 
 ## 출판사 시나리오
 ![image](https://github.com/ReadMeCorporation/app_ReadMe/assets/68271830/e5338785-078f-4ad2-aedd-4649691b7cf4)
