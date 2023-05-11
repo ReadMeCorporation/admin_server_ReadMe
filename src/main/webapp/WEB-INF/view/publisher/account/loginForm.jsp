@@ -27,11 +27,11 @@
             <div class="" style="border: 1px  mediumturquoise">
                 <form action="/publishers/login" method="post">
                     <div class="form-group pb-1 mb-3" >
-                        <input type="text" class="form-control form-control" placeholder="이메일을 입력해주세요" name="username" id="username" value="test1@nate.com" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="올바른 이메일 주소 형식을 입력해주세요.">
+                        <input type="text" class="form-control form-control" placeholder="이메일을 입력해주세요" name="username" id="username"  pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="올바른 이메일 주소 형식을 입력해주세요.">
                     </div>
 
                     <div class="form-group pb-1 mb-3">
-                        <input type="password" class="form-control form-control" placeholder="비밀번호를 입력해주세요" name="password" id="password" value="1234">
+                        <input type="password" class="form-control form-control" placeholder="비밀번호를 입력해주세요" name="password" id="password" >
                     </div>
 
                     <div class="d-grid gap-2 mb-5">

@@ -66,7 +66,7 @@
             </div>
 
             <div class="d-flex justify-content-center">
-                <button onclick="save()" type="button" class="btn btn-primary">삭제 요청</button>
+                <button onclick="save()" type="button" class="btn btn-primary" style="width: 115px">삭제 요청</button>
             </div>
         </div>
 </div>
@@ -76,7 +76,7 @@
 
     $(document).ready(function() {
         $.ajax({
-            url: `http://localhost:8080/api/books/` + id + `?page=0&size=200`,
+            url: `http://localhost:8080/api/books/` + id + `?page=0&size=400`,
             type: 'GET',
             dataType: 'json',
         })

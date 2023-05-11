@@ -80,7 +80,7 @@
             </div>
 
             <div class="d-flex justify-content-center">
-                <button onclick="update()" type="button" class="btn btn-primary">수정 요청</button>
+                <button onclick="update()" type="button" class="btn btn-primary" style="width: 110px">수정 요청</button>
             </div>
         </div>
 </div>

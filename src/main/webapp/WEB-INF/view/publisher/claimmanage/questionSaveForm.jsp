@@ -19,7 +19,7 @@
         </div>
 
         <div class="d-flex justify-content-center">
-            <button onclick="save()" type="button" class="btn btn-primary">등록 요청</button>
+            <button onclick="save()" type="button" class="btn btn-primary">등록</button>
         </div>
     </div>
 

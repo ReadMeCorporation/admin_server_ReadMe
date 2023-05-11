@@ -35,7 +35,7 @@
         // publisherId 존재하는 경우에만 API 요청을 보냅니다.
         if (publisherId !== 0) {
             $.ajax({
-                url: `http://localhost:8080/api/publishers/books?page=0&size=200`,
+                url: `http://localhost:8080/api/publishers/books?page=0&size=400`,
                 type: 'GET',
                 dataType: 'json',
                 data: { publisherId: publisherId }

@@ -27,6 +27,8 @@ public class QuestionDTO {
 
     private String createdDate;
 
+    private String modifiedDate;
+
     private String status;
 
 }

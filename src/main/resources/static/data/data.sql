@@ -3,12 +3,12 @@ INSERT INTO ADMIN_TB(username, password, role, status) VALUES
 ('admin@readme.com', '1234', 'ADMIN', 'ACTIVE'),
 ('admin2@readme.com', '1234', 'ADMIN', 'DELETE');
 
-insert into PUBLISHER_TB(created_date, modified_date, username, password, role, business_number, business_name, join_time, status) values('2023-02-01 00:01', '2021-01-01 00:01', 'test1@nate.com', '1234', 'PUBLISHER', '123','사업자이름1', '2021-01-01 00:01', 'ACTIVE');
-insert into PUBLISHER_TB(created_date, modified_date, username, password, role, business_number, business_name, join_time, status) values('2023-02-01 00:01', '2021-01-01 00:01', 'test2@nate.com', '1234', 'PUBLISHER', '456','사업자이름2', '2021-01-01 00:02', 'ACTIVE');
-insert into PUBLISHER_TB(created_date, modified_date, username, password, role, business_number, business_name, join_time, status) values('2023-02-01 00:01', '2021-01-01 00:01', 'test3@nate.com', '1234', 'PUBLISHER', '789','사업자이름3', '2021-01-01 00:03', 'WAIT');
-insert into PUBLISHER_TB(created_date, modified_date, username, password, role, business_number, business_name, join_time, status) values('2023-02-01 00:01', '2021-01-01 00:01', 'test4@nate.com', '1234', 'PUBLISHER', '11-22-33','사업자이름4', '2021-01-01 00:03', 'WAIT');
-insert into PUBLISHER_TB(created_date, modified_date, username, password, role, business_number, business_name, join_time, status) values('2023-02-01 00:01', '2021-01-01 00:01', 'test5@nate.com', '1234', 'PUBLISHER', '11-22-33','사업자이름5', '2021-01-01 00:03', 'WAIT');
-insert into PUBLISHER_TB(created_date, modified_date, username, password, role, business_number, business_name, join_time, status) values('2023-02-01 00:01', '2021-01-01 00:01', 'test6@nate.com', '1234', 'PUBLISHER', '11-22-33','사업자이름6', '2021-01-01 00:03', 'DELETE');
+insert into PUBLISHER_TB(created_date, modified_date, username, password, role, business_number, business_name, join_time, status) values('2023-02-01 00:01', '2021-01-01 00:01', 'blueberry@nate.com', '1234', 'PUBLISHER', '123-45-67890','블루베리출판사', '2021-01-01 00:01', 'ACTIVE');
+insert into PUBLISHER_TB(created_date, modified_date, username, password, role, business_number, business_name, join_time, status) values('2023-02-01 00:01', '2021-01-01 00:01', 'greenfish@nate.com', '1234', 'PUBLISHER', '234-56-78901','그린피쉬출판사', '2021-01-01 00:02', 'ACTIVE');
+insert into PUBLISHER_TB(created_date, modified_date, username, password, role, business_number, business_name, join_time, status) values('2023-02-01 00:01', '2021-01-01 00:01', 'orangelemon@nate.com', '1234', 'PUBLISHER', '345-67-89012','오렌지레몬출판사', '2021-01-01 00:03', 'WAIT');
+insert into PUBLISHER_TB(created_date, modified_date, username, password, role, business_number, business_name, join_time, status) values('2023-02-01 00:01', '2021-01-01 00:01', 'goldenduck@nate.com', '1234', 'PUBLISHER', '456-78-90123','골든오리출판사', '2021-01-01 00:03', 'WAIT');
+insert into PUBLISHER_TB(created_date, modified_date, username, password, role, business_number, business_name, join_time, status) values('2023-02-01 00:01', '2021-01-01 00:01', 'purplepenguin@nate.com', '1234', 'PUBLISHER', '567-89-01234','퍼플펭귄출판사', '2021-01-01 00:03', 'WAIT');
+insert into PUBLISHER_TB(created_date, modified_date, username, password, role, business_number, business_name, join_time, status) values('2023-02-01 00:01', '2021-01-01 00:01', 'pinktiger@nate.com', '1234', 'PUBLISHER', '678-90-12345','핑크타이거출판사', '2021-01-01 00:03', 'DELETE');
 
 insert into FILE_INFO_TB(created_date, modified_date, type) values('2023-02-01 00:01', '2021-01-01 00:01', 'BOOK_EPUB');
 insert into FILE_INFO_TB(created_date, modified_date, type) values('2023-02-01 00:01', '2021-01-01 00:01', 'BOOK_COVER');
@@ -160,52 +160,51 @@ insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_u
 insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 50, 'book1.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bookcover/book5.jpg', 70057, 'png', 'ACTIVE');
 
 insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 51, 'noticeimage.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/noticeimage/noticeimage.png', 200070, 'png', 'ACTIVE');
-insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 52, 'banner1.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/banner1.jpg', 90004, 'jpg', 'ACTIVE');
+insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 52, '001.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/001.png', 90004, 'png', 'ACTIVE');
 insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 53, 'noticeimage.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/noticeimage/noticeimage.png', 200070, 'png', 'ACTIVE');
-insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 54, 'banner2.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/banner2.jpg', 580070, 'jpg', 'ACTIVE');
+insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 54, '002.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/002.png', 580070, 'png', 'ACTIVE');
 insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 55, 'noticeimage.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/noticeimage/noticeimage.png', 200070, 'png', 'ACTIVE');
-insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 56, 'banner3.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/banner3.jpg', 50003, 'jpg', 'ACTIVE');
+insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 56, '003.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/003.png', 50003, 'png', 'ACTIVE');
 insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 57, 'noticeimage.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/noticeimage/noticeimage.png', 200070, 'png', 'ACTIVE');
-insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 58, 'banner1.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/banner1.jpg', 90004, 'jpg', 'ACTIVE');
+insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 58, '001.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/001.png', 90004, 'png', 'ACTIVE');
 insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 59, 'noticeimage.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/noticeimage/noticeimage.png', 200070, 'png', 'ACTIVE');
-insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 60, 'banner2.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/banner2.jpg', 580070, 'jpg', 'ACTIVE');
+insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 60, '002.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/002.png', 580070, 'png', 'ACTIVE');
 insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 61, 'noticeimage.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/noticeimage/noticeimage.png', 200070, 'png', 'ACTIVE');
-insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 62, 'banner3.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/banner3.jpg', 50003, 'jpg', 'ACTIVE');
+insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 62, '003.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/003.png', 50003, 'png', 'ACTIVE');
 insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 63, 'noticeimage.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/noticeimage/noticeimage.png', 200070, 'png', 'ACTIVE');
-insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 64, 'banner1.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/banner1.jpg', 90004, 'jpg', 'ACTIVE');
+insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 64, '001.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/001.png', 90004, 'png', 'ACTIVE');
 insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 65, 'noticeimage.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/noticeimage/noticeimage.png', 200070, 'png', 'ACTIVE');
-insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 66, 'banner2.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/banner2.jpg', 580070, 'jpg', 'ACTIVE');
+insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 66, '002.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/002.png', 580070, 'png', 'ACTIVE');
 insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 67, 'noticeimage.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/noticeimage/noticeimage.png', 200070, 'png', 'ACTIVE');
-insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 68, 'banner3.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/banner3.jpg', 50003, 'jpg', 'ACTIVE');
+insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 68, '003.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/003.png', 50003, 'png', 'ACTIVE');
 insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 69, 'noticeimage.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/noticeimage/noticeimage.png', 200070, 'png', 'ACTIVE');
-insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 70, 'banner1.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/banner1.jpg', 90004, 'jpg', 'ACTIVE');
+insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 70, '001.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/001.png', 90004, 'png', 'ACTIVE');
 insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 71, 'noticeimage.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/noticeimage/noticeimage.png', 200070, 'png', 'ACTIVE');
-insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 72, 'banner2.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/banner2.jpg', 580070, 'jpg', 'ACTIVE');
+insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 72, '002.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/002.png', 580070, 'png', 'ACTIVE');
 insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 73, 'noticeimage.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/noticeimage/noticeimage.png', 200070, 'png', 'ACTIVE');
-insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 74, 'banner3.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/banner3.jpg', 50003, 'jpg', 'ACTIVE');
+insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 74, '003.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/003.png', 50003, 'png', 'ACTIVE');
 insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 75, 'noticeimage.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/noticeimage/noticeimage.png', 200070, 'png', 'ACTIVE');
-insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 76, 'banner1.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/banner1.jpg', 90004, 'jpg', 'ACTIVE');
+insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 76, '001.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/001.png', 90004, 'png', 'ACTIVE');
 insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 77, 'noticeimage.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/noticeimage/noticeimage.png', 200070, 'png', 'ACTIVE');
-insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 78, 'banner2.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/banner2.jpg', 580070, 'jpg', 'ACTIVE');
+insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 78, '002.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/002.png', 580070, 'png', 'ACTIVE');
 insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 79, 'noticeimage.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/noticeimage/noticeimage.png', 200070, 'png', 'ACTIVE');
-insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 80, 'banner3.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/banner3.jpg', 50003, 'jpg', 'ACTIVE');
+insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 80, '003.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/003.png', 50003, 'png', 'ACTIVE');
 insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 81, 'noticeimage.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/noticeimage/noticeimage.png', 200070, 'png', 'ACTIVE');
-insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 82, 'banner1.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/banner1.jpg', 90004, 'jpg', 'ACTIVE');
+insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 82, '001.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/001.png', 90004, 'png', 'ACTIVE');
 insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 83, 'noticeimage.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/noticeimage/noticeimage.png', 200070, 'png', 'ACTIVE');
-insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 84, 'banner2.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/banner2.jpg', 580070, 'jpg', 'ACTIVE');
+insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 84, '002.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/002.png', 580070, 'png', 'ACTIVE');
 insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 85, 'noticeimage.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/noticeimage/noticeimage.png', 200070, 'png', 'ACTIVE');
-insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 86, 'banner3.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/banner3.jpg', 50003, 'jpg', 'ACTIVE');
+insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 86, '003.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/003.png', 50003, 'png', 'ACTIVE');
 insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 87, 'noticeimage.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/noticeimage/noticeimage.png', 200070, 'png', 'ACTIVE');
-insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 88, 'banner1.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/banner1.jpg', 90004, 'jpg', 'ACTIVE');
+insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 88, '001.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/001.png', 90004, 'png', 'ACTIVE');
 insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 89, 'noticeimage.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/noticeimage/noticeimage.png', 200070, 'png', 'ACTIVE');
-insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 90, 'banner2.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/banner2.jpg', 580070, 'jpg', 'ACTIVE');
+insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 90, '002.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/002.png', 580070, 'png', 'ACTIVE');
 insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 91, 'noticeimage.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/noticeimage/noticeimage.png', 200070, 'png', 'ACTIVE');
-insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 92, 'banner3.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/banner3.jpg', 50003, 'jpg', 'ACTIVE');
+insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 94, '001.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/001.png', 90004, 'png', 'ACTIVE');
 insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 93, 'noticeimage.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/noticeimage/noticeimage.png', 200070, 'png', 'ACTIVE');
-insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 94, 'banner1.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/banner1.jpg', 90004, 'jpg', 'ACTIVE');
+insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 96, '002.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/002.png', 580070, 'png', 'ACTIVE');
 insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 95, 'noticeimage.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/noticeimage/noticeimage.png', 200070, 'png', 'ACTIVE');
-insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 96, 'banner2.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/banner2.jpg', 580070, 'jpg', 'ACTIVE');
-
+insert into FILE_TB(created_date, modified_date, file_info_id, file_name, file_url, file_size, extension, status) values('2023-02-01 00:01', '2021-01-01 00:01', 92, '003.png', 'https://readmecorpbucket.s3.ap-northeast-2.amazonaws.com/bannerimage/003.png', 50003, 'png', 'ACTIVE');
 
 insert into USER_TB(created_date, modified_date, username, password, role, is_membership, is_auto_payment, status) values('2023-02-01 00:01', '2021-01-01 00:01', 'kkr0787@nate.com','1234', 'USER', true, true, 'ACTIVE');
 insert into USER_TB(created_date, modified_date, username, password, role, is_membership, is_auto_payment, status) values('2023-02-01 00:01', '2021-01-01 00:01', 'aj124578@nate.com','1234', 'USER', true, false, 'ACTIVE');
@@ -720,159 +719,159 @@ INSERT INTO HEART_TB(user_id, book_id, status) VALUES
     (2, 31, 'ACTIVE'),
     (2, 32, 'ACTIVE');
 
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 1, 2.4, '리뷰내용1', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 1, 3.2, '리뷰내용2', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 1, 4.8, '리뷰내용3', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 4, 1, 4.8, '리뷰내용3', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 5, 1, 4.8, '리뷰내용3', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 6, 1, 4.8, '리뷰내용3', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 2, 2.3, '리뷰내용4', 'DELETE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 2, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 2, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 3, 2.4, '리뷰내용1', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 3, 3.2, '리뷰내용2', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 3, 4.8, '리뷰내용3', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 4, 2.3, '리뷰내용4', 'DELETE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 4, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 4, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 5, 2.4, '리뷰내용1', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 5, 3.2, '리뷰내용2', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 5, 4.8, '리뷰내용3', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 6, 2.3, '리뷰내용4', 'DELETE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 6, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 6, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 7, 2.4, '리뷰내용1', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 7, 3.2, '리뷰내용2', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 7, 4.8, '리뷰내용3', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 8, 2.3, '리뷰내용4', 'DELETE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 8, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 8, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 9, 2.4, '리뷰내용1', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 9, 3.2, '리뷰내용2', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 9, 4.8, '리뷰내용3', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 10, 2.3, '리뷰내용4', 'DELETE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 10, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 10, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 11, 2.4, '리뷰내용1', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 11, 3.2, '리뷰내용2', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 11, 4.8, '리뷰내용3', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 12, 2.3, '리뷰내용4', 'DELETE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 12, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 12, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 13, 2.4, '리뷰내용1', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 13, 3.2, '리뷰내용2', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 13, 4.8, '리뷰내용3', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 14, 2.3, '리뷰내용4', 'DELETE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 14, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 14, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 15, 2.4, '리뷰내용1', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 15, 3.2, '리뷰내용2', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 15, 4.8, '리뷰내용3', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 16, 2.3, '리뷰내용4', 'DELETE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 16, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 16, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 17, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 17, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 17, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 18, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 18, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 18, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 19, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 19, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 19, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 20, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 20, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 20, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 21, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 21, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 21, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 22, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 22, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 22, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 23, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 23, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 23, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 24, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 24, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 24, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 25, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 25, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 25, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 26, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 26, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 26, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 27, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 27, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 27, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 28, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 28, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 28, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 29, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 29, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 29, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 30, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 30, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 30, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 31, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 31, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 31, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 32, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 32, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 32, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 33, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 33, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 33, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 34, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 34, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 34, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 35, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 35, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 35, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 36, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 36, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 36, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 37, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 37, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 37, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 38, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 38, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 38, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 39, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 39, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 39, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 40, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 40, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 40, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 41, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 41, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 41, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 42, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 42, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 42, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 43, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 43, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 43, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 44, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 44, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 44, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 45, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 45, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 45, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 46, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 46, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 46, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 47, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 47, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 47, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 48, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 48, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 48, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 49, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 49, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 49, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 50, 2.6, '리뷰내용5', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 50, 4.6, '리뷰내용6', 'ACTIVE');
-insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 50, 4.6, '리뷰내용6', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 1, 2.4, '진짜 별로네요', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 1, 3.2, '재미없어요', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 1, 4.8, '재밌었어요', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 4, 1, 4.8, '완전 추천입니다', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 5, 1, 4.8, '이건 좀 별론데', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 6, 1, 4.8, '이거 짱입니다', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 2, 2.3, '굿굿', 'DELETE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-10 12:30', '2023-05-10 12:30', 1, 1, 4.2, '이 책은 굉장히 재미있고 이해하기 쉽습니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-09 21:15', '2023-05-09 21:15', 2, 1, 3.5, '그저 그런 책입니다. 추천은 하지 않습니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-08 18:40', '2023-05-08 18:40', 3, 1, 5, '이 책은 꼭 읽어봐야 합니다! 모든 사람들이 꼭 읽어봐야 하는 책입니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-07 10:20', '2023-05-07 10:20', 1, 2, 2, '이 책은 별로입니다. 내용도 이해하기 어렵고 지루합니다.', 'DELETE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-06 08:05', '2023-05-06 08:05', 2, 2, 4.8, '좋은 책입니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-05 16:50', '2023-05-05 16:50', 3, 2, 3.9, '이 책은 괜찮은 편입니다. 그런데 뭔가 부족한 느낌이 있어요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-04 11:30', '2023-05-04 11:30', 1, 3, 2.7, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-03 14:20', '2023-05-03 14:20', 2, 3, 4.5, '책 내용이 굉장히 흥미롭습니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-07 10:20', '2023-05-07 10:20', 1, 2, 2, '이 책은 별로입니다. 내용도 이해하기 어렵고 지루합니다.', 'DELETE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-06 08:05', '2023-05-06 08:05', 2, 2, 4.8, '좋은 책입니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-05 16:50', '2023-05-05 16:50', 3, 2, 3.9, '이 책은 괜찮은 편입니다. 그런데 뭔가 부족한 느낌이 있어요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-04 11:30', '2023-05-04 11:30', 1, 3, 2.7, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-03 14:20', '2023-05-03 14:20', 2, 3, 4.5, '책 내용이 굉장히 흥미롭습니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-07 10:20', '2023-05-07 10:20', 1, 2, 2, '이 책은 별로입니다. 내용도 이해하기 어렵고 지루합니다.', 'DELETE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-06 08:05', '2023-05-06 08:05', 2, 2, 4.8, '좋은 책입니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-05 16:50', '2023-05-05 16:50', 3, 2, 3.9, '이 책은 괜찮은 편입니다. 그런데 뭔가 부족한 느낌이 있어요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-04 11:30', '2023-05-04 11:30', 1, 3, 2.7, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-03 14:20', '2023-05-03 14:20', 2, 3, 4.5, '책 내용이 굉장히 흥미롭습니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-08 18:40', '2023-05-08 18:40', 3, 1, 5, '이 책은 꼭 읽어봐야 합니다! 모든 사람들이 꼭 읽어봐야 하는 책입니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-07 10:20', '2023-05-07 10:20', 1, 2, 2, '이 책은 별로입니다. 내용도 이해하기 어렵고 지루합니다.', 'DELETE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-06 08:05', '2023-05-06 08:05', 2, 2, 4.8, '좋은 책입니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-05 16:50', '2023-05-05 16:50', 3, 2, 3.9, '이 책은 괜찮은 편입니다. 그런데 뭔가 부족한 느낌이 있어요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-04 11:30', '2023-05-04 11:30', 1, 3, 2.7, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-08 18:40', '2023-05-08 18:40', 3, 1, 5, '이 책은 꼭 읽어봐야 합니다! 모든 사람들이 꼭 읽어봐야 하는 책입니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-07 10:20', '2023-05-07 10:20', 1, 2, 2, '이 책은 별로입니다. 내용도 이해하기 어렵고 지루합니다.', 'DELETE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-06 08:05', '2023-05-06 08:05', 2, 2, 4.8, '좋은 책입니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-05 16:50', '2023-05-05 16:50', 3, 2, 3.9, '이 책은 괜찮은 편입니다. 그런데 뭔가 부족한 느낌이 있어요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-04 11:30', '2023-05-04 11:30', 1, 3, 2.7, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-06 08:05', '2023-05-06 08:05', 2, 2, 4.8, '좋은 책입니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-05 16:50', '2023-05-05 16:50', 3, 2, 3.9, '이 책은 괜찮은 편입니다. 그런데 뭔가 부족한 느낌이 있어요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-04 11:30', '2023-05-04 11:30', 1, 3, 2.7, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-03 14:20', '2023-05-03 14:20', 2, 3, 4.5, '책 내용이 굉장히 흥미롭습니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content, status) values('2023-05-07 10:20', '2023-05-07 10:20', 1, 2, 2, '이 책은 별로입니다. 내용도 이해하기 어렵고 지루합니다.', 'DELETE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 13, 3.2, '책 내용이 굉장히 흥미롭습니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 13, 4.8, '좋은 책입니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 14, 2.3, '책 내용이 굉장히 흥미롭습니다. 추천합니다!', 'DELETE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 14, 2.6, '좋은 책입니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 14, 4.6, '좋은 책입니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 15, 2.4, '좋은 책입니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 15, 3.2, '이 책은 별로입니다. 내용도 이해하기 어렵고 지루합니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 15, 4.8, '이 책은 꼭 읽어봐야 합니다! 모든 사람들이 꼭 읽어봐야 하는 책입니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 16, 2.3, '책 내용이 굉장히 흥미롭습니다. 추천합니다!', 'DELETE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 16, 2.6, '이 책은 꼭 읽어봐야 합니다! 모든 사람들이 꼭 읽어봐야 하는 책입니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 16, 4.6, '좋은 책입니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 17, 2.6, '이 책은 별로입니다. 내용도 이해하기 어렵고 지루합니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 17, 4.6, '좋은 책입니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 17, 4.6, '이 책은 별로입니다. 내용도 이해하기 어렵고 지루합니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 18, 2.6, '좋은 책입니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 18, 4.6, '이 책은 꼭 읽어봐야 합니다! 모든 사람들이 꼭 읽어봐야 하는 책입니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 18, 4.6, '이 책은 별로입니다. 내용도 이해하기 어렵고 지루합니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 19, 2.6, '좋은 책입니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 19, 4.6, '이 책은 꼭 읽어봐야 합니다! 모든 사람들이 꼭 읽어봐야 하는 책입니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 19, 4.6, '이 책은 별로입니다. 내용도 이해하기 어렵고 지루합니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 20, 2.6, '좋은 책입니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 20, 4.6, '책 내용이 굉장히 흥미롭습니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 20, 4.6, '이 책은 별로입니다. 내용도 이해하기 어렵고 지루합니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 21, 2.6, '좋은 책입니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 21, 4.6, '이 책은 별로입니다. 내용도 이해하기 어렵고 지루합니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 21, 4.6, '좋은 책입니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 22, 2.6, '책 내용이 굉장히 흥미롭습니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 22, 4.6, '좋은 책입니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 22, 4.6, '이 책은 별로입니다. 내용도 이해하기 어렵고 지루합니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 23, 2.6, '좋은 책입니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 23, 4.6, '좋은 책입니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 23, 4.6, '이 책은 별로입니다. 내용도 이해하기 어렵고 지루합니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 24, 2.6, '좋은 책입니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 24, 4.6, '이 책은 꼭 읽어봐야 합니다! 모든 사람들이 꼭 읽어봐야 하는 책입니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 24, 4.6, '좋은 책입니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 25, 2.6, '이 책은 별로입니다. 내용도 이해하기 어렵고 지루합니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 25, 4.6, '좋은 책입니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 25, 4.6, '이 책은 꼭 읽어봐야 합니다! 모든 사람들이 꼭 읽어봐야 하는 책입니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 26, 2.6, '책 내용이 굉장히 흥미롭습니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 26, 4.6, '이 책은 별로입니다. 내용도 이해하기 어렵고 지루합니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 26, 4.6, '책 내용이 굉장히 흥미롭습니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 27, 2.6, '책 내용이 굉장히 흥미롭습니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 27, 4.6, '책 내용이 굉장히 흥미롭습니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 27, 4.6, '책 내용이 굉장히 흥미롭습니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 28, 2.6, '책 내용이 굉장히 흥미롭습니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 28, 4.6, '책 내용이 굉장히 흥미롭습니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 28, 4.6, '책 내용이 굉장히 흥미롭습니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 29, 2.6, '이 책은 꼭 읽어봐야 합니다! 모든 사람들이 꼭 읽어봐야 하는 책입니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 29, 4.6, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 29, 4.6, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 30, 2.6, '책 내용이 굉장히 흥미롭습니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 30, 4.6, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 30, 4.6, '이 책은 꼭 읽어봐야 합니다! 모든 사람들이 꼭 읽어봐야 하는 책입니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 31, 2.6, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 31, 4.6, '책 내용이 굉장히 흥미롭습니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 31, 4.6, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 32, 2.6, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 32, 4.6, '이 책은 꼭 읽어봐야 합니다! 모든 사람들이 꼭 읽어봐야 하는 책입니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 32, 4.6, '책 내용이 굉장히 흥미롭습니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 33, 2.6, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 33, 4.6, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 33, 4.6, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 34, 2.6, '책 내용이 굉장히 흥미롭습니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 34, 4.6, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 34, 4.6, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 35, 2.6, '책 내용이 굉장히 흥미롭습니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 35, 4.6, '이 책은 꼭 읽어봐야 합니다! 모든 사람들이 꼭 읽어봐야 하는 책입니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 35, 4.6, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 36, 2.6, '책 내용이 굉장히 흥미롭습니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 36, 4.6, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 36, 4.6, '이 책은 꼭 읽어봐야 합니다! 모든 사람들이 꼭 읽어봐야 하는 책입니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 37, 2.6, '책 내용이 굉장히 흥미롭습니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 37, 4.6, '이 책은 굉장히 재미있고 이해하기 쉽습니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 37, 4.6, '이 책은 굉장히 재미있고 이해하기 쉽습니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 38, 2.6, '책 내용이 굉장히 흥미롭습니다. 추천합니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 38, 4.6, '이 책은 굉장히 재미있고 이해하기 쉽습니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 38, 4.6, '이 책은 꼭 읽어봐야 합니다! 모든 사람들이 꼭 읽어봐야 하는 책입니다!', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 39, 2.6, '이 책은 굉장히 재미있고 이해하기 쉽습니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 39, 4.6, '이 책은 굉장히 재미있고 이해하기 쉽습니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 39, 4.6, '이 책은 굉장히 재미있고 이해하기 쉽습니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 40, 2.6, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 40, 4.6, '이 책은 굉장히 재미있고 이해하기 쉽습니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 40, 4.6, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 41, 2.6, '이 책은 굉장히 재미있고 이해하기 쉽습니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 41, 4.6, '이 책은 굉장히 재미있고 이해하기 쉽습니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 41, 4.6, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 42, 2.6, '이 책은 굉장히 재미있고 이해하기 쉽습니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 42, 4.6, '이 책은 굉장히 재미있고 이해하기 쉽습니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 42, 4.6, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 43, 2.6, '이 책은 굉장히 재미있고 이해하기 쉽습니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 43, 4.6, '이 책은 굉장히 재미있고 이해하기 쉽습니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 43, 4.6, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 44, 2.6, '이 책은 굉장히 재미있고 이해하기 쉽습니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 44, 4.6, '이 책은 굉장히 재미있고 이해하기 쉽습니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 44, 4.6, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 45, 2.6, '이 책은 굉장히 재미있고 이해하기 쉽습니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 45, 4.6, '이 책은 굉장히 재미있고 이해하기 쉽습니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 45, 4.6, '이 책은 굉장히 재미있고 이해하기 쉽습니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 46, 2.6, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 46, 4.6, '이 책은 굉장히 재미있고 이해하기 쉽습니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 46, 4.6, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 47, 2.6, '이 책은 굉장히 재미있고 이해하기 쉽습니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 47, 4.6, '이 책은 굉장히 재미있고 이해하기 쉽습니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 47, 4.6, '이 책은 굉장히 재미있고 이해하기 쉽습니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 48, 2.6, '이 책은 굉장히 재미있고 이해하기 쉽습니다.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 48, 4.6, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 48, 4.6, '이 책은 괜찮은 편입니다. 그런데 뭔가 부족한 느낌이 있어요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 49, 2.6, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 49, 4.6, '이 책은 괜찮은 편입니다. 그런데 뭔가 부족한 느낌이 있어요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 49, 4.6, '이 책은 괜찮은 편입니다. 그런데 뭔가 부족한 느낌이 있어요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 3, 50, 2.6, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 50, 4.6, '이 책은 괜찮은 편입니다. 그런데 뭔가 부족한 느낌이 있어요.', 'ACTIVE');
+insert into REVIEW_TB(created_date, modified_date, user_id, book_id, stars, content,  status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 50, 4.6, '이 책은 그냥 그렇습니다. 별로 추천하고 싶지 않아요.', 'ACTIVE');
 
 INSERT INTO BOOK_PAYMENT_TB(created_date, modified_date, user_id, book_id, price, payment_time, status) values('2023-02-01 00:01', '2021-01-01 00:01', 1, 1, 15000, '2021-01-01 00:01', 'ACTIVE');
 INSERT INTO BOOK_PAYMENT_TB(created_date, modified_date, user_id, book_id, price, payment_time, status) values('2023-02-01 00:01', '2021-01-01 00:01', 2, 1, 15000, '2021-01-01 00:01', 'ACTIVE');
@@ -1057,23 +1056,26 @@ values
 
 INSERT INTO QUESTION_TB(created_date, modified_date, role, user_id, publisher_id, title, content, status)
 values
-('2023-02-01 00:01', '2021-01-01 00:01', 'USER', 1, null, '문의제목1', '문의내용1', 'ACTIVE'),
-('2023-02-01 00:01', '2021-01-01 00:01', 'USER', 2, null, '문의제목2', '문의내용2', 'ACTIVE'),
-('2023-02-01 00:01', '2021-01-01 00:01', 'USER', 3, null, '문의제목3', '문의내용3', 'ACTIVE'),
-('2023-02-01 00:01', '2021-01-01 00:01', 'USER', 4, null, '문의제목4', '문의내용4', 'ACTIVE'),
-('2023-02-01 00:01', '2021-01-01 00:01', 'USER', 5, null, '문의제목5', '문의내용5', 'ACTIVE'),
-('2023-02-01 00:01', '2021-01-01 00:01', 'PUBLISHER', null, 1, '문의제목6', '문의내용6', 'ACTIVE'),
-('2023-02-01 00:01', '2021-01-01 00:01', 'PUBLISHER', null, 2, '문의제목7', '문의내용7', 'ACTIVE'),
-('2023-02-01 00:01', '2021-01-01 00:01', 'PUBLISHER', null, 3, '문의제목8', '문의내용8', 'ACTIVE'),
-('2023-02-01 00:01', '2021-01-01 00:01', 'PUBLISHER', null, 4, '문의제목9', '문의내용9', 'ACTIVE'),
-('2023-02-01 00:01', '2021-01-01 00:01', 'PUBLISHER', null, 5, '문의제목10', '문의내용10', 'ACTIVE'),
-('2023-02-01 00:01', '2021-01-01 00:01', 'USER', 1, null, '문의제목11', '문의내용11', 'ACTIVE'),
-('2023-02-01 00:01', '2021-01-01 00:01', 'USER', 2, null, '문의제목12', '문의내용12', 'ACTIVE'),
-('2023-02-01 00:01', '2021-01-01 00:01', 'USER', 3, null, '문의제목13', '문의내용13', 'ACTIVE'),
-('2023-02-01 00:01', '2021-01-01 00:01', 'USER', 4, null, '문의제목14', '문의내용14', 'ACTIVE'),
-('2023-02-01 00:01', '2021-01-01 00:01', 'USER', 5, null, '문의제목15', '문의내용15', 'ACTIVE'),
-('2023-02-01 00:01', '2021-01-01 00:01', 'PUBLISHER', null, 1, '문의제목16', '문의내용16', 'ACTIVE'),
-('2023-02-01 00:01', '2021-01-01 00:01', 'PUBLISHER', null, 2, '문의제목17', '문의내용17', 'ACTIVE'),
+
+    ('2023-02-01 00:01', '2021-01-01 00:01', 'USER', 1, null, '결제 진행이 안되요', '안녕하세요. 제가 구매를 시도했는데 결제가 진행되지 않아 문의드립니다. 혹시 해결 방법이 있을까요?', 'ACTIVE'),
+    ('2023-02-01 00:01', '2021-01-01 00:01', 'USER', 2, null, '배송이 언제쯤 도착할까요?', '안녕하세요. 상품을 주문한 지 얼마 안되었는데, 배송이 언제쯤 도착할지 궁금합니다. 배송 관련 정보를 알고 싶습니다.', 'ACTIVE'),
+    ('2023-02-01 00:01', '2021-01-01 00:01', 'USER', 3, null, '상품이 파손되었어요', '안녕하세요. 상품을 받았는데, 상품이 파손되어서 왔습니다. 반품 및 교환 관련해서 문의드립니다. 빠른 조치 부탁드립니다.', 'ACTIVE'),
+    ('2023-02-01 00:01', '2021-01-01 00:01', 'USER', 4, null, '교환 신청하려고 하는데 방법이 어떻게 되나요?', '안녕하세요. 상품을 받았는데, 제가 주문한 상품과 다르게 왔습니다. 교환 신청하려고 하는데 방법이 어떻게 되는지 알려주세요.', 'ACTIVE'),
+    ('2023-02-01 00:01', '2021-01-01 00:01', 'USER', 5, null, '반품 신청하려고 하는데 방법이 어떻게 되나요?', '안녕하세요. 상품을 받았는데, 제가 원하는 상품과 맞지 않아서 반품을 신청하려고 합니다. 방법이 어떻게 되는지 문의드립니다.', 'ACTIVE'),
+    ('2023-02-01 00:01', '2021-01-01 00:01', 'PUBLISHER', null, 1, '상품 결제 진행 방법 문의드립니다.', '안녕하세요. 고객님의 상품 결제가 진행되지 않는다는 문의가 있어서 문의드립니다. 상품 결제 진행 방법에 대해서 안내해드릴 수 있을까요?', 'ACTIVE'),
+    ('2023-02-01 00:01', '2021-01-01 00:01', 'PUBLISHER', null, 2, '배송 관련 문의드립니다.', '안녕하세요. 고객님의 상품 배송이 언제쯤 도착할지 궁금하다는 문의가 있어서 연락드립니다. 배송 관련해서 안내해드릴 수 있을까요?', 'ACTIVE'),
+('2023-02-01 00:01', '2021-01-01 00:01', 'PUBLISHER', null, 3, '상품 파손 관련 문의드립니다.', '안녕하세요. 고객님이 받으신 상품이 파손되어 도착했다는 문의가 있어서 연락드립니다. 반품 및 교환 관련해서 안내해드릴 수 있을까요?', 'ACTIVE'),
+('2023-02-01 00:01', '2021-01-01 00:01', 'PUBLISHER', null, 4, '상품 교환 방법 문의드립니다.', '안녕하세요. 고객님이 받으신 상품과 제품이 다른 경우 교환 방법에 대해 문의가 있어서 연락드립니다. 상품 교환 방법에 대해서 안내해드릴 수 있을까요?', 'ACTIVE'),
+('2023-02-01 00:01', '2021-01-01 00:01', 'PUBLISHER', null, 5, '상품 반품 방법 문의드립니다.', '안녕하세요. 고객님이 원하시는 상품이 아니어서 반품을 신청하고자 한다는 문의가 있어서 연락드립니다. 상품 반품 방법에 대해서 안내해드릴 수 있을까요?', 'ACTIVE'),
+
+
+('2023-02-01 00:01', '2021-01-01 00:01', 'USER', 1, null, '전자책 다운로드 질문입니다', '안녕하세요. 제가 전자책을 구매해서 다운로드를 시도했는데, 다운로드가 안 되고 있습니다. 어떻게 해야 다운로드가 가능할까요?', 'ACTIVE'),
+('2023-02-01 00:01', '2021-01-01 00:01', 'USER', 2, null, '회원가입 문의드립니다', '안녕하세요. 회원가입을 시도했는데, 이메일 인증을 받지 못하고 있습니다. 이메일 인증을 받기 위해서는 어떻게 해야 할까요?', 'ACTIVE'),
+    ('2023-02-01 00:01', '2021-01-01 00:01', 'USER', 3, null, '상품 구매 문의입니다', '안녕하세요. 전자책을 구매하고자 하는데, 결제 방법이 어떤 것이 있는지 궁금합니다. 또한, 구매한 전자책을 어디에서 다운로드할 수 있는지도 알려주세요.', 'ACTIVE'),
+('2023-02-01 00:01', '2021-01-01 00:01', 'USER', 4, null, '전자책 다운로드 질문입니다', '안녕하세요. 제가 전자책을 구매해서 다운로드를 시도했는데, 다운로드가 안 되고 있습니다. 어떻게 해야 다운로드가 가능할까요?', 'ACTIVE'),
+('2023-02-01 00:01', '2021-01-01 00:01', 'USER', 5, null, '전자책 다운로드 질문입니다', '안녕하세요. 제가 전자책을 구매해서 다운로드를 시도했는데, 다운로드가 안 되고 있습니다. 어떻게 해야 다운로드가 가능할까요?', 'ACTIVE'),
+('2023-02-01 00:01', '2021-01-01 00:01', 'PUBLISHER', null, 1, '이것 좀 해주세요', '안녕하세요. 제가 전자책을 구매해서 다운로드를 시도했는데, 다운로드가 안 되고 있습니다. 어떻게 해야 다운로드가 가능할까요?', 'ACTIVE'),
+('2023-02-01 00:01', '2021-01-01 00:01', 'PUBLISHER', null, 2, '결제 진행이 안되요', '안녕하세요. 제가 구매를 시도했는데 결제가 진행되지 않아 문의드립니다. 혹시 해결 방법이 있을까요?', 'ACTIVE'),
 ('2023-02-01 00:01', '2021-01-01 00:01', 'PUBLISHER', null, 3, '문의제목18', '문의내용18', 'ACTIVE'),
 ('2023-02-01 00:01', '2021-01-01 00:01', 'PUBLISHER', null, 4, '문의제목19', '문의내용19', 'ACTIVE'),
 ('2023-02-01 00:01', '2021-01-01 00:01', 'PUBLISHER', null, 5, '문의제목20', '문의내용20', 'ACTIVE'),

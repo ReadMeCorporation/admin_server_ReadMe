@@ -103,7 +103,15 @@ public class BookController {
     // 도서 삭제 요청화면 (어드민에서 사용)
     @GetMapping("/api/books/deleteRequest/{id}")
     public ResponseEntity<BookDeleteListResponse> getBookDeleteRequest(@PathVariable Integer id) {
-        return ResponseEntity.ok(bookService.getBookDeleteRequest(id));
+
+        BookDeleteListResponse bookDeleteListResponse = bookService.getBookDeleteRequest(id);
+
+        var smallCategory = categoryService.getSmallCategory(bookDeleteListResponse.getBook().getSmallCategory().getId());
+        var bigCategoryId = smallCategory.get().getBigCategory().getId();
+
+        bookDeleteListResponse.getBook().setBigCategory(categoryService.getBigCategory(bigCategoryId).get().toDTO());
+
+        return ResponseEntity.ok(bookDeleteListResponse);
     }
 
     // 도서 등록

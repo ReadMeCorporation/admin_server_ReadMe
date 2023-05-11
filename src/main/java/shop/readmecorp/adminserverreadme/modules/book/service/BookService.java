@@ -90,7 +90,6 @@ public class BookService {
         Page<Book> page = bookRepository.findAll(pageable);
         List<BookDTO> content = page.getContent()
                 .stream()
-                .filter(book -> book.getStatus().equals(BookStatus.ACTIVE))
                 .map(Book::toDTO)
                 .collect(Collectors.toList());
 
@@ -138,10 +137,9 @@ public class BookService {
 
     public Page<BookDTO> getBookListActiveOrDelete(Pageable pageable) {
 
-        Page<Book> page = bookRepository.findAll(pageable);
+        Page<Book> page = bookRepository.findByStatusNot(BookStatus.WAIT, pageable);
         List<BookDTO> content = page.getContent()
                 .stream()
-                .filter(book -> book.getStatus().equals(BookStatus.ACTIVE) || book.getStatus().equals(BookStatus.DELETE))
                 .map(Book::toDTO)
                 .collect(Collectors.toList());
 
@@ -193,10 +191,9 @@ public class BookService {
 
     public PageImpl<?> getPublishersBookRequest(Integer publisherId,Pageable pageable) {
 
-        Page<Book> page = bookRepository.findByPublisherId(publisherId, pageable);
+        Page<Book> page = bookRepository.findByPublisherIdAndStatusActiveOrUpdateRequestOrDeleteRequest(publisherId,BookStatus.WAIT,BookStatus.UPDATEREQUEST,BookStatus.DELETEREQUEST, pageable);
         List<BookDTO> content = page.getContent()
                 .stream()
-                .filter(book -> book.getStatus().equals(BookStatus.WAIT) || book.getStatus().equals(BookStatus.UPDATEREQUEST)|| book.getStatus().equals(BookStatus.DELETEREQUEST))
                 .map(Book::toDTO)
                 .collect(Collectors.toList());
 
@@ -220,10 +217,9 @@ public class BookService {
 
     public PageImpl<?> getBookSaveList(Pageable pageable){
 
-        Page<Book> page = bookRepository.findAll(pageable);
+        Page<Book> page = bookRepository.findByStatusActive(BookStatus.WAIT,pageable);
         List<BookDTO> content = page.getContent()
                 .stream()
-                .filter(book -> book.getStatus().equals(BookStatus.WAIT))
                 .map(Book::toDTO)
                 .collect(Collectors.toList());
 
@@ -446,6 +442,7 @@ public class BookService {
 
         // 수정요청 상태값 변경
         bookUpdateList.setStatus(BookUpdateListStatus.DELETE);
+        book.setStatus(BookStatus.ACTIVE);
 
         return bookRepository.save(book);
     }
