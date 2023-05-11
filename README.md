@@ -9,6 +9,7 @@
 수많은 전자책을 한 곳에서 쉽게 찾아 읽을 수 있는 편리함과 함께 즐겨찾은 페이지를 표시하고,</br> 읽은 책에 대한 리뷰를 공유하는 등 독서를 더욱 풍부하게 즐길 수 있습니다. </br>
 
 # 시연영상
+https://www.youtube.com/watch?v=MDKwmzJHqKE
 
 # 발표자료
 [3조_파이널_PDF.pdf](https://github.com/ReadMeCorporation/admin_server_ReadMe/files/11448345/3._._PDF.pdf)
@@ -85,9 +86,9 @@
 ## 기술 블로그
 - 권경렬(http://blog.naver.com/dereklabs)
 - 장희선(https://blue-run-083.notion.site/e8cc4fcc0d6f435b8fe7d56d15e6a876)
-- 임지상((https://fishy-lychee-822.notion.site/6be2adcff0254e499b109fbe4a8dbb0b))
-- 안정훈(업로드 예정)
-- 김유현((https://quiver-ease-2cb.notion.site/3-7ff8c3a923df429f8b33100d2a09ea13))
+- 임지상(https://fishy-lychee-822.notion.site/6be2adcff0254e499b109fbe4a8dbb0b)
+- 안정훈(https://sandy-rail-5f3.notion.site/3-c0ef6f0024b54ce4819b4c768837febf)
+- 김유현(https://quiver-ease-2cb.notion.site/3-7ff8c3a923df429f8b33100d2a09ea13)
 
 ## 출판사 시나리오
 ![image](https://github.com/ReadMeCorporation/app_ReadMe/assets/68271830/e5338785-078f-4ad2-aedd-4649691b7cf4)
