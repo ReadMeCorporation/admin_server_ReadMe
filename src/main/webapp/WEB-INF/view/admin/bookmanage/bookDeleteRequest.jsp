@@ -3,7 +3,7 @@
 <%@ include file="../../layout/headerBook.jsp" %>
 
 
-<div class="p-3" style="border: 1px solid #00539C" >
+<div class="p-3 mx-auto" style="border: 1px solid #00539C;width: 1000px" >
 
     <h2>도서 삭제 요청</h2>
     <hr>
@@ -14,7 +14,7 @@
             <div class="d-flex justify-content" >
                 <div>
                     <h5><b>표지</b></h5>
-                    <img src="" style="height: 170px; width: 140px" id="coverUrl">
+                    <img src="" style="height: 170px; width: 140px;margin-right: 70px" id="coverUrl">
                 </div>
                 <div>
                     도서명
@@ -65,7 +65,7 @@
             </div>
 
             <div class="d-flex justify-content-center">
-                <button onclick="changeStatus()" type="button" class="btn btn-primary">삭제 승인</button>
+                <button onclick="changeStatus()" type="button" class="btn btn-primary" style="width: 115px">삭제 승인</button>
             </div>
         </div>
     </form>
@@ -77,7 +77,7 @@
 
     $(document).ready(function() {
         $.ajax({
-            url: `http://localhost:8080/api/books/deleteRequest/` + id +`?page=0&size=200`,
+            url: `http://localhost:8080/api/books/deleteRequest/` + id +`?page=0&size=400`,
             type: 'GET',
             dataType: 'json',
         })

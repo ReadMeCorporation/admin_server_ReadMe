@@ -3,7 +3,7 @@
 <%@ include file="../../layout/headerBanner.jsp" %>
 
 <h1>
-    공지사항
+    배너관리
 </h1>
 <div class="" style="border: 1px solid gray" >
 
@@ -32,7 +32,7 @@
 
     $(document).ready(function() {
         $.ajax({
-            url: `http://localhost:8080/api/banners?page=0&size=200`,
+            url: `http://localhost:8080/api/banners?page=0&size=400`,
             type: 'GET',
         })
             .done((res) => {

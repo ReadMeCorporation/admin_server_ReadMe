@@ -55,13 +55,15 @@
             if (question.role == 'PUBLISHER'){
                 num++;
             tr.append('<th scope="row">' + num + '</th>');
-                // tr.append('<td><a href="/publishers/claims/detail">' + question.title + '</a></td>');
-                // tr.append('<td><a href="/publishers/claims/detail/' + question.id + '">' + question.title + '</a></td>');
                 tr.append('<td>' + question.title + '</td>');
                     tr.append('<td>' + question.publisher.businessName + '</td>');
 
-                tr.append('<td>' + question.writeTime + '</td>');
-                tr.append('<td>' + question.writeTime + '</td>');
+                tr.append('<td>' + question.createdDate + '</td>');
+                if (question.modifiedDate == '2021-01-01T00:01'){
+                    tr.append('<td> - </td>');
+                } else {
+                    tr.append('<td>' + question.modifiedDate + '</td>');
+                }
                 tr.append('<td>' + getStatusInKorean(question.status) + '</td>');
 
                 if (question.status == 'ACCEPT'){

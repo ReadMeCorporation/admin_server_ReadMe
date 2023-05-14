@@ -30,7 +30,6 @@ public class BookDeleteListController {
         if (error.hasErrors()) {
             throw new Exception400(error.getAllErrors().get(0).getDefaultMessage());
         }
-
         return new ResponseEntity<>(new ResponseDTO<>(1, "도서 삭제 요청 성공", bookDeleteListService.save(request, bookId)), HttpStatus.CREATED);
     }
 }

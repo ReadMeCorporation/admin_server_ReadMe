@@ -33,15 +33,11 @@ public class BookDeleteListService {
 
     @Transactional
     public BookDeleteList save(BookDeleteListSaveRequest request, Integer bookId) {
-
         Optional<Book> optionalBook = bookRepository.findById(bookId);
-
         if (optionalBook.isEmpty()){
             throw new CustomException(BookConst.notFound);
         }
-
         Book book = optionalBook.get();
-
         String coverUrl = "";
         // 파일정보 불러오기
         FileInfo fileInfoCover = book.getCover();
@@ -52,8 +48,6 @@ public class BookDeleteListService {
         for (File file : coverFiles) {
             coverUrl = file.getFileUrl();
         }
-
-
         // 삭제요청 생성
         BookDeleteList bookDeleteList = BookDeleteList.builder()
                 .book(book)

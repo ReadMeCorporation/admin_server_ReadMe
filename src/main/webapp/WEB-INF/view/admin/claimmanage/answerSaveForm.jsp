@@ -45,7 +45,7 @@
 <script>
     $(document).ready(function() {
         $.ajax({
-            url: `http://localhost:8080/api/questions/`+${id} +`?page=0&size=200` ,
+            url: `http://localhost:8080/api/questions/`+${id} +`?page=0&size=400` ,
             type: 'GET',
         })
             .done((res) => {

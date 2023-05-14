@@ -35,11 +35,11 @@
                     </div>
 
                     <div class="form-group pb-1 mb-3">
-                        <input type="text" class="form-control form-control" placeholder="사업자 번호를 입력해주세요" name="businessNumber" id="businessNumber" value="123456">
+                        <input type="text" class="form-control form-control" placeholder="사업자 번호를 입력해주세요" name="businessNumber" id="businessNumber" value="111-11-11111">
                     </div>
 
                     <div class="form-group pb-1 mb-3">
-                        <input type="text" class="form-control form-control" placeholder="사업자 명(출판사 명)을 입력해주세요" name="businessName" id="businessName" value="그린컴퓨터">
+                        <input type="text" class="form-control form-control" placeholder="사업자 명(출판사 명)을 입력해주세요" name="businessName" id="businessName" value="그린컴퓨터출판사">
                     </div>
 
                     <div class="d-grid gap-2 mb-5">

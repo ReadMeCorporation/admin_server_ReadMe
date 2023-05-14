@@ -3,7 +3,7 @@
 <%@ include file="../../layout/headerReview.jsp" %>
 
 <h1>
-    리뷰관리
+    리뷰 삭제 요청
 </h1>
 
     <div class="" style="border: 1px solid gray" >
@@ -64,7 +64,7 @@
             tr.append('<td>' + selectStatus + '</td>');
             tr.append(`
                 <td>
-                    <button onclick="changeStatus(` + review.id + `)">등록</button>
+                    <button onclick="changeStatus(` + review.id + `)">선택</button>
                 </td>
             `);
             tbody.append(tr);

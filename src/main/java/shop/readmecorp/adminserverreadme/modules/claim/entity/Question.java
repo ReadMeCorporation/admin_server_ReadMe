@@ -68,6 +68,7 @@ public class Question extends BaseTime {
                 title,
                 content,
                 getCreatedDate() != null ? getCreatedDate().toString() : null,
+                getModifiedDate() != null ? getModifiedDate().toString() : null,
                 status != null ? status.name() : "UNKNOWN");
     }
 
@@ -79,6 +80,7 @@ public class Question extends BaseTime {
                 title,
                 content,
                 getCreatedDate() != null ? getCreatedDate().toString() : null,
+                getModifiedDate() != null ? getModifiedDate().toString() : null,
                 status != null ? status.name() : "UNKNOWN");
     }
 }

@@ -1,0 +1,32 @@
+td,
+th {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ddd;
+    vertical-align: middle;
+}
+
+button {
+    width: 95px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+
+.my-nav-list {
+    font-size: 25px;
+    color: black;
+    padding-right: 30px;
+    font-weight: bold;
+}
+
+.my-children-list {
+    justify-content: center;
+    padding-right: 30px;
+    color: black;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: bold;
+}

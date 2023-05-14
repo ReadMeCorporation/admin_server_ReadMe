@@ -60,8 +60,12 @@
                 tr.append('<td>' + question.title + '</td>');
                 tr.append('<td>' + question.user.username + '</td>');
 
-                tr.append('<td>' + question.writeTime + '</td>');
-                tr.append('<td>' + question.writeTime + '</td>');
+                tr.append('<td>' + question.createdDate + '</td>');
+                if (question.modifiedDate == '2021-01-01T00:01'){
+                    tr.append('<td> - </td>');
+                } else {
+                    tr.append('<td>' + question.modifiedDate + '</td>');
+                }
                 tr.append('<td>' + getStatusInKorean(question.status) + '</td>');
 
                 if (question.status == 'ACCEPT'){

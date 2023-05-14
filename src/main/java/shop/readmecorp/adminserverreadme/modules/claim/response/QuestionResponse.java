@@ -27,6 +27,8 @@ public class QuestionResponse {
 
     private String createdDate;
 
+    private String modifiedDate;
+
     private String status;
 
 }
